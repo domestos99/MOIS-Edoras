@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="edoras" external.linked.project.path="$MODULE_DIR$/../../Edoras" external.root.project.path="$MODULE_DIR$/../../Edoras" external.system.id="GRADLE" external.system.module.group="cz.uhk.mois" external.system.module.version="1.0.0" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../Edoras">
+      <excludeFolder url="file://$MODULE_DIR$/../../Edoras/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Edoras/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Edoras/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

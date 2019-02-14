@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Edoras.JS/Edoras.JS.iml" filepath="$PROJECT_DIR$/Edoras.JS/Edoras.JS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MOIS-Edoras.iml" filepath="$PROJECT_DIR$/.idea/MOIS-Edoras.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/edoras.iml" filepath="$PROJECT_DIR$/.idea/modules/edoras.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/edoras_main.iml" filepath="$PROJECT_DIR$/.idea/modules/edoras_main.iml" group="edoras" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/edoras_test.iml" filepath="$PROJECT_DIR$/.idea/modules/edoras_test.iml" group="edoras" />
+    </modules>
+  </component>
+</project>
