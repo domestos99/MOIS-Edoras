@@ -1,8 +1,9 @@
-package cz.uhk.mois.edoras;
+package cz.uhk.mois.edoras.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Item {
+public class Item implements Serializable
+{
 
     private Long id;
     private String state;
@@ -63,7 +64,14 @@ public class Item {
     }
 
     @Override
-    public String toString() {
-        return "ID: " + id + " State: " + state + " Content: " + content + " Count: " + count + " Date: " + date;
+    public String toString()
+    {
+        return "Item{" +
+                "id=" + id +
+                ", state='" + state + '\'' +
+                ", content='" + content + '\'' +
+                ", count=" + count +
+                ", date='" + date + '\'' +
+                '}';
     }
 }
