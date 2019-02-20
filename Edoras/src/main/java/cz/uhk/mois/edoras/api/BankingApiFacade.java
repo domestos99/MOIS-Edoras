@@ -65,4 +65,30 @@ public class BankingApiFacade
         Transaction[] item = JsonUtilsSafe.fromJson(json, Transaction[].class);
         return item;
     }
+
+    public static Payment getPaymentById(String id)
+    {
+        // TODO
+        Payment[] payments = getPayments();
+
+        for (Payment p : payments)
+        {
+            if (id.equals(p.getId().toString()))
+                return p;
+        }
+        return null;
+    }
+
+    public static Transaction getTransactionById(String id)
+    {
+        // TODO
+        Transaction[] transaction = getTransactions();
+
+        for (Transaction tr : transaction)
+        {
+            if (id.equals(tr.getId()))
+                return tr;
+        }
+        return null;
+    }
 }
