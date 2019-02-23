@@ -11,33 +11,30 @@
  */
 
 
-package cz.uhk.mois.edoras.api.model;
+package cz.uhk.mois.edoras.bankingapi.model;
 
 import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.math.BigDecimal;
 
 /**
- * amount &amp; currency of payment order
+ * amount &amp; currency in which transaction was originated
  */
-@ApiModel(description = "amount & currency of payment order")
+@ApiModel(description = "amount & currency in which transaction was originated")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
-public class PaymentValue {
+public class TransactionAdditionalInfoForeignOriginalValue {
   @SerializedName("amount")
   private BigDecimal amount = null;
 
   @SerializedName("currency")
   private String currency = null;
 
-  public PaymentValue amount(BigDecimal amount) {
+  public TransactionAdditionalInfoForeignOriginalValue amount(BigDecimal amount) {
     this.amount = amount;
     return this;
   }
@@ -55,7 +52,7 @@ public class PaymentValue {
     this.amount = amount;
   }
 
-  public PaymentValue currency(String currency) {
+  public TransactionAdditionalInfoForeignOriginalValue currency(String currency) {
     this.currency = currency;
     return this;
   }
@@ -82,9 +79,9 @@ public class PaymentValue {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaymentValue paymentValue = (PaymentValue) o;
-    return Objects.equals(this.amount, paymentValue.amount) &&
-        Objects.equals(this.currency, paymentValue.currency);
+    TransactionAdditionalInfoForeignOriginalValue transactionAdditionalInfoForeignOriginalValue = (TransactionAdditionalInfoForeignOriginalValue) o;
+    return Objects.equals(this.amount, transactionAdditionalInfoForeignOriginalValue.amount) &&
+        Objects.equals(this.currency, transactionAdditionalInfoForeignOriginalValue.currency);
   }
 
   @Override
@@ -96,7 +93,7 @@ public class PaymentValue {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaymentValue {\n");
+    sb.append("class TransactionAdditionalInfoForeignOriginalValue {\n");
     
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");

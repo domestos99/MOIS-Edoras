@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import cz.uhk.mois.edoras.api.BankingApiFacade;
-import cz.uhk.mois.edoras.api.model.Payment;
+import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
+import cz.uhk.mois.edoras.bankingapi.model.Payment;
 
 @RestController
 public class PaymentController

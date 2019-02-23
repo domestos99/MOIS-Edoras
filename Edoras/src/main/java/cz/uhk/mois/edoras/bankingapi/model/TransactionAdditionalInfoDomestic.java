@@ -11,25 +11,21 @@
  */
 
 
-package cz.uhk.mois.edoras.api.model;
+package cz.uhk.mois.edoras.bankingapi.model;
 
 import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 
 /**
- * payment order additional info (symbols)
+ * domestic payments additional info (symbols for fomestic payments)
  */
-@ApiModel(description = "payment order additional info (symbols)")
+@ApiModel(description = "domestic payments additional info (symbols for fomestic payments)")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
-public class PaymentAdditionalInfo {
+public class TransactionAdditionalInfoDomestic {
   @SerializedName("constantSymbol")
   private String constantSymbol = null;
 
@@ -39,7 +35,7 @@ public class PaymentAdditionalInfo {
   @SerializedName("specificSymbol")
   private String specificSymbol = null;
 
-  public PaymentAdditionalInfo constantSymbol(String constantSymbol) {
+  public TransactionAdditionalInfoDomestic constantSymbol(String constantSymbol) {
     this.constantSymbol = constantSymbol;
     return this;
   }
@@ -57,7 +53,7 @@ public class PaymentAdditionalInfo {
     this.constantSymbol = constantSymbol;
   }
 
-  public PaymentAdditionalInfo variableSymbol(String variableSymbol) {
+  public TransactionAdditionalInfoDomestic variableSymbol(String variableSymbol) {
     this.variableSymbol = variableSymbol;
     return this;
   }
@@ -75,7 +71,7 @@ public class PaymentAdditionalInfo {
     this.variableSymbol = variableSymbol;
   }
 
-  public PaymentAdditionalInfo specificSymbol(String specificSymbol) {
+  public TransactionAdditionalInfoDomestic specificSymbol(String specificSymbol) {
     this.specificSymbol = specificSymbol;
     return this;
   }
@@ -102,10 +98,10 @@ public class PaymentAdditionalInfo {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaymentAdditionalInfo paymentAdditionalInfo = (PaymentAdditionalInfo) o;
-    return Objects.equals(this.constantSymbol, paymentAdditionalInfo.constantSymbol) &&
-        Objects.equals(this.variableSymbol, paymentAdditionalInfo.variableSymbol) &&
-        Objects.equals(this.specificSymbol, paymentAdditionalInfo.specificSymbol);
+    TransactionAdditionalInfoDomestic transactionAdditionalInfoDomestic = (TransactionAdditionalInfoDomestic) o;
+    return Objects.equals(this.constantSymbol, transactionAdditionalInfoDomestic.constantSymbol) &&
+        Objects.equals(this.variableSymbol, transactionAdditionalInfoDomestic.variableSymbol) &&
+        Objects.equals(this.specificSymbol, transactionAdditionalInfoDomestic.specificSymbol);
   }
 
   @Override
@@ -117,7 +113,7 @@ public class PaymentAdditionalInfo {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaymentAdditionalInfo {\n");
+    sb.append("class TransactionAdditionalInfoDomestic {\n");
     
     sb.append("    constantSymbol: ").append(toIndentedString(constantSymbol)).append("\n");
     sb.append("    variableSymbol: ").append(toIndentedString(variableSymbol)).append("\n");

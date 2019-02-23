@@ -1,13 +1,15 @@
-package cz.uhk.mois.edoras.http;
+package cz.uhk.mois.edoras.utils.http;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import cz.uhk.mois.edoras.config.AppConfig;
+
 public class HttpGetTask
 {
-    public static String GetDataFromUrl(final String url)
+    public static String GetDataFromUrl(final String url) throws Exception
     {
         HttpURLConnection c = null;
         try
@@ -16,13 +18,10 @@ public class HttpGetTask
             c = (HttpURLConnection) u.openConnection();
             c.setRequestMethod("GET");
             c.setRequestProperty("Content-length", "0");
-            c.setUseCaches(false);
+            c.setUseCaches(true);
             c.setAllowUserInteraction(false);
-
-            int timeout = 5000;
-
-            c.setConnectTimeout(timeout);
-            c.setReadTimeout(timeout);
+            c.setConnectTimeout(AppConfig.ApiConnectTimeout);
+            c.setReadTimeout(AppConfig.ApiConnectTimeout);
 
             c.connect();
             final int status = c.getResponseCode();
@@ -43,11 +42,6 @@ public class HttpGetTask
                 default:
                     throw new Exception("Invalid status code: " + status);
             }
-
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace();
         }
         finally
         {
@@ -63,6 +57,5 @@ public class HttpGetTask
                 }
             }
         }
-        return null;
     }
 }

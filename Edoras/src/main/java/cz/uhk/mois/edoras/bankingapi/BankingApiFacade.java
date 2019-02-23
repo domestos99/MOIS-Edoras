@@ -1,21 +1,17 @@
-package cz.uhk.mois.edoras.api;
+package cz.uhk.mois.edoras.bankingapi;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 import java.util.TimeZone;
 
-import cz.uhk.mois.edoras.api.model.Payment;
-import cz.uhk.mois.edoras.api.model.Transaction;
+import cz.uhk.mois.edoras.bankingapi.model.Payment;
+import cz.uhk.mois.edoras.bankingapi.model.Transaction;
 import cz.uhk.mois.edoras.config.AppConfig;
-import cz.uhk.mois.edoras.http.HttpGetTask;
 import cz.uhk.mois.edoras.utils.JsonUtilsSafe;
+import cz.uhk.mois.edoras.utils.http.HttpGetTask;
 
 public class BankingApiFacade
 {
-
     private static String getApiUrl(String apiEndpoint, GregorianCalendar dtFrom, GregorianCalendar dtTo)
     {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -47,8 +43,19 @@ public class BankingApiFacade
         String url = getApiUrl("payment", dtFrom, dtTo);
 
 
-        String json = HttpGetTask.GetDataFromUrl(url);
+        String json = null;
+        try
+        {
+            json = HttpGetTask.GetDataFromUrl(url);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            // TODO LOAD from cache
+        }
         Payment[] item = JsonUtilsSafe.fromJson(json, Payment[].class);
+        // TODO save to cache
+
         return item;
     }
 
@@ -61,8 +68,19 @@ public class BankingApiFacade
 
         String url = getApiUrl("transaction", dtFrom, dtTo);
 
-        String json = HttpGetTask.GetDataFromUrl(url);
+        String json = null;
+        try
+        {
+            json = HttpGetTask.GetDataFromUrl(url);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            // TODO LOAD from cache
+        }
         Transaction[] item = JsonUtilsSafe.fromJson(json, Transaction[].class);
+        // TODO save to cache
+
         return item;
     }
 
