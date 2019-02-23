@@ -1,0 +1,83 @@
+<h3>Payments list</h3>
+
+
+<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+  <thead>
+  <tr>
+    <td></td>
+    <td>ID</td>
+    <td>value.amount</td>
+    <td>value.currency</td>
+
+    <td>partyAccount.prefix</td>
+    <td>partyAccount.accountNumber</td>
+    <td>partyAccount.bankCode</td>
+
+    <td>dueDate</td>
+    <td>recuringPayment.firstPayment</td>
+    <td>recuringPayment.interval</td>
+    <td>recuringPayment.lastPayment</td>
+    <td>payeeMessage</td>
+    <td>payerMessage</td>
+    <td>categoryId</td>
+    <td>additionalInfo.constantSymbol</td>
+    <td>additionalInfo.specificSymbol</td>
+    <td>additionalInfo.variableSymbol</td>
+    <td>id</td>
+    <td>accountId</td>
+    <td>editableByUser</td>
+    <td>realizationStatus</td>
+
+
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let row of data">
+
+    <td>
+      <detail-button (onClick)="openDetail(row)"></detail-button>
+    </td>
+
+
+    <td>...</td>
+    <!--<td>{{row._id}}</td>-->
+    <td>{{row.value.amount}}</td>
+    <td>{{row.value.currency}}</td>
+
+
+    <td>{{row.partyAccount.prefix}}</td>
+    <td>{{row.partyAccount.accountNumber}}</td>
+    <td>{{row.partyAccount.bankCode}}</td>
+
+
+    <td>{{row.dueDate}}</td>
+
+    <td>{{row.recuringPayment.firstPayment}}</td>
+    <td>{{row.recuringPayment.interval}}</td>
+    <td>{{row.recuringPayment.lastPayment}}</td>
+
+
+    <td>{{row.payeeMessage}}</td>
+
+    <td>{{row.payerMessage}}</td>
+
+    <td>{{row.categoryId}}</td>
+
+
+    <td>{{row.additionalInfo.constantSymbol}}</td>
+    <td>{{row.additionalInfo.specificSymbol}}</td>
+    <td>{{row.additionalInfo.variableSymbol}}</td>
+
+    <td>{{row.id}}</td>
+
+    <td>{{row.accountId}}</td>
+
+    <td>{{row.editableByUser}}</td>
+
+    <td>{{row.realizationStatus}}</td>
+
+
+  </tr>
+  </tbody>
+</table>
