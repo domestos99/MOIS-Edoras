@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from "@angular/common/http";
+import {AppConfig} from "@app/core/app.config";
 
 @Injectable()
 export abstract class ServiceBase {
-
-  private baseUrl = 'http://localhost:4500';
 
   abstract getApiCall(): String;
 
@@ -12,7 +11,7 @@ export abstract class ServiceBase {
   errorHandler = error => alert('ServiceBase error: ' + error);
 
   getBaseUrl(): string {
-    return this.baseUrl;
+    return AppConfig.getBaseAddress();
   }
 
   protected getServiceUrl(): string {

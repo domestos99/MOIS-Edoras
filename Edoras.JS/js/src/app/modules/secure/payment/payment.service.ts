@@ -13,11 +13,11 @@ export class PaymentService extends ServiceBase {
   }
 
   public getAll(): Observable<Array<Payment>> {
-    return this.http.get<Array<Payment>>(this.getBaseUrl() + "/" + this.getApiCall());
+    return this.http.get<Array<Payment>>(this.getBaseUrl() + this.getApiCall());
   }
 
   public getById(id: string): Observable<Payment> {
-    return this.http.get<Payment>(this.getBaseUrl() + "/payment/" + id);
+    return this.http.get<Payment>(this.getBaseUrl() + "payment/" + id);
   }
 
 
