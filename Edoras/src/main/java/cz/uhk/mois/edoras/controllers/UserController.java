@@ -16,7 +16,7 @@ import cz.uhk.mois.edoras.model.UserAuthDTO;
 public class UserController
 {
 
-    @PostMapping("/users/authenticate")
+    @PostMapping("/api/users/authenticate")
     public ResponseEntity<User> authenticate(@RequestBody UserAuthDTO userAuthDTO)
     {
         if ("test".equals(userAuthDTO.getUsername()))

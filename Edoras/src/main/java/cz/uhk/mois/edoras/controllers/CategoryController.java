@@ -27,14 +27,14 @@ public class CategoryController
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/categories")
+    @GetMapping("/api/categories")
     public ResponseEntity<ArrayList<Category>> getAll()
     {
         ArrayList<Category> payments = categoryService.getAll();
         return new ResponseEntity(payments, HttpStatus.OK);
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/api/category/{id}")
     public ResponseEntity<Category> getPaymentById(@PathVariable("id") String id)
     {
         Optional<Category> category = categoryService.getById(id);
@@ -44,7 +44,7 @@ public class CategoryController
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/category")
+    @PostMapping("/api/category")
     public ResponseEntity<Category> insertCategory(@RequestBody Category category)
     {
         Category cat = categoryService.insert(category);
@@ -53,7 +53,7 @@ public class CategoryController
         return new ResponseEntity(cat, HttpStatus.CREATED);
     }
 
-    @PutMapping("/category/{id}")
+    @PutMapping("/api/category/{id}")
     public ResponseEntity<Category> updateCategory(@PathVariable("id") String id, @RequestBody Category category)
     {
         Category cat = categoryService.update(id, category);
@@ -62,7 +62,7 @@ public class CategoryController
         return new ResponseEntity(cat, HttpStatus.OK);
     }
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/api/category/{id}")
     public ResponseEntity<Boolean> deleteCategory(@PathVariable("id") String id)
     {
         boolean cat = categoryService.delete(id);

@@ -12,14 +12,14 @@ import cz.uhk.mois.edoras.bankingapi.model.Payment;
 @RestController
 public class PaymentController
 {
-    @GetMapping("/payments")
+    @GetMapping("/api/payments")
     public ResponseEntity<Payment[]> getAll()
     {
         Payment[] payments = BankingApiFacade.getPayments();
         return new ResponseEntity(payments, HttpStatus.OK);
     }
 
-    @GetMapping("/payment/{id}")
+    @GetMapping("/api/payment/{id}")
     public ResponseEntity<Payment> getPaymentById(@PathVariable("id") String id)
     {
         // TODO

@@ -12,14 +12,14 @@ import cz.uhk.mois.edoras.bankingapi.model.Transaction;
 @RestController
 public class TransactionController
 {
-    @GetMapping("/transactions")
+    @GetMapping("/api/transactions")
     public ResponseEntity<Transaction[]> getAll()
     {
         Transaction[] transactions = BankingApiFacade.getTransactions();
         return new ResponseEntity(transactions, HttpStatus.OK);
     }
 
-    @GetMapping("/transaction/{id}")
+    @GetMapping("/api/transaction/{id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable("id") String id)
     {
         // TODO

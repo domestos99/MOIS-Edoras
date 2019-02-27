@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @RestController
 public class ValuesController
 {
-    @GetMapping("/values")
+    @GetMapping("/api/values")
     public ResponseEntity<ArrayList<String>> getValues()
     {
         ArrayList<String> values = new ArrayList<>();
