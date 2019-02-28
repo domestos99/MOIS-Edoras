@@ -7,48 +7,57 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import cz.uhk.mois.edoras.domain.Category;
-import cz.uhk.mois.edoras.repositories.ICategoryRepository;
+import cz.uhk.mois.edoras.repositories.DAO.CategoryDAO;
 import cz.uhk.mois.edoras.services.ICategoryService;
+import cz.uhk.mois.edoras.utils.ListUtils;
+import cz.uhk.mois.edoras.utils.StringUtil;
 
 @Service
 public class CategoryService implements ICategoryService
 {
-    private final ICategoryRepository categoryRepository;
+    private final CategoryDAO categoryDAO;
 
     @Autowired
-    public CategoryService(ICategoryRepository categoryRepository)
+    public CategoryService(CategoryDAO categoryDAO)
     {
-        this.categoryRepository = categoryRepository;
+        this.categoryDAO = categoryDAO;
     }
 
     @Override
     public ArrayList<Category> getAll()
     {
-        return categoryRepository.findAll();
+        return ListUtils.toList(categoryDAO.findAll());
     }
 
     @Override
     public Optional<Category> getById(String id)
     {
-        return categoryRepository.findById(id);
+        return categoryDAO.findById(id);
     }
 
     @Override
     public Category insert(Category category)
     {
-        return categoryRepository.save(category);
+        return categoryDAO.save(category);
     }
 
     @Override
-    public Category update(String id, Category category)
+    public Category update(Category category)
     {
-        category.setCateID(id);
-        return categoryRepository.save(category);
+        return categoryDAO.save(category);
     }
 
     @Override
     public boolean delete(String id)
     {
-        return categoryRepository.deleteById(id);
+        if (StringUtil.isEmptyOrNull(id))
+            return false;
+
+        if (categoryDAO.existsById(id))
+        {
+            categoryDAO.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

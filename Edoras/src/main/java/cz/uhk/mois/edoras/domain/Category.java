@@ -1,45 +1,49 @@
 package cz.uhk.mois.edoras.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 
-public class Category implements Serializable, IDbEntity
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Category implements Serializable
 {
-    private String cateID;
-    private String  cateName;
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
 
-    public Category()
+    private String name;
+
+    public String getId()
     {
+        return id;
     }
 
-    public Category(String cateID, String cateName)
+    public void setId(String id)
     {
-        this.cateID = cateID;
-        this.cateName = cateName;
+        this.id = id;
     }
 
-    public String getCateID()
+    public String getName()
     {
-        return cateID;
+        return name;
     }
 
-    public void setCateID(String cateID)
+    public void setName(String name)
     {
-        this.cateID = cateID;
-    }
-
-    public String getCateName()
-    {
-        return cateName;
-    }
-
-    public void setCateName(String cateName)
-    {
-        this.cateName = cateName;
+        this.name = name;
     }
 
     @Override
-    public String getId()
+    public String toString()
     {
-        return cateID;
+        return "Category{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
