@@ -57,8 +57,8 @@ public class Payment
     @SerializedName("additionalInfo")
     private PaymentAdditionalInfo additionalInfo = null;
 
-    @SerializedName("id")
-    private BigDecimal id = null;
+    @SerializedName("_id")
+    private String id = null;
 
     @SerializedName("accountId")
     private BigDecimal accountId = null;
@@ -338,7 +338,7 @@ public class Payment
         this.additionalInfo = additionalInfo;
     }
 
-    public Payment id(BigDecimal id)
+    public Payment id(String id)
     {
         this.id = id;
         return this;
@@ -350,12 +350,12 @@ public class Payment
      * @return id
      **/
     @ApiModelProperty(required = true, value = "internal domestic payment order identifier")
-    public BigDecimal getId()
+    public String getId()
     {
         return id;
     }
 
-    public void setId(BigDecimal id)
+    public void setId(String id)
     {
         this.id = id;
     }
