@@ -19,7 +19,7 @@ import java.util.Optional;
 @RestController
 public class PaymentController {
 
-    private IPaymentService paymentService;
+    private final IPaymentService paymentService;
 
     @Autowired
     public PaymentController(IPaymentService paymentService) {
@@ -35,7 +35,7 @@ public class PaymentController {
     @GetMapping("/api/payment/{id}")
     public ResponseEntity<Payment> getPaymentById(@PathVariable("id") String id) {
 
-        Optional<Payment> payments = null;
+        Optional<Payment> payments = paymentService.getById(id);
 
         if (payments.isPresent()) {
             return new ResponseEntity(payments.get(), HttpStatus.OK);

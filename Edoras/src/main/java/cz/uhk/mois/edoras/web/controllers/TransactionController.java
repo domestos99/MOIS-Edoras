@@ -17,7 +17,7 @@ import java.util.Optional;
 @RestController
 public class TransactionController {
 
-    private ITransactionService transactionService;
+    private final ITransactionService transactionService;
 
     @Autowired
     public TransactionController(ITransactionService transactionService) {
@@ -33,7 +33,7 @@ public class TransactionController {
     @GetMapping("/api/transaction/{id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable("id") String id) {
 
-        Optional<Transaction> transaction = null;
+        Optional<Transaction> transaction = transactionService.getById(id);
 
         if (transaction.isPresent()) {
             return new ResponseEntity(transaction.get(), HttpStatus.OK);
