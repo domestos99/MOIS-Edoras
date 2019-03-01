@@ -1,0 +1,33 @@
+<mat-card>
+
+  <mat-card-content>
+    <detail-button (onClick)="openDetail()"></detail-button>
+    <br>
+
+    {{data.dueDate | date }}<br>
+
+    {{getAccountFormatted(data.partyAccount)}}<br>
+
+    {{data.categoryId}}<br>
+
+    {{getMoneyFormatted(data.value)}}<br>
+
+
+    {{data.partyDescription}}<br>
+    {{data.direction}}<br>
+
+    {{data.transactionType}}<br>
+
+    {{data.valueDate | date}}<br>
+
+    {{data.bookingDate | date}}<br>
+
+    {{data.userDescription}}<br>
+    {{data.payeeMessage}}<br>
+    {{data.categoryId}}<br>
+    {{data.transactionFee}}<br>
+    {{data.transactionFeeCanceled}}<br>
+
+  </mat-card-content>
+
+</mat-card>

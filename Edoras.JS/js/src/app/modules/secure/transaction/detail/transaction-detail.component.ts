@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, ViewChild, OnInit, OnDestroy} from '@angular/core';
-import {PaymentService} from "../payment.service";
+
 import {ActivatedRoute} from "@angular/router";
 import {Payment} from "@app/core/api/model/payment";
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
@@ -7,30 +7,35 @@ import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccou
 import {PaymentValue} from "@app/core/api/model/paymentValue";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {Category} from "@app/core/model";
+import {TransactionService} from "@app/modules/secure/transaction/transaction.service";
+import {Transaction} from "@app/core/api/model/transaction";
+import {TransactionAdditionalInfoForeignOriginalValue} from "@app/core/api/model/transactionAdditionalInfoForeignOriginalValue";
 
 
 @Component({
-  selector: 'payment-detail',
-  templateUrl: 'payment-detail.component.html'
+  selector: 'transaction',
+  templateUrl: 'transaction-detail.component.html'
 })
-export class PaymentDetailComponent implements OnInit, OnDestroy {
+export class TransactionDetailComponent implements OnInit, OnDestroy {
 
   id: string;
   private sub: any;
-  data: Payment;
+  data: Transaction;
 
-  constructor(private route: ActivatedRoute, private service: PaymentService) {
+  constructor(private route: ActivatedRoute, private service: TransactionService) {
   }
+
 
   getAccountFormatted(account: TransactionPartyAccount): string {
     return FormattingHelper.getAccountFormatted(account);
   }
 
   getMoneyFormatted(paymentValue: PaymentValue): string {
-    return FormattingHelper.getMoneyFormattedPay(paymentValue);
+    return FormattingHelper.getMoneyFormattedTrans(paymentValue);
   }
 
   ngOnInit() {
+
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.service.getById(this.id)
@@ -39,6 +44,7 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
           this.data = value
         });
     });
+
   }
 
   ngOnDestroy() {
@@ -46,7 +52,13 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
       this.sub.unsubscribe();
   }
 
+
   onSelectionChange(newCategoryId: Category) {
     console.log(newCategoryId);
+  }
+
+  getTransactionAdditionalInfoForeignOriginalValueFormatter(originalValue: TransactionAdditionalInfoForeignOriginalValue):string {
+    return FormattingHelper.getTransactionAdditionalInfoForeignOriginalValueFormatter(originalValue);
+
   }
 }

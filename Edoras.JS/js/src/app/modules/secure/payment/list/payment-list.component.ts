@@ -17,6 +17,7 @@ export class PaymentListComponent {
   }
 
   data: Array<Payment> = [];
+  panelOpenState = false;
 
   reload() {
     this.service.getAll().subscribe(resp => {

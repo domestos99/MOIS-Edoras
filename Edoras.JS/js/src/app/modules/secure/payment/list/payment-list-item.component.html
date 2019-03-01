@@ -1,0 +1,17 @@
+<mat-card>
+
+  <mat-card-content>
+    <detail-button (onClick)="openDetail()"></detail-button>
+    <br>
+
+    {{data.dueDate | date }}<br>
+
+    {{getAccountFormatted(data.partyAccount)}}<br>
+
+    {{data.categoryId}}<br>
+
+    {{getMoneyFormatted(data.value)}}
+
+  </mat-card-content>
+
+</mat-card>
