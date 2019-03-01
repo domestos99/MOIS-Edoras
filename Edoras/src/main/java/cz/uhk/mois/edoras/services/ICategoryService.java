@@ -1,13 +1,13 @@
 package cz.uhk.mois.edoras.services;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import cz.uhk.mois.edoras.domain.Category;
 
 public interface ICategoryService
 {
-    ArrayList<Category> getAll();
+    List<Category> getAll();
 
     Optional<Category> getById(String id);
 

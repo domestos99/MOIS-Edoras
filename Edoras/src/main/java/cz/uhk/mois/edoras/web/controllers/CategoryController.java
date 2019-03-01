@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import cz.uhk.mois.edoras.domain.Category;
@@ -28,9 +29,9 @@ public class CategoryController
     }
 
     @GetMapping("/api/categories")
-    public ResponseEntity<ArrayList<Category>> getAll()
+    public ResponseEntity<List<Category>> getAll()
     {
-        ArrayList<Category> payments = categoryService.getAll();
+        List<Category> payments = categoryService.getAll();
         return new ResponseEntity(payments, HttpStatus.OK);
     }
 

@@ -1,14 +1,14 @@
 package cz.uhk.mois.edoras.services;
 
-import cz.uhk.mois.edoras.bankingapi.model.Payment;
-
 import java.util.List;
 import java.util.Optional;
 
+import cz.uhk.mois.edoras.web.dto.PaymentCategoryDTO;
+
 public interface IPaymentService {
 
-    List<Payment> findAll();
+    List<PaymentCategoryDTO> findAll();
 
-    Optional<Payment> getById(String id);
+    Optional<PaymentCategoryDTO> getById(String id);
 
 }

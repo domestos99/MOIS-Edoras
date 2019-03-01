@@ -3,7 +3,7 @@ package cz.uhk.mois.edoras.services.imp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import cz.uhk.mois.edoras.domain.Category;
@@ -25,7 +25,7 @@ public class CategoryService implements ICategoryService
     }
 
     @Override
-    public ArrayList<Category> getAll()
+    public List<Category> getAll()
     {
         return ListUtils.toList(categoryDAO.findAll());
     }
