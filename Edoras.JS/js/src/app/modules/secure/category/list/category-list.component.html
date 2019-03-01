@@ -4,8 +4,9 @@
 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
   <thead>
   <tr>
+    <td></td>
     <td>ID</td>
-    <td>cateName</td>
+    <td>Name</td>
   </tr>
   </thead>
   <tbody>
@@ -16,15 +17,8 @@
       <detail-button (onClick)="openDetail(row)"></detail-button>
     </td>
 
-
-    <td>...</td>
-    <!--<td>{{row._id}}</td>-->
-
-
     <td>{{row.id}}</td>
-    <td>{{row.cateName}}</td>
-
-
+    <td>{{row.name}}</td>
 
   </tr>
   </tbody>

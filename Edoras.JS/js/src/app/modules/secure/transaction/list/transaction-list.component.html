@@ -1,0 +1,9 @@
+<h3>Transactions list</h3>
+
+<div *ngIf="data">
+
+  <mat-list *ngFor="let row of data">
+    <transaction-list-item [data]="row" (onOpenDetail)="openDetail(row)"></transaction-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>

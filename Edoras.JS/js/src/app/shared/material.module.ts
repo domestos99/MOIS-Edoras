@@ -17,7 +17,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatSliderModule, MatSortModule, MatTableModule} from '@angular/material/';
+import {
+  MatExpansionModule,
+  MatSliderModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material/';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -48,6 +53,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatExpansionModule
   ],
   exports: [
     MatButtonModule,
@@ -73,6 +79,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule {

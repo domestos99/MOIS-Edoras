@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter, ViewChild, OnInit, OnDestroy} from '@angular/core';
-import {CategoryService, PaymentService} from "../category.service";
+import {CategoryService} from "../category.service";
 import {ActivatedRoute} from "@angular/router";
-import {Category} from "@app/core/api/model/category";
+import {Category} from "@app/core/model";
 
 
 @Component({
@@ -15,11 +15,9 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
   data: Category;
 
   constructor(private route: ActivatedRoute, private service: CategoryService) {
-
   }
 
   ngOnInit() {
-
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.service.getById(this.id)
@@ -28,13 +26,11 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
           this.data = value
         });
     });
-
   }
 
   ngOnDestroy() {
     if (this.sub)
       this.sub.unsubscribe();
   }
-
 
 }

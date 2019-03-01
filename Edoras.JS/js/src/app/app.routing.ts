@@ -7,20 +7,6 @@ import {PUBLIC_ROUTES} from "@app/layouts/public/public.routes";
 import {SecureComponent} from "@app/layouts/secure/secure.component";
 import {SECURE_ROUTES} from "@app/layouts/secure/secure.routes";
 
-// const routes: Routes = [
-//
-//   {
-//     path: '',
-//     component: ContentLayoutComponent,
-//     canActivate: [NoAuthGuard], // Should be replaced with actual auth guard
-//     // children: CONTENT_ROUTES1,
-//     loadChildren: './modules/allmodules.module#AllmodulesModule'
-//   },
-//   { path: '**', redirectTo: '', pathMatch: 'full' }
-//
-//
-// ];
-
 const routes: Routes = [
   {
     path: '', redirectTo: '/dashboard', pathMatch: 'full'

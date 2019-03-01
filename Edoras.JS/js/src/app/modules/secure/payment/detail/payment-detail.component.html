@@ -1,29 +1,43 @@
-<h3>Detail</h3>
+<h3>Payment Detail</h3>
+
+<div *ngIf="data">
+
+  <mat-card>
+
+    <mat-card-content>
+
+      <category-select (selectionChange)="onSelectionChange($event)"></category-select>
 
 
-From URL: {{id}}
+      {{getAccountFormatted(data.partyAccount)}}<br>
 
-<br><br><br>
+      {{getMoneyFormatted(data.value)}}<br>
 
-<div *ngIf="data" >
-<!--_id: {{data._id}}<br>-->
-value.amount: {{data.value.amount}}<br>
-value.currency: {{data.value.currency}}<br>
-partyAccount.prefix: {{data.partyAccount.prefix}}<br>
-partyAccount.accountNumber: {{data.partyAccount.accountNumber}}<br>
-partyAccount.bankCode: {{data.partyAccount.bankCode}}<br>
-dueDate: {{data.dueDate}}<br>
-recuringPayment.firstPayment: {{data.recuringPayment.firstPayment}}<br>
-recuringPayment.interval: {{data.recuringPayment.interval}}<br>
-recuringPayment.lastPayment: {{data.recuringPayment.lastPayment}}<br>
-payeeMessage: {{data.payeeMessage}}<br>
-payerMessage: {{data.payerMessage}}<br>
-categoryId: {{data.categoryId}}<br>
-additionalInfo.constantSymbol: {{data.additionalInfo.constantSymbol}}<br>
-additionalInfo.specificSymbol: {{data.additionalInfo.specificSymbol}}<br>
-additionalInfo.variableSymbol: {{data.additionalInfo.variableSymbol}}<br>
-id: {{data.id}}<br>
-accountId: {{data.accountId}}<br>
-editableByUser: {{data.editableByUser}}<br>
-realizationStatus: {{data.realizationStatus}}<br>
+      DueDate: {{data.dueDate | date:'medium' }}<br>
+
+      <div *ngIf="data.recuringPayment">
+
+        FirstPayment: {{data.recuringPayment.firstPayment | date:'medium'}}<br>
+        Interval: {{data.recuringPayment.interval}}<br>
+        LastPayment: {{data.recuringPayment.lastPayment | date:'medium'}}<br>
+
+      </div>
+
+      PayeeMessage: {{data.payeeMessage}}<br>
+      PayerMessage: {{data.payerMessage}}<br>
+      CategoryId: {{data.categoryId}}<br>
+
+      <div *ngIf="data.additionalInfo">
+        ConstantSymbol: {{data.additionalInfo.constantSymbol}}<br>
+        SpecificSymbol: {{data.additionalInfo.specificSymbol}}<br>
+        VariableSymbol: {{data.additionalInfo.variableSymbol}}<br>
+      </div>
+
+
+    </mat-card-content>
+
+
+  </mat-card>
+
+
 </div>

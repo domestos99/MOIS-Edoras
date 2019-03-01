@@ -11,7 +11,6 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {DashboardComponent} from "@app/modules/secure/dashboard/dashboard.component";
-import {TestComponent} from "@app/modules/secure/test/test.component";
 import {PaymentListComponent} from "@app/modules/secure/payment/list/payment-list.component";
 import {PaymentComponent} from "@app/modules/secure/payment/payment.component";
 import {PaymentDetailComponent} from "@app/modules/secure/payment/detail/payment-detail.component";
@@ -26,6 +25,17 @@ import {PaymentService} from "@app/modules/secure/payment/payment.service";
 import {AlertService, AuthenticationService} from "@app/core/auth";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {ErrorInterceptor, TokenInterceptor} from "@app/core/interceptors";
+import {PaymentListItemComponent} from "@app/modules/secure/payment/list/payment-list-item.component";
+import {CategorySelectComponent} from "@app/modules/secure/category/category-select/category-select.component";
+import {TransactionComponent} from "@app/modules/secure/transaction/transaction.component";
+import {TransactionListComponent} from "@app/modules/secure/transaction/list/transaction-list.component";
+import {TransactionDetailComponent} from "@app/modules/secure/transaction/detail/transaction-detail.component";
+import {TransactionListItemComponent} from "@app/modules/secure/transaction/list/transaction-list-item.component";
+import {TransactionService} from "@app/modules/secure/transaction/transaction.service";
+import {CategoryComponent} from "@app/modules/secure/category/category.component";
+import {CategoryListComponent} from "@app/modules/secure/category/list/category-list.component";
+import {CategoryDetailComponent} from "@app/modules/secure/category/detail/category-detail.component";
+import {CategoryService} from "@app/modules/secure/category/category.service";
 
 
 @NgModule({
@@ -34,13 +44,19 @@ import {ErrorInterceptor, TokenInterceptor} from "@app/core/interceptors";
 
     LoginComponent,
     DashboardComponent,
-    TestComponent,
+
     PaymentComponent,
     PaymentListComponent,
+    PaymentListItemComponent,
     PaymentDetailComponent,
+    CategorySelectComponent,
     CategoryComponent,
     CategoryListComponent,
     CategoryDetailComponent,
+    TransactionComponent,
+    TransactionListComponent,
+    TransactionDetailComponent,
+    TransactionListItemComponent,
     NavigationComponent,
     PublicComponent,
     SecureComponent,
@@ -79,6 +95,7 @@ import {ErrorInterceptor, TokenInterceptor} from "@app/core/interceptors";
     AuthenticationService,
     AlertService,
     PaymentService,
+    TransactionService,
     CategoryService,
 
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Category} from "@app/core/api/model/category";
 import {ServiceBase} from "@app/core/base/servicebase";
+import {Category} from "@app/core/model";
 
 
 @Injectable()
