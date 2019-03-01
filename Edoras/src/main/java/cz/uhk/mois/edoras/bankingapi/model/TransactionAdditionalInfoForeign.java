@@ -13,14 +13,13 @@
 
 package cz.uhk.mois.edoras.bankingapi.model;
 
-import java.util.Objects;
-
 import com.google.gson.annotations.SerializedName;
+
+import java.math.BigDecimal;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.math.BigDecimal;
 
 /**
  * foreign payments additional info (original value and exchange rate)

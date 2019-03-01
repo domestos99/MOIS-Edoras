@@ -1,14 +1,15 @@
 package cz.uhk.mois.edoras.services;
 
-import cz.uhk.mois.edoras.bankingapi.model.Transaction;
-
 import java.util.List;
 import java.util.Optional;
 
-public interface ITransactionService {
+import cz.uhk.mois.edoras.web.dto.TransactionCategoryDTO;
 
-    List<Transaction> findAll();
+public interface ITransactionService
+{
 
-    Optional<Transaction> getById(String id);
+    List<TransactionCategoryDTO> findAll();
+
+    Optional<TransactionCategoryDTO> getById(String id);
 
 }

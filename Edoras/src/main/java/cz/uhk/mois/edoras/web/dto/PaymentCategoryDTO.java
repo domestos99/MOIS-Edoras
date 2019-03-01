@@ -3,12 +3,11 @@ package cz.uhk.mois.edoras.web.dto;
 import java.io.Serializable;
 
 import cz.uhk.mois.edoras.bankingapi.model.Payment;
-import cz.uhk.mois.edoras.domain.Category;
 
 public class PaymentCategoryDTO implements Serializable
 {
     private Payment payment;
-    private Category category;
+    private String categoryId;
 
     public Payment getPayment()
     {
@@ -20,13 +19,13 @@ public class PaymentCategoryDTO implements Serializable
         this.payment = payment;
     }
 
-    public Category getCategory()
+    public String getCategoryId()
     {
-        return category;
+        return categoryId;
     }
 
-    public void setCategory(Category category)
+    public void setCategoryId(String categoryId)
     {
-        this.category = category;
+        this.categoryId = categoryId;
     }
 }

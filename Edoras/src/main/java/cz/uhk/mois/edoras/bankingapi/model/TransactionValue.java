@@ -13,14 +13,13 @@
 
 package cz.uhk.mois.edoras.bankingapi.model;
 
-import java.util.Objects;
-
 import com.google.gson.annotations.SerializedName;
+
+import java.math.BigDecimal;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.math.BigDecimal;
 
 /**
  * amount &amp; currency used for bookkeeping (e.g. amount in account&#39;s currency). Can be negative e.g. if something was withdrawn from an account. Original transaction amount and currency will be specified in &#x60;additionalInfo&#x60; object if applicable

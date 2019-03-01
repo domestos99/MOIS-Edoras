@@ -1,36 +1,39 @@
 package cz.uhk.mois.edoras.services.imp;
 
-import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
-import cz.uhk.mois.edoras.bankingapi.model.Payment;
-import cz.uhk.mois.edoras.domain.Category;
-import cz.uhk.mois.edoras.repositories.impl.PaymentMemoryCache;
-import cz.uhk.mois.edoras.services.IPaymentService;
-import cz.uhk.mois.edoras.utils.ListUtils;
-import cz.uhk.mois.edoras.web.dto.PaymentCategoryDTO;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
+import cz.uhk.mois.edoras.bankingapi.model.Payment;
+import cz.uhk.mois.edoras.repositories.impl.PaymentMemoryCache;
+import cz.uhk.mois.edoras.services.IPaymentCategoryService;
+import cz.uhk.mois.edoras.services.IPaymentService;
+import cz.uhk.mois.edoras.utils.ListUtils;
+import cz.uhk.mois.edoras.web.dto.PaymentCategoryDTO;
 
 @Service
 public class PaymentService implements IPaymentService
 {
     private final PaymentMemoryCache memoryCache;
+    private final IPaymentCategoryService iPaymentCategoryService;
+
 
     @Autowired
-    public PaymentService(PaymentMemoryCache memoryCache)
+    public PaymentService(PaymentMemoryCache memoryCache, IPaymentCategoryService iPaymentCategoryService)
     {
         this.memoryCache = memoryCache;
+        this.iPaymentCategoryService = iPaymentCategoryService;
     }
 
     @Override
     public List<PaymentCategoryDTO> findAll()
     {
-        List<Payment> payments = memoryCache.findAll();
+        //List<Payment> payments = memoryCache.findAll();
+        List<Payment> payments = ListUtils.toList(BankingApiFacade.getPayments());
 
         if (payments == null)
         {
@@ -43,7 +46,7 @@ public class PaymentService implements IPaymentService
         {
             PaymentCategoryDTO dto = new PaymentCategoryDTO();
             dto.setPayment(p);
-            dto.setCategory(findCategoryForPayment(p));
+            dto.setCategoryId(findCategoryForPayment(p));
             result.add(dto);
         }
         return result;
@@ -52,8 +55,8 @@ public class PaymentService implements IPaymentService
     @Override
     public Optional<PaymentCategoryDTO> getById(String id)
     {
-        Payment payment = memoryCache.findById(id);
-        // Payment payment = Optional.of(BankingApiFacade.getPaymentById(id));
+        //Payment payment = memoryCache.findById(id);
+        Payment payment = BankingApiFacade.getPaymentById(id);
 
         // Not in cache
         if (payment == null)
@@ -67,14 +70,14 @@ public class PaymentService implements IPaymentService
         PaymentCategoryDTO dto = new PaymentCategoryDTO();
         dto.setPayment(payment);
 
-        dto.setCategory(findCategoryForPayment(payment));
+        dto.setCategoryId(findCategoryForPayment(payment));
 
         return Optional.of(dto);
     }
 
-    private Category findCategoryForPayment(Payment payment)
+    private String findCategoryForPayment(Payment payment)
     {
-        return null;
+        return iPaymentCategoryService.getCategoryForPayment(payment);
     }
 
 

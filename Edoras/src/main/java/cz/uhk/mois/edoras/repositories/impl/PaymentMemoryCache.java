@@ -1,11 +1,12 @@
 package cz.uhk.mois.edoras.repositories.impl;
 
-import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
-import cz.uhk.mois.edoras.bankingapi.model.Payment;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.Arrays;
 import java.util.List;
+
+import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
+import cz.uhk.mois.edoras.bankingapi.model.Payment;
 
 public class PaymentMemoryCache extends InMemoryRepositoryBase<Payment> {
 

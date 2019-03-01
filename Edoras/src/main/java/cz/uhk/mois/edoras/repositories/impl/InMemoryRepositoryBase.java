@@ -2,7 +2,6 @@ package cz.uhk.mois.edoras.repositories.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import cz.uhk.mois.edoras.domain.IDbEntity;
 import cz.uhk.mois.edoras.repositories.IRepositoryBase;
@@ -32,14 +31,14 @@ public abstract class InMemoryRepositoryBase<T extends IDbEntity> implements IRe
     }
 
     @Override
-    public Optional<T> findById(String id)
+    public T findById(String id)
     {
         for (T en : storage)
         {
             if (en.getId().equals(id))
-                return Optional.of(en);
+                return en;
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override
@@ -63,9 +62,9 @@ public abstract class InMemoryRepositoryBase<T extends IDbEntity> implements IRe
     @Override
     public boolean deleteById(String id)
     {
-        Optional<T> en = findById(id);
-        if (en.isPresent())
-            return storage.remove(en);
-        return false;
+        T en = findById(id);
+        if (en == null)
+            return false;
+        return storage.remove(en);
     }
 }

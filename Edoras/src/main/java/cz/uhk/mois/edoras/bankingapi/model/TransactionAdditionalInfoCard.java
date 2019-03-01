@@ -13,9 +13,9 @@
 
 package cz.uhk.mois.edoras.bankingapi.model;
 
-import java.util.Objects;
-
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

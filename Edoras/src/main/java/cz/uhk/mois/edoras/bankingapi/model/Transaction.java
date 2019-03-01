@@ -13,19 +13,18 @@
 
 package cz.uhk.mois.edoras.bankingapi.model;
 
-import java.util.Objects;
-
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
-import cz.uhk.mois.edoras.domain.IDbEntity;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Objects;
+
+import cz.uhk.mois.edoras.domain.IDbEntity;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Transaction

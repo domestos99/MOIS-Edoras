@@ -13,14 +13,13 @@
 
 package cz.uhk.mois.edoras.bankingapi.model;
 
-import java.util.Objects;
-
 import com.google.gson.annotations.SerializedName;
+
+import java.math.BigDecimal;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.math.BigDecimal;
 
 /**
  * amount &amp; currency in which transaction was originated
