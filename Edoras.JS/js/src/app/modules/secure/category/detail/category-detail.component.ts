@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, ViewChild, OnInit, OnDestroy} from '@angular/core';
-import {PaymentService} from "../category.service";
+import {CategoryService, PaymentService} from "../category.service";
 import {ActivatedRoute} from "@angular/router";
 import {Category} from "@app/core/api/model/category";
 

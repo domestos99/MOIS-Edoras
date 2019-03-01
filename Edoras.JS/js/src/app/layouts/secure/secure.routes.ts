@@ -3,6 +3,10 @@ import {AuthGuard} from "@app/core";
 import {PaymentComponent} from "@app/modules/secure/payment/payment.component";
 import {DashboardComponent} from "@app/modules/secure/dashboard/dashboard.component";
 import {TestComponent} from "@app/modules/secure/test/test.component";
+import {CategoryComponent} from '@app/modules/secure/category/category.component';
+import {CategoryComponent} from '@app/modules/secure/category/category.component';
+import {PaymentDetailComponent} from "@app/modules/secure/payment/detail/payment-detail.component";
+import {CategoryComponent} from "@app/modules/secure/category/category.component";
 
 export const SECURE_ROUTES: Routes = [
 

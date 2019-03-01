@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 
-import {PaymentService} from "../category.service";
+import {CategoryService, PaymentService} from "../category.service";
 import {NavigationselperService} from "@app/core";
 import {Category} from "@app/core/api/model/category";
 
