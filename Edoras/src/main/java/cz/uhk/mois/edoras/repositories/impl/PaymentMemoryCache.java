@@ -13,8 +13,12 @@ public class PaymentMemoryCache extends InMemoryRepositoryBase<Payment> {
     @Scheduled(fixedRate = 60000)
     public void syncMemoryCache() {
         List<Payment> listFromApi = Arrays.asList(BankingApiFacade.getPayments());
-        super.storage = listFromApi;
-        System.out.println("Payment cache sync");
+        if (listFromApi == null) {
+            super.storage = listFromApi;
+            System.out.println("Payment cache sync");
+        } else {
+            System.out.println("Payment cache sync failed");
+        }
     }
 
 }
