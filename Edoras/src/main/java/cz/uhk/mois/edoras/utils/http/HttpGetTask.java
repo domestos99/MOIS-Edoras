@@ -1,15 +1,18 @@
 package cz.uhk.mois.edoras.utils.http;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 import cz.uhk.mois.edoras.config.AppConfig;
 
 public class HttpGetTask
 {
-    public static String GetDataFromUrl(final String url) throws Exception
+    public static String GetDataFromUrl(final String url)
     {
         HttpURLConnection c = null;
         try
@@ -40,8 +43,23 @@ public class HttpGetTask
                     br.close();
                     return sb.toString();
                 default:
-                    throw new Exception("Invalid status code: " + status);
+                    return null;
             }
+        }
+        catch (ProtocolException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        catch (MalformedURLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
         }
         finally
         {

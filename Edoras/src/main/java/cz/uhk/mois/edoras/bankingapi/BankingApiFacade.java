@@ -8,6 +8,7 @@ import cz.uhk.mois.edoras.bankingapi.model.Payment;
 import cz.uhk.mois.edoras.bankingapi.model.Transaction;
 import cz.uhk.mois.edoras.config.AppConfig;
 import cz.uhk.mois.edoras.utils.JsonUtilsSafe;
+import cz.uhk.mois.edoras.utils.StringUtil;
 import cz.uhk.mois.edoras.utils.http.HttpGetTask;
 
 public class BankingApiFacade
@@ -19,7 +20,7 @@ public class BankingApiFacade
 
         StringBuilder sbUrl = new StringBuilder();
 
-        sbUrl.append("https://mois-banking.herokuapp.com/v1/");
+        sbUrl.append(AppConfig.BankingApiUrl);
         sbUrl.append(apiEndpoint);
         sbUrl.append("/findByDate");
         sbUrl.append("?dateFrom=");
@@ -40,8 +41,8 @@ public class BankingApiFacade
         GregorianCalendar dtTo = new GregorianCalendar(2020, 4, 23);
 
         //String url = "https://mois-banking.herokuapp.com/v1/payment/findByDate?dateFrom=2012-04-23T18%3A25%3A43.511Z&dateTo=2020-04-23T18%3A25%3A43.511Z&accountId=9876";
-        String url = getApiUrl("payment", dtFrom, dtTo);
 
+        String url = getApiUrl("payment", dtFrom, dtTo);
 
         String json = null;
         try
@@ -51,11 +52,9 @@ public class BankingApiFacade
         catch (Exception e)
         {
             e.printStackTrace();
-            // TODO LOAD from cache
+            return null;
         }
         Payment[] item = JsonUtilsSafe.fromJson(json, Payment[].class);
-        // TODO save to cache
-
         return item;
     }
 
@@ -68,19 +67,13 @@ public class BankingApiFacade
 
         String url = getApiUrl("transaction", dtFrom, dtTo);
 
-        String json = null;
-        try
+        String json = HttpGetTask.GetDataFromUrl(url);
+        if (StringUtil.isEmptyOrNull(json))
         {
-            json = HttpGetTask.GetDataFromUrl(url);
+            return null;
         }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            // TODO LOAD from cache
-        }
-        Transaction[] item = JsonUtilsSafe.fromJson(json, Transaction[].class);
-        // TODO save to cache
 
+        Transaction[] item = JsonUtilsSafe.fromJson(json, Transaction[].class);
         return item;
     }
 
@@ -91,7 +84,7 @@ public class BankingApiFacade
 
         for (Payment p : payments)
         {
-            if (id.equals(p.getId().toString()))
+            if (id.equals(p.getId()))
                 return p;
         }
         return null;
