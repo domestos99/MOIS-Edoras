@@ -23,6 +23,7 @@ dependencies {
 
     implementation "mysql:mysql-connector-java:8.0.13"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:2.1.0.RELEASE"
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.1.Final'
 
 
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'

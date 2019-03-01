@@ -40,6 +40,7 @@ public class BankingApiFacade
         GregorianCalendar dtFrom = new GregorianCalendar(2012, 4, 23);
         GregorianCalendar dtTo = new GregorianCalendar(2020, 4, 23);
 
+
         //String url = "https://mois-banking.herokuapp.com/v1/payment/findByDate?dateFrom=2012-04-23T18%3A25%3A43.511Z&dateTo=2020-04-23T18%3A25%3A43.511Z&accountId=9876";
 
         String url = getApiUrl("payment", dtFrom, dtTo);
