@@ -38,6 +38,9 @@ import {ErrorInterceptor, TokenInterceptor} from "@app/core/interceptors";
     PaymentComponent,
     PaymentListComponent,
     PaymentDetailComponent,
+    CategoryComponent,
+    CategoryListComponent,
+    CategoryDetailComponent,
     NavigationComponent,
     PublicComponent,
     SecureComponent,
@@ -76,6 +79,7 @@ import {ErrorInterceptor, TokenInterceptor} from "@app/core/interceptors";
     AuthenticationService,
     AlertService,
     PaymentService,
+    CategoryService,
 
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

@@ -1,0 +1,31 @@
+<h3>Categories list</h3>
+
+
+<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>cateName</td>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let row of data">
+
+    <td>
+      <detail-button (onClick)="openDetail(row)"></detail-button>
+    </td>
+
+
+    <td>...</td>
+    <!--<td>{{row._id}}</td>-->
+
+
+    <td>{{row.id}}</td>
+    <td>{{row.cateName}}</td>
+
+
+
+  </tr>
+  </tbody>
+</table>

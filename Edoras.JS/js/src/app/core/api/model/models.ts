@@ -1,3 +1,4 @@
+export * from './category';
 export * from './payment';
 export * from './paymentAdditionalInfo';
 export * from './paymentRecuringPayment';
