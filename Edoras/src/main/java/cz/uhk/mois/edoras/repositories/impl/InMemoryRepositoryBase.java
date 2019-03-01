@@ -14,10 +14,10 @@ public abstract class InMemoryRepositoryBase<T extends IDbEntity> implements IRe
     public InMemoryRepositoryBase()
     {
         this.storage = new ArrayList<>();
-        onInitData();
+        syncMemoryCache();
     }
 
-    protected abstract void onInitData();
+    protected abstract void syncMemoryCache();
 
     @Override
     public int count()

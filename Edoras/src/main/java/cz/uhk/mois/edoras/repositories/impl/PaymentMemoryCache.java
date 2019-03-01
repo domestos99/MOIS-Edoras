@@ -10,15 +10,6 @@ import java.util.List;
 public class PaymentMemoryCache extends InMemoryRepositoryBase<Payment> {
 
 
-    @Override
-    protected void onInitData() {
-
-        List<Payment> listFromApi = Arrays.asList(BankingApiFacade.getPayments());
-        super.storage = listFromApi;
-        System.out.println("Payment cache sync");
-
-    }
-
     @Scheduled(fixedRate = 60000)
     public void syncMemoryCache() {
         List<Payment> listFromApi = Arrays.asList(BankingApiFacade.getPayments());

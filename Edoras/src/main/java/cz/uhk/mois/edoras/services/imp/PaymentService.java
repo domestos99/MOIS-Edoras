@@ -5,11 +5,13 @@ import cz.uhk.mois.edoras.bankingapi.model.Payment;
 import cz.uhk.mois.edoras.repositories.impl.PaymentMemoryCache;
 import cz.uhk.mois.edoras.services.IPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PaymentService implements IPaymentService {
 
     @Autowired
