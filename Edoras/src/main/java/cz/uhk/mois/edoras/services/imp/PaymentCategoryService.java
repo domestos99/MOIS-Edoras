@@ -11,25 +11,21 @@ import cz.uhk.mois.edoras.services.IPaymentCategoryService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryInsertDTO;
 
 @Service
-public class PaymentCategoryService implements IPaymentCategoryService
-{
+public class PaymentCategoryService implements IPaymentCategoryService {
     private final PaymentCategoryDAO paymentCategoryDAO;
 
     @Autowired
-    public PaymentCategoryService(PaymentCategoryDAO paymentCategoryDAO)
-    {
+    public PaymentCategoryService(PaymentCategoryDAO paymentCategoryDAO) {
         this.paymentCategoryDAO = paymentCategoryDAO;
     }
 
     @Override
-    public String getCategoryForPayment(final Payment payment)
-    {
+    public String getCategoryForPayment(final Payment payment) {
         String id = payment.getId();
 
         PaymentCategory category = paymentCategoryDAO.findByPaymentId(id);
 
-        if (category == null)
-        {
+        if (category == null) {
             String account = AccountHelper.getAccountId(payment.getPartyAccount());
             category = paymentCategoryDAO.findByPaymentAccount(account);
         }
@@ -39,14 +35,16 @@ public class PaymentCategoryService implements IPaymentCategoryService
     }
 
     @Override
-    public PaymentCategory insert(PaymentCategoryInsertDTO paymentCategoryInsertDTO)
-    {
+    public PaymentCategory insert(PaymentCategoryInsertDTO paymentCategoryInsertDTO) {
         PaymentCategory paymentCategory = new PaymentCategory();
 
-        // if paymentId not set, create for account
+        if (paymentCategoryInsertDTO == null) {
+            return null;
+        }
 
-        //String account = AccountHelper.getAccountId(payment.getPartyAccount());
-
+        paymentCategory.setCategoryId(paymentCategoryInsertDTO.getCategoryId());
+        paymentCategory.setPaymentId(paymentCategoryInsertDTO.getPaymentId());
+        paymentCategory.setPaymentAccount(AccountHelper.getAccountId(paymentCategoryInsertDTO.getTransactionPartyAccount()));
 
         return paymentCategoryDAO.save(paymentCategory);
     }

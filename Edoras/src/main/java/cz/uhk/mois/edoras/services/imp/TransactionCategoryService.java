@@ -11,25 +11,21 @@ import cz.uhk.mois.edoras.services.ITransactionCategoryService;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryInsertDTO;
 
 @Service
-public class TransactionCategoryService implements ITransactionCategoryService
-{
+public class TransactionCategoryService implements ITransactionCategoryService {
     private final TransactionCategoryDAO transactionCategoryDAO;
 
     @Autowired
-    public TransactionCategoryService(TransactionCategoryDAO transactionCategoryDAO)
-    {
+    public TransactionCategoryService(TransactionCategoryDAO transactionCategoryDAO) {
         this.transactionCategoryDAO = transactionCategoryDAO;
     }
 
     @Override
-    public String getCategoryForPayment(final Transaction transaction)
-    {
+    public String getCategoryForPayment(final Transaction transaction) {
         String id = transaction.getId();
 
         TransactionCategory category = transactionCategoryDAO.findByTransactionId(id);
 
-        if (category == null)
-        {
+        if (category == null) {
             String account = AccountHelper.getAccountId(transaction.getPartyAccount());
             category = transactionCategoryDAO.findByTransactionAccount(account);
         }
@@ -40,14 +36,15 @@ public class TransactionCategoryService implements ITransactionCategoryService
     }
 
     @Override
-    public TransactionCategory insert(TransactionCategoryInsertDTO paymentCategoryInsertDTO)
-    {
+    public TransactionCategory insert(TransactionCategoryInsertDTO transactionCategoryInsertDTO) {
         TransactionCategory transactionCategory = new TransactionCategory();
-        // if transacitonId not set, create for account
 
-        //String account = AccountHelper.getAccountId(payment.getPartyAccount());
-
-
+        if (transactionCategoryInsertDTO == null) {
+            return null;
+        }
+        transactionCategory.setCategoryId(transactionCategoryInsertDTO.getCategoryId());
+        transactionCategory.setCategoryId(transactionCategoryInsertDTO.getCategoryId());
+        transactionCategory.setTransactionAccount(AccountHelper.getAccountId(transactionCategoryInsertDTO.getTransactionPartyAccount()));
         return transactionCategoryDAO.save(transactionCategory);
     }
 }
