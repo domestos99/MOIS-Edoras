@@ -1,5 +1,7 @@
 package cz.uhk.mois.edoras.web.controllers;
 
+import cz.uhk.mois.edoras.repositories.impl.PaymentMemoryCache;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import cz.uhk.mois.edoras.bankingapi.model.Payment;
 @RestController
 public class PaymentController
 {
+
     @GetMapping("/api/payments")
     public ResponseEntity<Payment[]> getAll()
     {
