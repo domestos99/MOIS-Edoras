@@ -35,7 +35,7 @@ public class TransactionController {
 
         Optional<Transaction> transaction = null;
 
-        if (!transaction.isPresent()) {
+        if (transaction.isPresent()) {
             return new ResponseEntity(transaction.get(), HttpStatus.OK);
         }
 

@@ -37,7 +37,7 @@ public class PaymentController {
 
         Optional<Payment> payments = null;
 
-        if (!payments.isPresent()) {
+        if (payments.isPresent()) {
             return new ResponseEntity(payments.get(), HttpStatus.OK);
         }
 
