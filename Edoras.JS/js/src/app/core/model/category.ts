@@ -1,7 +1,5 @@
-
-
 export interface Category {
 
-  cateID: string;
-  cateName: string;
+  id: string;
+  name: string;
 }
