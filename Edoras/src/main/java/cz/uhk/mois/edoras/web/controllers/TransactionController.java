@@ -1,5 +1,9 @@
 package cz.uhk.mois.edoras.web.controllers;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
+import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
+import cz.uhk.mois.edoras.bankingapi.model.Transaction;
+import cz.uhk.mois.edoras.utils.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +30,7 @@ public class TransactionController
     }
 
     @GetMapping("/api/transactions")
-    public ResponseEntity<List<TransactionCategoryDTO>> getAll()
+    public ResponseEntity<List<Transaction>> getAll()
     {
         List<TransactionCategoryDTO> transactions = transactionService.findAll();
         return new ResponseEntity(transactions, HttpStatus.OK);

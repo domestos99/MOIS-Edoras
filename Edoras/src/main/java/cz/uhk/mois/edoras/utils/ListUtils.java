@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import cz.uhk.mois.edoras.bankingapi.model.Payment;
+import cz.uhk.mois.edoras.bankingapi.model.Transaction;
 
 public class ListUtils
 {
+
     public static <T> List<T> toList(final Iterable<T> iter)
     {
         final List<T> result = new ArrayList<>();
@@ -19,8 +21,8 @@ public class ListUtils
         return result;
     }
 
-    public static List<Payment> toList(Payment[] payments)
+    public static <T> List<T> toList(T[] data)
     {
-        return Arrays.asList(payments);
+        return Arrays.asList(data);
     }
 }
