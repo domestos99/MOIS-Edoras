@@ -8,6 +8,7 @@ import cz.uhk.mois.edoras.domain.TransactionCategory;
 import cz.uhk.mois.edoras.helpers.imp.AccountHelper;
 import cz.uhk.mois.edoras.repositories.DAO.TransactionCategoryDAO;
 import cz.uhk.mois.edoras.services.ITransactionCategoryService;
+import cz.uhk.mois.edoras.web.dto.TransactionCategoryInsertDTO;
 
 @Service
 public class TransactionCategoryService implements ITransactionCategoryService
@@ -36,5 +37,17 @@ public class TransactionCategoryService implements ITransactionCategoryService
             return null;
 
         return category.getCategoryId();
+    }
+
+    @Override
+    public TransactionCategory insert(TransactionCategoryInsertDTO paymentCategoryInsertDTO)
+    {
+        TransactionCategory transactionCategory = new TransactionCategory();
+        // if transacitonId not set, create for account
+
+        //String account = AccountHelper.getAccountId(payment.getPartyAccount());
+
+
+        return transactionCategoryDAO.save(transactionCategory);
     }
 }
