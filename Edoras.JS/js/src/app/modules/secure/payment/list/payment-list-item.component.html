@@ -4,13 +4,13 @@
     <detail-button (onClick)="openDetail()"></detail-button>
     <br>
 
-    {{data.dueDate | date }}<br>
+    {{data.payment.dueDate | date }}<br>
 
-    {{getAccountFormatted(data.partyAccount)}}<br>
+    {{getAccountFormatted(data.payment.partyAccount)}}<br>
 
-    {{data.categoryId}}<br>
+    {{data.payment.categoryId}}<br>
 
-    {{getMoneyFormatted(data.value)}}
+    {{getMoneyFormatted(data.payment.value)}}
 
   </mat-card-content>
 

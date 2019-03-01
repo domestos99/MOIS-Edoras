@@ -3,6 +3,7 @@ import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import {PaymentService} from "../payment.service";
 import {NavigationselperService} from "@app/core";
 import {Payment} from "@app/core/api/model/payment";
+import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class PaymentListComponent {
     this.reload();
   }
 
-  data: Array<Payment> = [];
+  data: Array<PaymentCategoryDTO> = [];
   panelOpenState = false;
 
   reload() {
@@ -26,7 +27,7 @@ export class PaymentListComponent {
     });
   }
 
-  openDetail(row: Payment) {
-    this.navigationselperService.openPaymentDetail(row.id);
+  openDetail(row: PaymentCategoryDTO) {
+    this.navigationselperService.openPaymentDetail(row.payment.id);
   }
 }

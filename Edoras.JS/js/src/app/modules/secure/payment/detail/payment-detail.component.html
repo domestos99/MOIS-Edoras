@@ -6,31 +6,32 @@
 
     <mat-card-content>
 
-      <category-select (selectionChange)="onSelectionChange($event)"></category-select>
+      <category-select [(selectedValue)]="data.categoryId" (selectionChange)="onSelectionChange($event)"></category-select>
+      <br>
 
 
-      {{getAccountFormatted(data.partyAccount)}}<br>
+      {{getAccountFormatted(data.payment.partyAccount)}}<br>
 
-      {{getMoneyFormatted(data.value)}}<br>
+      {{getMoneyFormatted(data.payment.value)}}<br>
 
-      DueDate: {{data.dueDate | date:'medium' }}<br>
+      DueDate: {{data.payment.dueDate | date:'medium' }}<br>
 
-      <div *ngIf="data.recuringPayment">
+      <div *ngIf="data.payment.recuringPayment">
 
-        FirstPayment: {{data.recuringPayment.firstPayment | date:'medium'}}<br>
-        Interval: {{data.recuringPayment.interval}}<br>
-        LastPayment: {{data.recuringPayment.lastPayment | date:'medium'}}<br>
+        FirstPayment: {{data.payment.recuringPayment.firstPayment | date:'medium'}}<br>
+        Interval: {{data.payment.recuringPayment.interval}}<br>
+        LastPayment: {{data.payment.recuringPayment.lastPayment | date:'medium'}}<br>
 
       </div>
 
-      PayeeMessage: {{data.payeeMessage}}<br>
-      PayerMessage: {{data.payerMessage}}<br>
-      CategoryId: {{data.categoryId}}<br>
+      PayeeMessage: {{data.payment.payeeMessage}}<br>
+      PayerMessage: {{data.payment.payerMessage}}<br>
+      CategoryId: {{data.payment.categoryId}}<br>
 
-      <div *ngIf="data.additionalInfo">
-        ConstantSymbol: {{data.additionalInfo.constantSymbol}}<br>
-        SpecificSymbol: {{data.additionalInfo.specificSymbol}}<br>
-        VariableSymbol: {{data.additionalInfo.variableSymbol}}<br>
+      <div *ngIf="data.payment.additionalInfo">
+        ConstantSymbol: {{data.payment.additionalInfo.constantSymbol}}<br>
+        SpecificSymbol: {{data.payment.additionalInfo.specificSymbol}}<br>
+        VariableSymbol: {{data.payment.additionalInfo.variableSymbol}}<br>
       </div>
 
 

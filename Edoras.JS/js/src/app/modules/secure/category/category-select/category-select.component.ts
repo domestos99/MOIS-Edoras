@@ -13,6 +13,7 @@ export class CategorySelectComponent implements OnInit {
   categories: Array<Category>;
 
   @Output() selectionChange: EventEmitter<Category> = new EventEmitter();
+  @Input() selectedValue : String;
 
   constructor(private service: CategoryService) {
   }

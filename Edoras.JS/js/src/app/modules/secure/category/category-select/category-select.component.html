@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-select placeholder="Category" (selectionChange)="onselectionChange($event)">
+  <mat-select placeholder="Category" (selectionChange)="onselectionChange($event)" [(value)]="selectedValue" >
     <mat-option *ngFor="let category of categories" [value]="category.id">
       {{category.name}}
     </mat-option>

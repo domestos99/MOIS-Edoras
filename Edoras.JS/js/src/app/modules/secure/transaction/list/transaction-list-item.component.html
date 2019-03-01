@@ -4,29 +4,29 @@
     <detail-button (onClick)="openDetail()"></detail-button>
     <br>
 
-    {{data.dueDate | date }}<br>
+    {{data.transaction.dueDate | date }}<br>
 
-    {{getAccountFormatted(data.partyAccount)}}<br>
+    {{getAccountFormatted(data.transaction.partyAccount)}}<br>
 
-    {{data.categoryId}}<br>
+    {{data.transaction.categoryId}}<br>
 
-    {{getMoneyFormatted(data.value)}}<br>
+    {{getMoneyFormatted(data.transaction.value)}}<br>
 
 
-    {{data.partyDescription}}<br>
-    {{data.direction}}<br>
+    {{data.transaction.partyDescription}}<br>
+    {{data.transaction.direction}}<br>
 
-    {{data.transactionType}}<br>
+    {{data.transaction.transactionType}}<br>
 
-    {{data.valueDate | date}}<br>
+    {{data.transaction.valueDate | date}}<br>
 
-    {{data.bookingDate | date}}<br>
+    {{data.transaction.bookingDate | date}}<br>
 
-    {{data.userDescription}}<br>
-    {{data.payeeMessage}}<br>
-    {{data.categoryId}}<br>
-    {{data.transactionFee}}<br>
-    {{data.transactionFeeCanceled}}<br>
+    {{data.transaction.userDescription}}<br>
+    {{data.transaction.payeeMessage}}<br>
+    {{data.transaction.categoryId}}<br>
+    {{data.transaction.transactionFee}}<br>
+    {{data.transaction.transactionFeeCanceled}}<br>
 
   </mat-card-content>
 

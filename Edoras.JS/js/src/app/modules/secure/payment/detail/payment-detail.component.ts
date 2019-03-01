@@ -7,6 +7,8 @@ import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccou
 import {PaymentValue} from "@app/core/api/model/paymentValue";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {Category} from "@app/core/model";
+import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
+import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
 
 
 @Component({
@@ -17,9 +19,9 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
 
   id: string;
   private sub: any;
-  data: Payment;
+  data: PaymentCategoryDTO;
 
-  constructor(private route: ActivatedRoute, private service: PaymentService) {
+  constructor(private route: ActivatedRoute, private service: PaymentService, private paymentService: PaymentCategoryService) {
   }
 
   getAccountFormatted(account: TransactionPartyAccount): string {
@@ -46,7 +48,16 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
       this.sub.unsubscribe();
   }
 
-  onSelectionChange(newCategoryId: Category) {
+  onSelectionChange(newCategoryId: String) {
+
     console.log(newCategoryId);
+    console.log(this.data.payment);
+    this.paymentService.insertRelation(newCategoryId, this.data.payment)
+      .subscribe(r => {
+        console.log(r);
+      }, e => {
+        console.log(e);
+      });
+
   }
 }

@@ -3,6 +3,7 @@ import {Payment} from "@app/core/api/model/payment";
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {PaymentValue} from "@app/core/api/model/paymentValue";
+import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {PaymentValue} from "@app/core/api/model/paymentValue";
 export class PaymentListItemComponent {
 
 
-  @Input() data: Payment;
+  @Input() data: PaymentCategoryDTO;
   @Output() onOpenDetail: EventEmitter<any> = new EventEmitter();
 
 
@@ -20,7 +21,7 @@ export class PaymentListItemComponent {
     return FormattingHelper.getAccountFormatted(account);
   }
 
-  getMoneyFormatted(paymentValue: PaymentValue) : string {
+  getMoneyFormatted(paymentValue: PaymentValue): string {
     return FormattingHelper.getMoneyFormattedPay(paymentValue);
   }
 

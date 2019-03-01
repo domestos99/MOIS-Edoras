@@ -10,6 +10,7 @@ import {Category} from "@app/core/model";
 import {TransactionService} from "@app/modules/secure/transaction/transaction.service";
 import {Transaction} from "@app/core/api/model/transaction";
 import {TransactionAdditionalInfoForeignOriginalValue} from "@app/core/api/model/transactionAdditionalInfoForeignOriginalValue";
+import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
 
   id: string;
   private sub: any;
-  data: Transaction;
+  data: TransactionCategoryDTO;
 
   constructor(private route: ActivatedRoute, private service: TransactionService) {
   }

@@ -36,6 +36,7 @@ import {CategoryComponent} from "@app/modules/secure/category/category.component
 import {CategoryListComponent} from "@app/modules/secure/category/list/category-list.component";
 import {CategoryDetailComponent} from "@app/modules/secure/category/detail/category-detail.component";
 import {CategoryService} from "@app/modules/secure/category/category.service";
+import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
 
 
 @NgModule({
@@ -97,6 +98,7 @@ import {CategoryService} from "@app/modules/secure/category/category.service";
     PaymentService,
     TransactionService,
     CategoryService,
+    PaymentCategoryService,
 
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

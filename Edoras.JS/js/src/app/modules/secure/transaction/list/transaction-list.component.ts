@@ -4,6 +4,7 @@ import {NavigationselperService} from "@app/core";
 import {Payment} from "@app/core/api/model/payment";
 import {Transaction} from "@app/core/api/model/transaction";
 import {TransactionService} from "@app/modules/secure/transaction/transaction.service";
+import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class TransactionListComponent {
     this.reload();
   }
 
-  data: Array<Transaction> = [];
+  data: Array<TransactionCategoryDTO> = [];
   panelOpenState = false;
 
   reload() {
@@ -27,7 +28,7 @@ export class TransactionListComponent {
     });
   }
 
-  openDetail(row: Payment) {
-    this.navigationselperService.openTransactionDetail(row.id);
+  openDetail(row: TransactionCategoryDTO) {
+    this.navigationselperService.openTransactionDetail(row.transaction.id);
   }
 }

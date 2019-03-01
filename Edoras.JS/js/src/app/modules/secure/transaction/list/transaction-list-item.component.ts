@@ -4,6 +4,7 @@ import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {PaymentValue} from "@app/core/api/model/paymentValue";
 import {Transaction} from "@app/core/api/model/transaction";
 import {TransactionValue} from "@app/core/api/model/transactionValue";
+import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 
 
 @Component({
@@ -13,7 +14,7 @@ import {TransactionValue} from "@app/core/api/model/transactionValue";
 export class TransactionListItemComponent {
 
 
-  @Input() data: Transaction;
+  @Input() data: TransactionCategoryDTO;
   @Output() onOpenDetail: EventEmitter<any> = new EventEmitter();
 
 
