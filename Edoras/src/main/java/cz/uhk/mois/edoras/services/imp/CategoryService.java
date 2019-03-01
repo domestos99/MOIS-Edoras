@@ -15,6 +15,7 @@ import cz.uhk.mois.edoras.utils.StringUtil;
 @Service
 public class CategoryService implements ICategoryService
 {
+    @Autowired
     private final CategoryDAO categoryDAO;
 
     @Autowired

@@ -1,6 +1,7 @@
 package cz.uhk.mois.edoras.repositories.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import cz.uhk.mois.edoras.domain.IDbEntity;
@@ -8,7 +9,7 @@ import cz.uhk.mois.edoras.repositories.IRepositoryBase;
 
 public abstract class InMemoryRepositoryBase<T extends IDbEntity> implements IRepositoryBase<T>
 {
-    private final ArrayList<T> storage;
+    protected List<T> storage;
 
     public InMemoryRepositoryBase()
     {
@@ -25,7 +26,7 @@ public abstract class InMemoryRepositoryBase<T extends IDbEntity> implements IRe
     }
 
     @Override
-    public ArrayList<T> findAll()
+    public List<T> findAll()
     {
         return storage;
     }
@@ -48,7 +49,7 @@ public abstract class InMemoryRepositoryBase<T extends IDbEntity> implements IRe
     }
 
     @Override
-    public ArrayList<T> saveAll(ArrayList<T> entities)
+    public List<T> saveAll(List<T> entities)
     {
         return null;
     }
