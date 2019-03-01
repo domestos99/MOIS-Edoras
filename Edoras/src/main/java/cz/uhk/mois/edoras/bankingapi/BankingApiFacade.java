@@ -44,16 +44,12 @@ public class BankingApiFacade
 
         String url = getApiUrl("payment", dtFrom, dtTo);
 
-        String json = null;
-        try
+        String json = HttpGetTask.GetDataFromUrl(url);
+        if (StringUtil.isEmptyOrNull(json))
         {
-            json = HttpGetTask.GetDataFromUrl(url);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
             return null;
         }
+
         Payment[] item = JsonUtilsSafe.fromJson(json, Payment[].class);
         return item;
     }
