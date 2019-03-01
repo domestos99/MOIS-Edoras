@@ -13,7 +13,7 @@ public interface ICategoryService
 
     Category insert(Category category);
 
-    Category update(String id, Category category);
+    Category update(Category category);
 
     boolean delete(String id);
 }

@@ -32,7 +32,7 @@ import java.math.BigDecimal;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
 public class Transaction
 {
-    @SerializedName("id")
+    @SerializedName("_id")
     private String id = null;
 
     @SerializedName("accountId")

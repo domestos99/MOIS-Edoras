@@ -40,7 +40,7 @@ export interface Payment {
   /**
    * internal domestic payment order identifier
    */
-  id: number;
+  id: string;
   /**
    * account to that payment belongs (to which it is accounted)
    */

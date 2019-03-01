@@ -26,6 +26,6 @@ export class PaymentListComponent {
   }
 
   openDetail(row: Payment) {
-    this.navigationselperService.openPaymentDetail(row.id.toString());
+    this.navigationselperService.openPaymentDetail(row.id);
   }
 }

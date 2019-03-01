@@ -5,7 +5,7 @@ From URL: {{id}}
 
 <br><br><br>
 
-
+<div *ngIf="data" >
 <!--_id: {{data._id}}<br>-->
 value.amount: {{data.value.amount}}<br>
 value.currency: {{data.value.currency}}<br>
@@ -26,3 +26,4 @@ id: {{data.id}}<br>
 accountId: {{data.accountId}}<br>
 editableByUser: {{data.editableByUser}}<br>
 realizationStatus: {{data.realizationStatus}}<br>
+</div>

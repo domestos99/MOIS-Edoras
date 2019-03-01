@@ -1,4 +1,4 @@
-package cz.uhk.mois.edoras.controllers;
+package cz.uhk.mois.edoras.web.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

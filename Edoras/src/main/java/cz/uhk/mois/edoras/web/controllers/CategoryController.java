@@ -1,4 +1,4 @@
-package cz.uhk.mois.edoras.controllers;
+package cz.uhk.mois.edoras.web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,9 +54,9 @@ public class CategoryController
     }
 
     @PutMapping("/api/category/{id}")
-    public ResponseEntity<Category> updateCategory(@PathVariable("id") String id, @RequestBody Category category)
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category)
     {
-        Category cat = categoryService.update(id, category);
+        Category cat = categoryService.update(category);
         if (cat == null)
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         return new ResponseEntity(cat, HttpStatus.OK);
