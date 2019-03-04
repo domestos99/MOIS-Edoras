@@ -26,6 +26,7 @@ import {
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [],
@@ -53,7 +54,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
   ],
   exports: [
     MatButtonModule,
@@ -79,7 +81,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
   ]
 })
 export class MaterialModule {
