@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cz.uhk.mois.edoras.bankingapi.model.Payment;
-import cz.uhk.mois.edoras.bankingapi.model.Transaction;
-
 public class ListUtils
 {
 

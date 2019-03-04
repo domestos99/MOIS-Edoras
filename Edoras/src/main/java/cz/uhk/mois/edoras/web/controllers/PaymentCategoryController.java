@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cz.uhk.mois.edoras.domain.Category;
 import cz.uhk.mois.edoras.domain.PaymentCategory;
 import cz.uhk.mois.edoras.services.imp.PaymentCategoryService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryInsertDTO;
