@@ -50,16 +50,16 @@ public class CategoryController
     {
         Category cat = categoryService.insert(category);
         if (cat == null)
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         return new ResponseEntity(cat, HttpStatus.CREATED);
     }
 
-    @PutMapping("/api/category/{id}")
+    @PutMapping("/api/category")
     public ResponseEntity<Category> updateCategory(@RequestBody Category category)
     {
         Category cat = categoryService.update(category);
         if (cat == null)
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         return new ResponseEntity(cat, HttpStatus.OK);
     }
 
