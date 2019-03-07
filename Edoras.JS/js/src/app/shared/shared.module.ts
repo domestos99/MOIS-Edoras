@@ -70,6 +70,8 @@ import {DeleteButtonComponent} from './components/detelebutton/delete-button.com
 import {AddButtonComponent} from "@app/shared/components/add-button/add-button.component";
 import {AlertComponent} from "@app/shared/components/alert-component/alert.component";
 import {EditButtonComponent} from "@app/shared/components/edit-button/edit-button.component";
+import {YesNoDialogComponent} from "@app/shared/components/yes-no-dialog/yes-no-dialog.component";
+import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 
 @NgModule({
   imports: [
@@ -88,9 +90,15 @@ import {EditButtonComponent} from "@app/shared/components/edit-button/edit-butto
     DeleteButtonComponent,
     AlertComponent,
     EditButtonComponent,
+    YesNoDialogComponent,
 
     AddButtonComponent
   ],
+  entryComponents:
+    [
+      YesNoDialogComponent
+
+    ],
   exports: [
     CommonModule,
     FormsModule,
@@ -109,6 +117,7 @@ import {EditButtonComponent} from "@app/shared/components/edit-button/edit-butto
     AddButtonComponent,
     EditButtonComponent,
     AlertComponent,
+    YesNoDialogComponent,
 
 
   ]
