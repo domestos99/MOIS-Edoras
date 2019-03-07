@@ -1,6 +1,14 @@
 <mat-form-field>
-  <mat-select placeholder="Category" (selectionChange)="onselectionChange($event)" [(value)]="selectedValue" >
+  <mat-select placeholder="Category" (selectionChange)="onselectionChange($event)"
+              [(value)]="selectedValue">
+
+    <mat-select-trigger>
+      <mat-icon *ngIf="getCategoryIcon(selectedValue)">{{getCategoryIcon(selectedValue)}}</mat-icon>
+      {{getCategoryName(selectedValue)}}
+    </mat-select-trigger>
+
     <mat-option *ngFor="let category of categories" [value]="category.id">
+      <mat-icon>{{category.icon}}</mat-icon>
       {{category.name}}
     </mat-option>
   </mat-select>

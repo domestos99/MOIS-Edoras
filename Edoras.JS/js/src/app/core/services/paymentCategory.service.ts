@@ -3,7 +3,7 @@ import {ServiceBase} from "@app/core/base/servicebase";
 import {PaymentCategoryInsertDTO} from "@app/core/model";
 import {Payment} from "@app/core/api/model/payment";
 import {Observable} from "rxjs";
-import {HttpHeaders} from "@angular/common/http";
+import {HttpHelper} from "@app/core/services/httpHelper";
 
 @Injectable()
 export class PaymentCategoryService extends ServiceBase {
@@ -22,10 +22,8 @@ export class PaymentCategoryService extends ServiceBase {
     console.log("posting");
     console.log(JSON.stringify(dto));
 
-    let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    let options = HttpHelper.getHttpOptions();
+    return this.http.post<any>(this.getBaseUrl() + "paymentcategory", JSON.stringify(dto), options);
 
-    return this.http.post<any>(this.getBaseUrl() + "paymentcategory", JSON.stringify(dto),
-      {headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')});
   }
 }

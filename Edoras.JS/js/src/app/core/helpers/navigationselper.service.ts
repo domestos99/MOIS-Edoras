@@ -15,8 +15,4 @@ export class NavigationselperService {
   openTransactionDetail(id: string) {
     this.router.navigate(['/transactions', id]);
   }
-
-  openCategoryDetail(id: string) {
-    this.router.navigate(['/category', id]);
-  }
 }

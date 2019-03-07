@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Create category</h1>
+<div mat-dialog-content>
+  <p>Category name</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <p>Category icon</p>
+
+  <mat-form-field>
+    <mat-select placeholder="Icon" [(value)]="data.icon">
+
+      <mat-select-trigger>
+        <mat-icon>{{data.icon}}</mat-icon>
+      </mat-select-trigger>
+
+      <mat-option *ngFor="let ic of iconsList" [value]="ic.name">
+        <mat-icon>{{ic.name}}</mat-icon>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Type" [(value)]="data.type">
+      <mat-option *ngFor="let type of types" [value]="type.name">
+        {{type.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

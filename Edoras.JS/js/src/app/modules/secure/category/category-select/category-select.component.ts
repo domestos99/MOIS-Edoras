@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter, ViewChild, OnInit} from '@angular/core';
-import {Category} from "@app/core/model";
 import {MatSelectChange} from "@angular/material";
 import {CategoryService} from "@app/modules/secure/category/category.service";
+import {Category} from "@app/core/model";
 
 
 @Component({
@@ -13,7 +13,7 @@ export class CategorySelectComponent implements OnInit {
   categories: Array<Category>;
 
   @Output() selectionChange: EventEmitter<Category> = new EventEmitter();
-  @Input() selectedValue : String;
+  @Input() selectedValue: string;
 
   constructor(private service: CategoryService) {
   }
@@ -33,5 +33,23 @@ export class CategorySelectComponent implements OnInit {
     this.selectionChange.emit(change.value);
   }
 
+  getCategoryIcon(id: string): Category {
+    if (!this.categories)
+      return undefined;
 
+    let cat = this.categories.find(x => x.id == id);
+    if (cat)
+      return cat.icon;
+    return undefined;
+  }
+
+  getCategoryName(id: string) {
+    if (!this.categories)
+      return undefined;
+
+    let cat = this.categories.find(x => x.id == id);
+    if (cat)
+      return cat.name;
+    return undefined;
+  }
 }

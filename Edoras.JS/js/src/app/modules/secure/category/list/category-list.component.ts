@@ -2,7 +2,10 @@ import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 
 import {CategoryService} from "../category.service";
 import {NavigationselperService} from "@app/core";
+import {MatDialog} from "@angular/material";
+import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 import {Category} from "@app/core/model";
+import {YesNoDialogComponent} from "@app/shared/components/yes-no-dialog/yes-no-dialog.component";
 
 
 @Component({
@@ -12,7 +15,7 @@ import {Category} from "@app/core/model";
 export class CategoryListComponent {
 
 
-  constructor(private service: CategoryService, private navigationselperService: NavigationselperService) {
+  constructor(private service: CategoryService, private navigationselperService: NavigationselperService, public dialog: MatDialog) {
     this.reload();
   }
 
@@ -25,7 +28,67 @@ export class CategoryListComponent {
     });
   }
 
-  openDetail(row: Category) {
-    this.navigationselperService.openCategoryDetail(row.id.toString());
+  editCategory(row: Category) {
+    this.openEditCategory(row);
+  }
+
+  addNewCategory() {
+    this.openCreateCategory();
+  }
+
+  openCreateCategory(): void {
+    const dialogRef = this.dialog.open(CategoryCreateComponent, {
+      width: '300px',
+      data: {name: undefined, icon: undefined, type: undefined}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        console.log(result);
+        this.service.insert(result.name, result.icon, result.type)
+          .subscribe(resp => {
+            console.log(resp);
+            this.reload();
+          });
+      }
+    });
+  }
+
+  openEditCategory(row: Category): void {
+    const dialogRef = this.dialog.open(CategoryCreateComponent, {
+      width: '300px',
+      data: {name: row.name, icon: row.icon, type: row.type}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        console.log(result);
+        this.service.update(row.id, result.name, result.icon, result.type)
+          .subscribe(resp => {
+            console.log(resp);
+            this.reload();
+          });
+      }
+    });
+  }
+
+  onDelete(row: Category) {
+
+    const dialogRef = this.dialog.open(YesNoDialogComponent, {
+      width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.service.delete(row.id)
+          .subscribe(resp => {
+            this.reload();
+          });
+      }
+    });
+
   }
 }

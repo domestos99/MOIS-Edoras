@@ -34,9 +34,9 @@ import {TransactionListItemComponent} from "@app/modules/secure/transaction/list
 import {TransactionService} from "@app/modules/secure/transaction/transaction.service";
 import {CategoryComponent} from "@app/modules/secure/category/category.component";
 import {CategoryListComponent} from "@app/modules/secure/category/list/category-list.component";
-import {CategoryDetailComponent} from "@app/modules/secure/category/detail/category-detail.component";
 import {CategoryService} from "@app/modules/secure/category/category.service";
 import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
+import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 
 
 @NgModule({
@@ -53,7 +53,7 @@ import {PaymentCategoryService} from "@app/core/services/paymentCategory.service
     CategorySelectComponent,
     CategoryComponent,
     CategoryListComponent,
-    CategoryDetailComponent,
+    CategoryCreateComponent,
     TransactionComponent,
     TransactionListComponent,
     TransactionDetailComponent,
@@ -89,7 +89,10 @@ import {PaymentCategoryService} from "@app/core/services/paymentCategory.service
 
   ],
   entryComponents:
-    [],
+    [
+      CategoryCreateComponent
+
+    ],
   providers: [
 
     NavigationService,
