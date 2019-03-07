@@ -9,6 +9,7 @@ import cz.uhk.mois.edoras.helpers.imp.AccountHelper;
 import cz.uhk.mois.edoras.repositories.DAO.PaymentCategoryDAO;
 import cz.uhk.mois.edoras.services.IPaymentCategoryService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryInsertDTO;
+import cz.uhk.mois.edoras.web.dto.PaymentCategoryUpdateDTO;
 
 @Service
 public class PaymentCategoryService implements IPaymentCategoryService {
@@ -46,6 +47,15 @@ public class PaymentCategoryService implements IPaymentCategoryService {
         paymentCategory.setPaymentId(paymentCategoryInsertDTO.getPaymentId());
         paymentCategory.setPaymentAccount(AccountHelper.getAccountId(paymentCategoryInsertDTO.getTransactionPartyAccount()));
 
+        // TODO Lubos - zkontrolovat, jestli uz neexistuje zaznam ze stejnym payment nebo account a kdyz ano, tak vratit null + neulozit
+
         return paymentCategoryDAO.save(paymentCategory);
+    }
+
+    @Override
+    public PaymentCategory update(PaymentCategoryUpdateDTO paymentCategoryUpdateDTO)
+    {
+        // TODO Lubos
+        return null;
     }
 }

@@ -9,6 +9,7 @@ import cz.uhk.mois.edoras.helpers.imp.AccountHelper;
 import cz.uhk.mois.edoras.repositories.DAO.TransactionCategoryDAO;
 import cz.uhk.mois.edoras.services.ITransactionCategoryService;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryInsertDTO;
+import cz.uhk.mois.edoras.web.dto.TransactionCategoryUpdateDTO;
 
 @Service
 public class TransactionCategoryService implements ITransactionCategoryService {
@@ -45,6 +46,17 @@ public class TransactionCategoryService implements ITransactionCategoryService {
         transactionCategory.setCategoryId(transactionCategoryInsertDTO.getCategoryId());
         transactionCategory.setCategoryId(transactionCategoryInsertDTO.getCategoryId());
         transactionCategory.setTransactionAccount(AccountHelper.getAccountId(transactionCategoryInsertDTO.getTransactionPartyAccount()));
+
+        // TODO Lubos - zkontrolovat, jestli uz neexistuje zaznam ze stejnym transaction nebo account a kdyz ano, tak vratit null + neulozit
+
         return transactionCategoryDAO.save(transactionCategory);
+    }
+
+
+    @Override
+    public TransactionCategory update(TransactionCategoryUpdateDTO transactionCategoryUpdateDTO)
+    {
+        // TODO Lubos
+        return null;
     }
 }
