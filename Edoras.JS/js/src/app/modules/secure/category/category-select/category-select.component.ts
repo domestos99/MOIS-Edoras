@@ -33,7 +33,7 @@ export class CategorySelectComponent implements OnInit {
     this.selectionChange.emit(change.value);
   }
 
-  getCategoryIcon(id: string): Category {
+  getCategoryIcon(id: string): string {
     if (!this.categories)
       return undefined;
 
@@ -43,7 +43,7 @@ export class CategorySelectComponent implements OnInit {
     return undefined;
   }
 
-  getCategoryName(id: string) {
+  getCategoryName(id: string): string {
     if (!this.categories)
       return undefined;
 
