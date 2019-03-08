@@ -26,22 +26,30 @@ import java.util.Objects;
 import cz.uhk.mois.edoras.domain.IDbEntity;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 /**
  * Transaction
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
+@Entity
 public class Transaction implements IDbEntity
 {
     @SerializedName("_id")
+    @Id
     private String id = null;
 
     @SerializedName("accountId")
     private BigDecimal accountId = null;
 
     @SerializedName("value")
+    @Transient
     private TransactionValue value = null;
 
     @SerializedName("partyAccount")
+    @Transient
     private TransactionPartyAccount partyAccount = null;
 
     @SerializedName("partyDescription")
@@ -228,12 +236,15 @@ public class Transaction implements IDbEntity
     private Boolean transactionFeeCanceled = null;
 
     @SerializedName("additionalInfoDomestic")
+    @Transient
     private TransactionAdditionalInfoDomestic additionalInfoDomestic = null;
 
     @SerializedName("additionalInfoForeign")
+    @Transient
     private TransactionAdditionalInfoForeign additionalInfoForeign = null;
 
     @SerializedName("additionalInfoCard")
+    @Transient
     private TransactionAdditionalInfoCard additionalInfoCard = null;
 
     public Transaction id(String id)
