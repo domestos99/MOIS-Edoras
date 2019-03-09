@@ -4,11 +4,12 @@ import java.io.Serializable;
 
 import cz.uhk.mois.edoras.bankingapi.model.TransactionPartyAccount;
 
-public class TransactionCategoryInsertDTO implements Serializable
+public class TransactionCategoryUpdateDTO implements Serializable
 {
     private String categoryId;
     private String transactionId;
     private TransactionPartyAccount transactionPartyAccount;
+    private ChangeType changeType;
 
     public String getCategoryId()
     {
@@ -38,5 +39,15 @@ public class TransactionCategoryInsertDTO implements Serializable
     public void setTransactionId(String transactionId)
     {
         this.transactionId = transactionId;
+    }
+
+    public ChangeType getChangeType()
+    {
+        return changeType;
+    }
+
+    public void setChangeType(ChangeType changeType)
+    {
+        this.changeType = changeType;
     }
 }

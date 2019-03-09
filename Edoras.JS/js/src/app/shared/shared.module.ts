@@ -69,6 +69,9 @@ import {DetailButtonComponent} from './components/detailbutton/detail-button.com
 import {DeleteButtonComponent} from './components/detelebutton/delete-button.component';
 import {AddButtonComponent} from "@app/shared/components/add-button/add-button.component";
 import {AlertComponent} from "@app/shared/components/alert-component/alert.component";
+import {EditButtonComponent} from "@app/shared/components/edit-button/edit-button.component";
+import {YesNoDialogComponent} from "@app/shared/components/yes-no-dialog/yes-no-dialog.component";
+import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 
 @NgModule({
   imports: [
@@ -86,9 +89,16 @@ import {AlertComponent} from "@app/shared/components/alert-component/alert.compo
     DetailButtonComponent,
     DeleteButtonComponent,
     AlertComponent,
+    EditButtonComponent,
+    YesNoDialogComponent,
 
     AddButtonComponent
   ],
+  entryComponents:
+    [
+      YesNoDialogComponent
+
+    ],
   exports: [
     CommonModule,
     FormsModule,
@@ -104,7 +114,10 @@ import {AlertComponent} from "@app/shared/components/alert-component/alert.compo
 
     DeleteButtonComponent,
     DetailButtonComponent,
+    AddButtonComponent,
+    EditButtonComponent,
     AlertComponent,
+    YesNoDialogComponent,
 
 
   ]

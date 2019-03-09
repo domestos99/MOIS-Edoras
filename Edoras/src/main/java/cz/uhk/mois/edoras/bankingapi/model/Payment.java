@@ -26,22 +26,30 @@ import java.util.Objects;
 import cz.uhk.mois.edoras.domain.IDbEntity;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 
 /**
  * Payment
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
+@Entity
 public class Payment implements IDbEntity {
     @SerializedName("value")
+    @Transient
     private PaymentValue value = null;
 
     @SerializedName("partyAccount")
+    @Transient
     private TransactionPartyAccount partyAccount = null;
 
     @SerializedName("dueDate")
     private String dueDate = null;
 
     @SerializedName("recuringPayment")
+    @Transient
     private PaymentRecuringPayment recuringPayment = null;
 
     @SerializedName("payeeMessage")
@@ -54,9 +62,11 @@ public class Payment implements IDbEntity {
     private BigDecimal categoryId = null;
 
     @SerializedName("additionalInfo")
+    @Transient
     private PaymentAdditionalInfo additionalInfo = null;
 
     @SerializedName("_id")
+    @Id
     private String id = null;
 
     @SerializedName("accountId")
@@ -111,6 +121,7 @@ public class Payment implements IDbEntity {
 
         WAIT_FOR_CNDPRECEDENT("RTS_WAIT_FOR_CNDPRECEDENT");
 
+        @Transient
         private String value;
 
         RealizationStatusEnum(String value)

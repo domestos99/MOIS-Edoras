@@ -18,7 +18,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
 import {
-  MatExpansionModule,
+  MatDialogModule,
+  MatExpansionModule, MatRadioModule,
   MatSliderModule,
   MatSortModule,
   MatTableModule
@@ -56,6 +57,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSortModule,
     MatExpansionModule,
     MatGridListModule,
+    MatDialogModule,
+    MatRadioModule,
+
   ],
   exports: [
     MatButtonModule,
@@ -83,6 +87,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSortModule,
     MatExpansionModule,
     MatGridListModule,
+    MatDialogModule,
+    MatRadioModule,
   ]
 })
 export class MaterialModule {

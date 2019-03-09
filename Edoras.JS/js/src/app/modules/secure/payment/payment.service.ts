@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Payment} from "@app/core/api/model/payment";
 import {ServiceBase} from "@app/core/base/servicebase";
 import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 

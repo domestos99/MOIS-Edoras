@@ -1,8 +1,8 @@
-<mat-card>
+<mat-expansion-panel *ngIf="data">
 
-  <mat-card-content>
-    <detail-button (onClick)="openDetail()"></detail-button>
-    <br>
+  <mat-expansion-panel-header>
+
+    <category-view [categoryId]="data.categoryId"></category-view>
 
     {{data.transaction.dueDate | date }}<br>
 
@@ -28,6 +28,9 @@
     {{data.transaction.transactionFee}}<br>
     {{data.transaction.transactionFeeCanceled}}<br>
 
-  </mat-card-content>
+  </mat-expansion-panel-header>
 
-</mat-card>
+
+  <transaction-list-item-detail [data]="data"></transaction-list-item-detail>
+
+</mat-expansion-panel>

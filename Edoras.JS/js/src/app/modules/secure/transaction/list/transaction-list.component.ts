@@ -14,7 +14,7 @@ import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 export class TransactionListComponent {
 
 
-  constructor(private service: TransactionService, private navigationselperService: NavigationselperService) {
+  constructor(private service: TransactionService) {
     this.reload();
   }
 
@@ -26,9 +26,5 @@ export class TransactionListComponent {
       console.log(resp);
       this.data = resp;
     });
-  }
-
-  openDetail(row: TransactionCategoryDTO) {
-    this.navigationselperService.openTransactionDetail(row.transaction.id);
   }
 }

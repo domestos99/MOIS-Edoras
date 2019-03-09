@@ -10,7 +10,7 @@ import java.net.URL;
 
 import cz.uhk.mois.edoras.config.AppConfig;
 
-public class HttpGetTask
+public class HttpGetUtil
 {
     public static String GetDataFromUrl(final String url)
     {

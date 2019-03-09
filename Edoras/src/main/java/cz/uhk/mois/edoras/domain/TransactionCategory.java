@@ -12,7 +12,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"transactionId"})
+        @UniqueConstraint(columnNames = {"transactionId", "transactionAccount"})
 })
 public class TransactionCategory implements Serializable
 {

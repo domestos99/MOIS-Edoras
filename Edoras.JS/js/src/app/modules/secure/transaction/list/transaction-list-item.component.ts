@@ -9,7 +9,8 @@ import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 
 @Component({
   selector: 'transaction-list-item',
-  templateUrl: 'transaction-list-item.component.html'
+  templateUrl: 'transaction-list-item.component.html',
+  styleUrls: ['./transaction-list-item.component.css']
 })
 export class TransactionListItemComponent {
 

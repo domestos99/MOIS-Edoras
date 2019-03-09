@@ -10,32 +10,27 @@ import java.util.Optional;
 
 import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
 import cz.uhk.mois.edoras.bankingapi.model.Transaction;
-import cz.uhk.mois.edoras.repositories.impl.TransactionMemoryCache;
+import cz.uhk.mois.edoras.repositories.DAO.TransactionDAO;
 import cz.uhk.mois.edoras.services.ITransactionService;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryDTO;
 
 @Service
 public class TransactionService implements ITransactionService
 {
-    private final TransactionMemoryCache memoryCache;
+    private final TransactionDAO transactionDAO;
     private final TransactionCategoryService transactionCategoryService;
 
     @Autowired
-    public TransactionService(TransactionMemoryCache memoryCache, TransactionCategoryService transactionCategoryService)
+    public TransactionService(TransactionDAO transactionDAO, TransactionCategoryService transactionCategoryService)
     {
-        this.memoryCache = memoryCache;
+        this.transactionDAO = transactionDAO;
         this.transactionCategoryService = transactionCategoryService;
     }
 
     @Override
     public List<TransactionCategoryDTO> findAll()
     {
-        List<Transaction> transactions = transactions = memoryCache.findAll();
-
-        if (transactions == null)
-        {
-            transactions = Arrays.asList(BankingApiFacade.getTransactions());
-        }
+        List<Transaction> transactions = transactionDAO.findAll();
 
         List<TransactionCategoryDTO> result = new ArrayList<>();
 
@@ -43,7 +38,7 @@ public class TransactionService implements ITransactionService
         {
             TransactionCategoryDTO dto = new TransactionCategoryDTO();
             dto.setTransaction(p);
-            dto.setCategoryId(findCategoryForPayment(p));
+            dto.setCategoryId(findCategoryForTransaction(p));
             result.add(dto);
         }
         return result;
@@ -52,23 +47,19 @@ public class TransactionService implements ITransactionService
     @Override
     public Optional<TransactionCategoryDTO> getById(String id)
     {
-        Transaction transaction = memoryCache.findById(id);
+        Optional<Transaction> transaction = transactionDAO.findById(id);
 
-        if (transaction == null)
-        {
-            transaction = BankingApiFacade.getTransactionById(id);
-        }
-        if (transaction == null) // Not Found at all
+        if (!transaction.isPresent())
             return Optional.empty();
 
         TransactionCategoryDTO dto = new TransactionCategoryDTO();
-        dto.setTransaction(transaction);
-        dto.setCategoryId(findCategoryForPayment(transaction));
+        dto.setTransaction(transaction.get());
+        dto.setCategoryId(findCategoryForTransaction(transaction.get()));
 
         return Optional.of(dto);
     }
 
-    private String findCategoryForPayment(Transaction transaction)
+    private String findCategoryForTransaction(Transaction transaction)
     {
         return transactionCategoryService.getCategoryForPayment(transaction);
     }

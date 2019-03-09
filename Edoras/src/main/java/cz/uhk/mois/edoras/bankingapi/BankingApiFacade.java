@@ -2,6 +2,7 @@ package cz.uhk.mois.edoras.bankingapi;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.Optional;
 import java.util.TimeZone;
 
 import cz.uhk.mois.edoras.bankingapi.model.Payment;
@@ -9,7 +10,7 @@ import cz.uhk.mois.edoras.bankingapi.model.Transaction;
 import cz.uhk.mois.edoras.config.AppConfig;
 import cz.uhk.mois.edoras.utils.JsonUtilsSafe;
 import cz.uhk.mois.edoras.utils.StringUtil;
-import cz.uhk.mois.edoras.utils.http.HttpGetTask;
+import cz.uhk.mois.edoras.utils.http.HttpGetUtil;
 
 public class BankingApiFacade
 {
@@ -45,14 +46,13 @@ public class BankingApiFacade
 
         String url = getApiUrl("payment", dtFrom, dtTo);
 
-        String json = HttpGetTask.GetDataFromUrl(url);
+        String json = HttpGetUtil.GetDataFromUrl(url);
         if (StringUtil.isEmptyOrNull(json))
         {
             return null;
         }
 
-        Payment[] item = JsonUtilsSafe.fromJson(json, Payment[].class);
-        return item;
+        return JsonUtilsSafe.fromJson(json, Payment[].class);
     }
 
     public static Transaction[] getTransactions()
@@ -64,39 +64,36 @@ public class BankingApiFacade
 
         String url = getApiUrl("transaction", dtFrom, dtTo);
 
-        String json = HttpGetTask.GetDataFromUrl(url);
+        String json = HttpGetUtil.GetDataFromUrl(url);
         if (StringUtil.isEmptyOrNull(json))
         {
             return null;
         }
 
-        Transaction[] item = JsonUtilsSafe.fromJson(json, Transaction[].class);
-        return item;
+        return JsonUtilsSafe.fromJson(json, Transaction[].class);
     }
 
-    public static Payment getPaymentById(String id)
+    public static Optional<Payment> getPaymentById(String id)
     {
-        // TODO
         Payment[] payments = getPayments();
 
         for (Payment p : payments)
         {
             if (id.equals(p.getId()))
-                return p;
+                return Optional.of(p);
         }
-        return null;
+        return Optional.empty();
     }
 
-    public static Transaction getTransactionById(String id)
+    public static Optional<Transaction> getTransactionById(String id)
     {
-        // TODO
         Transaction[] transaction = getTransactions();
 
         for (Transaction tr : transaction)
         {
             if (id.equals(tr.getId()))
-                return tr;
+                return Optional.of(tr);
         }
-        return null;
+        return Optional.empty();
     }
 }

@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ListUtils
 {
-
     public static <T> List<T> toList(final Iterable<T> iter)
     {
         final List<T> result = new ArrayList<>();

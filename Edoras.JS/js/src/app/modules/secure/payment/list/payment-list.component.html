@@ -1,9 +1,13 @@
 <h3>Payments list</h3>
 
+<!--<payment-filter (onFilterChanged)="filterChanged($event)"></payment-filter>-->
+
 <div *ngIf="data">
 
-  <mat-list *ngFor="let row of data">
-    <payment-list-item [data]="row" (onOpenDetail)="openDetail(row)"></payment-list-item>
-    <mat-divider></mat-divider>
-  </mat-list>
+  <mat-accordion [multi]="true">
+
+    <ng-container *ngFor="let row of data">
+      <payment-list-item [data]="row"></payment-list-item>
+    </ng-container>
+  </mat-accordion>
 </div>

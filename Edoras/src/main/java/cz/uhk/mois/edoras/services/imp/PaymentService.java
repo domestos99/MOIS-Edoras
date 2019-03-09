@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
 import cz.uhk.mois.edoras.bankingapi.model.Payment;
-import cz.uhk.mois.edoras.repositories.impl.PaymentMemoryCache;
+import cz.uhk.mois.edoras.repositories.DAO.PaymentDAO;
 import cz.uhk.mois.edoras.services.IPaymentCategoryService;
 import cz.uhk.mois.edoras.services.IPaymentService;
 import cz.uhk.mois.edoras.utils.ListUtils;
@@ -18,27 +18,21 @@ import cz.uhk.mois.edoras.web.dto.PaymentCategoryDTO;
 @Service
 public class PaymentService implements IPaymentService
 {
-    private final PaymentMemoryCache memoryCache;
+    private final PaymentDAO paymentDAO;
     private final IPaymentCategoryService iPaymentCategoryService;
 
 
     @Autowired
-    public PaymentService(PaymentMemoryCache memoryCache, IPaymentCategoryService iPaymentCategoryService)
+    public PaymentService(PaymentDAO paymentDAO, IPaymentCategoryService iPaymentCategoryService)
     {
-        this.memoryCache = memoryCache;
+        this.paymentDAO = paymentDAO;
         this.iPaymentCategoryService = iPaymentCategoryService;
     }
 
     @Override
     public List<PaymentCategoryDTO> findAll()
     {
-        //List<Payment> payments = memoryCache.findAll();
-        List<Payment> payments = ListUtils.toList(BankingApiFacade.getPayments());
-
-        if (payments == null)
-        {
-            payments = ListUtils.toList(BankingApiFacade.getPayments());
-        }
+        List<Payment> payments = paymentDAO.findAll();
 
         List<PaymentCategoryDTO> result = new ArrayList<>();
 
@@ -55,22 +49,15 @@ public class PaymentService implements IPaymentService
     @Override
     public Optional<PaymentCategoryDTO> getById(String id)
     {
-        //Payment payment = memoryCache.findById(id);
-        Payment payment = BankingApiFacade.getPaymentById(id);
+        Optional<Payment> payment = paymentDAO.findById(id);
 
-        // Not in cache
-        if (payment == null)
-        {
-            // Try load from api
-            payment = BankingApiFacade.getPaymentById(id);
-        }
-        if (payment == null) // Not Found at all
+        if (!payment.isPresent())
             return Optional.empty();
 
         PaymentCategoryDTO dto = new PaymentCategoryDTO();
-        dto.setPayment(payment);
+        dto.setPayment(payment.get());
 
-        dto.setCategoryId(findCategoryForPayment(payment));
+        dto.setCategoryId(findCategoryForPayment(payment.get()));
 
         return Optional.of(dto);
     }
