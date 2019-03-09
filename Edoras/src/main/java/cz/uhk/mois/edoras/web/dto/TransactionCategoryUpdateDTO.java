@@ -6,10 +6,10 @@ import cz.uhk.mois.edoras.bankingapi.model.TransactionPartyAccount;
 
 public class TransactionCategoryUpdateDTO implements Serializable
 {
-    private String id;
     private String categoryId;
     private String transactionId;
     private TransactionPartyAccount transactionPartyAccount;
+    private ChangeType changeType;
 
     public String getCategoryId()
     {
@@ -41,13 +41,13 @@ public class TransactionCategoryUpdateDTO implements Serializable
         this.transactionId = transactionId;
     }
 
-    public String getId()
+    public ChangeType getChangeType()
     {
-        return id;
+        return changeType;
     }
 
-    public void setId(String id)
+    public void setChangeType(ChangeType changeType)
     {
-        this.id = id;
+        this.changeType = changeType;
     }
 }

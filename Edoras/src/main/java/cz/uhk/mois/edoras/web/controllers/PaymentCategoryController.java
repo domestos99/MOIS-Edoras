@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cz.uhk.mois.edoras.domain.PaymentCategory;
 import cz.uhk.mois.edoras.services.imp.PaymentCategoryService;
-import cz.uhk.mois.edoras.web.dto.PaymentCategoryInsertDTO;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryUpdateDTO;
 
 @RestController
@@ -22,16 +21,6 @@ public class PaymentCategoryController
     public PaymentCategoryController(PaymentCategoryService paymentCategoryService)
     {
         this.paymentCategoryService = paymentCategoryService;
-    }
-
-
-    @PostMapping("/api/paymentcategory")
-    public ResponseEntity<PaymentCategory> insertCategory(@RequestBody PaymentCategoryInsertDTO paymentCategoryInsertDTO)
-    {
-        PaymentCategory cat = paymentCategoryService.insert(paymentCategoryInsertDTO);
-        if (cat == null)
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        return new ResponseEntity(cat, HttpStatus.CREATED);
     }
 
     @PutMapping("/api/paymentcategory")

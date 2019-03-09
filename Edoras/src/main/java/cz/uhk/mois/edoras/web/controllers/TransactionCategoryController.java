@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cz.uhk.mois.edoras.domain.TransactionCategory;
 import cz.uhk.mois.edoras.services.imp.TransactionCategoryService;
-import cz.uhk.mois.edoras.web.dto.TransactionCategoryInsertDTO;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryUpdateDTO;
 
 @RestController
@@ -22,15 +21,6 @@ public class TransactionCategoryController
     public TransactionCategoryController(TransactionCategoryService transactionCategoryService)
     {
         this.transactionCategoryService = transactionCategoryService;
-    }
-
-    @PostMapping("/api/transactioncategory")
-    public ResponseEntity<TransactionCategory> insertCategory(@RequestBody TransactionCategoryInsertDTO paymentCategoryInsertDTO)
-    {
-        TransactionCategory cat = transactionCategoryService.insert(paymentCategoryInsertDTO);
-        if (cat == null)
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        return new ResponseEntity(cat, HttpStatus.CREATED);
     }
 
     @PutMapping("/api/transactioncategory")

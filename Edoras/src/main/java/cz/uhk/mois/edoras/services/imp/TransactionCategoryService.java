@@ -8,25 +8,29 @@ import cz.uhk.mois.edoras.domain.TransactionCategory;
 import cz.uhk.mois.edoras.helpers.imp.AccountHelper;
 import cz.uhk.mois.edoras.repositories.DAO.TransactionCategoryDAO;
 import cz.uhk.mois.edoras.services.ITransactionCategoryService;
-import cz.uhk.mois.edoras.web.dto.TransactionCategoryInsertDTO;
+import cz.uhk.mois.edoras.web.dto.ChangeType;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryUpdateDTO;
 
 @Service
-public class TransactionCategoryService implements ITransactionCategoryService {
+public class TransactionCategoryService implements ITransactionCategoryService
+{
     private final TransactionCategoryDAO transactionCategoryDAO;
 
     @Autowired
-    public TransactionCategoryService(TransactionCategoryDAO transactionCategoryDAO) {
+    public TransactionCategoryService(TransactionCategoryDAO transactionCategoryDAO)
+    {
         this.transactionCategoryDAO = transactionCategoryDAO;
     }
 
     @Override
-    public String getCategoryForPayment(final Transaction transaction) {
+    public String getCategoryForPayment(final Transaction transaction)
+    {
         String id = transaction.getId();
 
         TransactionCategory category = transactionCategoryDAO.findByTransactionId(id);
 
-        if (category == null) {
+        if (category == null)
+        {
             String account = AccountHelper.getAccountId(transaction.getPartyAccount());
             category = transactionCategoryDAO.findByTransactionAccount(account);
         }
@@ -36,27 +40,49 @@ public class TransactionCategoryService implements ITransactionCategoryService {
         return category.getCategoryId();
     }
 
-    @Override
-    public TransactionCategory insert(TransactionCategoryInsertDTO transactionCategoryInsertDTO) {
-        TransactionCategory transactionCategory = new TransactionCategory();
-
-        if (transactionCategoryInsertDTO == null) {
-            return null;
-        }
-        transactionCategory.setCategoryId(transactionCategoryInsertDTO.getCategoryId());
-        transactionCategory.setTransactionId(transactionCategoryInsertDTO.getTransactionId());
-        transactionCategory.setTransactionAccount(AccountHelper.getAccountId(transactionCategoryInsertDTO.getTransactionPartyAccount()));
-
-        // TODO Lubos - zkontrolovat, jestli uz neexistuje zaznam ze stejnym transaction nebo account a kdyz ano, tak vratit null + neulozit
-
-        return transactionCategoryDAO.save(transactionCategory);
-    }
-
 
     @Override
     public TransactionCategory update(TransactionCategoryUpdateDTO transactionCategoryUpdateDTO)
     {
-        // TODO Lubos
-        return null;
+        TransactionCategory paymentCategory = new TransactionCategory();
+
+        if (transactionCategoryUpdateDTO == null)
+        {
+            return null;
+        }
+
+        paymentCategory.setCategoryId(transactionCategoryUpdateDTO.getCategoryId());
+
+        if (transactionCategoryUpdateDTO.getChangeType() == ChangeType.ONE)
+        {
+            paymentCategory.setTransactionId(transactionCategoryUpdateDTO.getTransactionId());
+        }
+        else
+        {
+            // for ALL
+            paymentCategory.setTransactionAccount(AccountHelper.getAccountId(transactionCategoryUpdateDTO.getTransactionPartyAccount()));
+
+            // Load ID if exists
+            // Try find by paymentID
+            TransactionCategory pc = transactionCategoryDAO.findByTransactionId(transactionCategoryUpdateDTO.getTransactionId());
+            if (pc != null)
+            {
+                transactionCategoryDAO.delete(pc);
+                pc = null;
+            }
+            if (pc == null)
+            {
+                // Try find by account
+                pc = transactionCategoryDAO.findByTransactionAccount(AccountHelper.getAccountId(transactionCategoryUpdateDTO.getTransactionPartyAccount()));
+            }
+
+            if (pc != null)
+            {
+                paymentCategory.setId(pc.getId());
+            }
+        }
+
+
+        return transactionCategoryDAO.save(paymentCategory);
     }
 }
