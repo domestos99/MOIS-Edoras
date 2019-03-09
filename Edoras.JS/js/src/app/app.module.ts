@@ -40,6 +40,7 @@ import {PaymentFilterComponent} from "@app/modules/secure/payment/payment-filter
 import {CategoryViewComponent} from "@app/modules/secure/category/category-view/category-view.component";
 import {TransactionListItemDetailComponent} from "@app/modules/secure/transaction/list/transaction-list-item-detail.component";
 import {TransactionCategoryService} from "@app/core/services/transactionCategory.service";
+import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import {TransactionCategoryService} from "@app/core/services/transactionCategory
     PublicComponent,
     SecureComponent,
     PageNotFoundComponent,
+    CategoryChangeComponent,
 
 
   ],
@@ -95,7 +97,8 @@ import {TransactionCategoryService} from "@app/core/services/transactionCategory
   ],
   entryComponents:
     [
-      CategoryCreateComponent
+      CategoryCreateComponent,
+      CategoryChangeComponent
 
     ],
   providers: [

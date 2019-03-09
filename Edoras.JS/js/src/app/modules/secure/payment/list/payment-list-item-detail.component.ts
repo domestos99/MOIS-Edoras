@@ -6,6 +6,11 @@ import {PaymentValue} from "@app/core/api/model/paymentValue";
 import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 import {PaymentService} from "@app/modules/secure/payment/payment.service";
 import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
+import {NavigationselperService} from "@app/core";
+import {MatDialog} from "@angular/material";
+import {Category} from "@app/core/model";
+import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
+import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
 
 
 @Component({
@@ -15,7 +20,7 @@ import {PaymentCategoryService} from "@app/core/services/paymentCategory.service
 })
 export class PaymentListItemDetailComponent {
 
-  constructor(private paymentCategoryService: PaymentCategoryService) {
+  constructor(private paymentCategoryService: PaymentCategoryService, public dialog: MatDialog) {
 
   }
 
@@ -29,19 +34,26 @@ export class PaymentListItemDetailComponent {
     return FormattingHelper.getMoneyFormattedPay(paymentValue);
   }
 
-
-  onSelectionChange(newCategoryId: String) {
-
-    console.log(newCategoryId);
-    console.log(this.data.payment);
-    this.paymentCategoryService.insertRelation(newCategoryId, this.data.payment)
-      .subscribe(r => {
-        console.log(r);
-      }, e => {
-        console.log(e);
-      });
-
+  onCategoryChangeClick() {
+    this.openChangeCategoryDialog();
   }
 
+  openChangeCategoryDialog(): void {
+    const dialogRef = this.dialog.open(CategoryChangeComponent, {
+      width: '300px',
+      data: {}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        console.log(result);
+        this.paymentCategoryService.update(this.data, result.newCategory, result.changeType)
+          .subscribe(resp => {
+            console.log(resp);
+            // TODO reload
+          });
+      }
+    });
+  }
 }

@@ -19,7 +19,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
 import {
   MatDialogModule,
-  MatExpansionModule,
+  MatExpansionModule, MatRadioModule,
   MatSliderModule,
   MatSortModule,
   MatTableModule
@@ -58,6 +58,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatExpansionModule,
     MatGridListModule,
     MatDialogModule,
+    MatRadioModule,
 
   ],
   exports: [
@@ -87,6 +88,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatExpansionModule,
     MatGridListModule,
     MatDialogModule,
+    MatRadioModule,
   ]
 })
 export class MaterialModule {

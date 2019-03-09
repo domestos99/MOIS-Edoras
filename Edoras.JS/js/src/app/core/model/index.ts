@@ -1,7 +1,7 @@
 export * from './category';
 export * from './paymentCategoryDTO';
-export * from './paymentCategoryInsertDTO';
+export * from './paymentCategoryUpdateDTO';
 export * from './transactionCategoryDTO';
-export * from './transactionCategoryInsertDTO';
+export * from './transactionCategoryUpdateDTO';
 
 

@@ -3,10 +3,11 @@ import {Payment} from "@app/core/api/model/payment";
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {PaymentValue} from "@app/core/api/model/paymentValue";
-import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 import {TransactionCategoryDTO} from "@app/core/model";
 import {TransactionCategoryService} from "@app/core/services/transactionCategory.service";
 import {TransactionAdditionalInfoForeignOriginalValue} from "@app/core/api/model/transactionAdditionalInfoForeignOriginalValue";
+import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
+import {MatDialog} from "@angular/material";
 
 
 @Component({
@@ -16,7 +17,7 @@ import {TransactionAdditionalInfoForeignOriginalValue} from "@app/core/api/model
 })
 export class TransactionListItemDetailComponent {
 
-  constructor(private transactionCategoryService: TransactionCategoryService) {
+  constructor(private transactionCategoryService: TransactionCategoryService, public dialog: MatDialog) {
 
   }
 
@@ -34,17 +35,27 @@ export class TransactionListItemDetailComponent {
     return FormattingHelper.getTransactionAdditionalInfoForeignOriginalValueFormatter(originalValue);
   }
 
-  onSelectionChange(newCategoryId: string) {
+  onCategoryChangeClick() {
+    this.openChangeCategoryDialog();
+  }
 
-    console.log(newCategoryId);
-    console.log(this.data.transaction);
-    this.transactionCategoryService.insertRelation(newCategoryId, this.data.transaction)
-      .subscribe(r => {
-        console.log(r);
-      }, e => {
-        console.log(e);
-      });
+  openChangeCategoryDialog(): void {
+    const dialogRef = this.dialog.open(CategoryChangeComponent, {
+      width: '300px',
+      data: {}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        console.log(result);
+        this.transactionCategoryService.update(this.data, result.newCategory, result.changeType)
+          .subscribe(resp => {
+            console.log(resp);
+            // TODO reload
+          });
+      }
+    });
   }
 
 

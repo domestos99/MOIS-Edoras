@@ -1,5 +1,11 @@
-<category-select [(selectedValue)]="data.categoryId"
-                 (selectionChange)="onSelectionChange($event)"></category-select>
+<!--<category-select [(selectedValue)]="data.categoryId"-->
+                 <!--(selectionChange)="onSelectionChange($event)"></category-select>-->
+<!--<br>-->
+
+
+<button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
+  Change category
+</button>
 <br>
 
 <div *ngIf="data">
