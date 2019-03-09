@@ -2,14 +2,8 @@ import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccou
 
 export class PaymentCategoryInsertDTO {
 
-
   constructor(private categoryId: String, private paymentId: String, private transactionPartyAccount: TransactionPartyAccount) {
 
   }
-
-
-  // categoryId: String;
-  // paymentId: String;
-  // transactionPartyAccount: TransactionPartyAccount;
 
 }

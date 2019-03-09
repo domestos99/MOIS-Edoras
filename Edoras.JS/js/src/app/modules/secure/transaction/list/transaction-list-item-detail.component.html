@@ -1,0 +1,55 @@
+<category-select [(selectedValue)]="data.categoryId"
+                 (selectionChange)="onSelectionChange($event)"></category-select>
+<br>
+
+<div *ngIf="data">
+
+  {{data.transaction.dueDate | date }}<br>
+
+  {{getAccountFormatted(data.transaction.partyAccount)}}<br>
+
+  {{data.transaction.categoryId}}<br>
+
+  {{getMoneyFormatted(data.transaction.value)}}<br>
+
+
+  {{data.transaction.partyDescription}}<br>
+  {{data.transaction.direction}}<br>
+
+  {{data.transaction.transactionType}}<br>
+
+  {{data.transaction.valueDate | date}}<br>
+
+  {{data.transaction.bookingDate | date}}<br>
+
+  {{data.transaction.userDescription}}<br>
+  {{data.transaction.payeeMessage}}<br>
+  {{data.transaction.categoryId}}<br>
+  {{data.transaction.transactionFee}}<br>
+  {{data.transaction.transactionFeeCanceled}}<br>
+
+
+  <div *ngIf="data.transaction.additionalInfoDomestic">
+    {{data.transaction.additionalInfoDomestic.constantSymbol}}<br>
+    {{data.transaction.additionalInfoDomestic.variableSymbol}}<br>
+    {{data.transaction.additionalInfoDomestic.specificSymbol}}<br>
+  </div>
+  <div *ngIf="data.transaction.additionalInfoForeign">
+    {{data.transaction.additionalInfoForeign.exchangeRate}}<br>
+    <div *ngIf="data.transaction.additionalInfoForeign.originalValue">
+
+      {{getTransactionAdditionalInfoForeignOriginalValueFormatter(data.transaction.additionalInfoForeign.originalValue)}}
+
+    </div>
+
+
+  </div>
+  <div *ngIf="data.transaction.additionalInfoCard">
+    {{data.transaction.additionalInfoCard.cardNumber}}<br>
+    {{data.transaction.additionalInfoCard.mcc}}<br>
+    {{data.transaction.additionalInfoCard.merchantName}}<br>
+  </div>
+
+
+</div>
+

@@ -1,9 +1,10 @@
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
 
-export interface TransactionCategoryInsertDTO {
+export class TransactionCategoryInsertDTO {
 
-  categoryId: String;
-  transactionId: String;
-  transactionPartyAccount: TransactionPartyAccount;
+
+  constructor(private categoryId: string, private transactionId: string, private transactionPartyAccount: TransactionPartyAccount) {
+
+  }
 
 }

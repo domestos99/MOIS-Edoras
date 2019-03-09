@@ -1,0 +1,27 @@
+<category-select [(selectedValue)]="data.categoryId"
+                 (selectionChange)="onSelectionChange($event)"></category-select>
+<br>
+
+{{getAccountFormatted(data.payment.partyAccount)}}<br>
+
+{{getMoneyFormatted(data.payment.value)}}<br>
+
+DueDate: {{data.payment.dueDate | date:'medium' }}<br>
+
+<div *ngIf="data.payment.recuringPayment">
+
+  FirstPayment: {{data.payment.recuringPayment.firstPayment | date:'medium'}}<br>
+  Interval: {{data.payment.recuringPayment.interval}}<br>
+  LastPayment: {{data.payment.recuringPayment.lastPayment | date:'medium'}}<br>
+
+</div>
+
+PayeeMessage: {{data.payment.payeeMessage}}<br>
+PayerMessage: {{data.payment.payerMessage}}<br>
+CategoryId: {{data.payment.categoryId}}<br>
+
+<div *ngIf="data.payment.additionalInfo">
+  ConstantSymbol: {{data.payment.additionalInfo.constantSymbol}}<br>
+  SpecificSymbol: {{data.payment.additionalInfo.specificSymbol}}<br>
+  VariableSymbol: {{data.payment.additionalInfo.variableSymbol}}<br>
+</div>

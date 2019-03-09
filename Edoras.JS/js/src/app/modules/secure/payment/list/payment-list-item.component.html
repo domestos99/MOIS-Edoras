@@ -1,8 +1,8 @@
-<mat-card>
+<mat-expansion-panel *ngIf="data">
 
-  <mat-card-content>
-    <detail-button (onClick)="openDetail()"></detail-button>
-    <br>
+  <mat-expansion-panel-header>
+
+    <category-view [categoryId]="data.categoryId" ></category-view>
 
     {{data.payment.dueDate | date }}<br>
 
@@ -12,6 +12,9 @@
 
     {{getMoneyFormatted(data.payment.value)}}
 
-  </mat-card-content>
+  </mat-expansion-panel-header>
 
-</mat-card>
+
+  <payment-list-item-detail [data]="data"></payment-list-item-detail>
+
+</mat-expansion-panel>

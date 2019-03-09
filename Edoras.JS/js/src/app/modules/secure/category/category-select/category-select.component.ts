@@ -12,8 +12,9 @@ export class CategorySelectComponent implements OnInit {
 
   categories: Array<Category>;
 
-  @Output() selectionChange: EventEmitter<Category> = new EventEmitter();
+  @Output() selectionChange: EventEmitter<string> = new EventEmitter();
   @Input() selectedValue: string;
+  @Input() disabled: boolean;
 
   constructor(private service: CategoryService) {
   }
@@ -30,6 +31,8 @@ export class CategorySelectComponent implements OnInit {
   }
 
   onselectionChange(change: MatSelectChange) {
+    console.log('change');
+    console.log(change.value);
     this.selectionChange.emit(change.value);
   }
 

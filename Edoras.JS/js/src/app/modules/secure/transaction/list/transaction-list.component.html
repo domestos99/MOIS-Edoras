@@ -2,8 +2,10 @@
 
 <div *ngIf="data">
 
-  <mat-list *ngFor="let row of data">
-    <transaction-list-item [data]="row" (onOpenDetail)="openDetail(row)"></transaction-list-item>
-    <mat-divider></mat-divider>
-  </mat-list>
+  <mat-accordion [multi]="true">
+
+    <ng-container *ngFor="let row of data">
+      <transaction-list-item [data]="row"></transaction-list-item>
+    </ng-container>
+  </mat-accordion>
 </div>

@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Payment} from "@app/core/api/model/payment";
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {PaymentValue} from "@app/core/api/model/paymentValue";
@@ -8,7 +7,8 @@ import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 
 @Component({
   selector: 'payment-list-item',
-  templateUrl: 'payment-list-item.component.html'
+  templateUrl: 'payment-list-item.component.html',
+  styleUrls: ['./payment-list-item.component.css']
 })
 export class PaymentListItemComponent {
 
