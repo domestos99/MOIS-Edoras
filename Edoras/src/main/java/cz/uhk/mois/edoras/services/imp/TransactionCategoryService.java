@@ -44,7 +44,7 @@ public class TransactionCategoryService implements ITransactionCategoryService {
             return null;
         }
         transactionCategory.setCategoryId(transactionCategoryInsertDTO.getCategoryId());
-        transactionCategory.setCategoryId(transactionCategoryInsertDTO.getCategoryId());
+        transactionCategory.setTransactionId(transactionCategoryInsertDTO.getTransactionId());
         transactionCategory.setTransactionAccount(AccountHelper.getAccountId(transactionCategoryInsertDTO.getTransactionPartyAccount()));
 
         // TODO Lubos - zkontrolovat, jestli uz neexistuje zaznam ze stejnym transaction nebo account a kdyz ano, tak vratit null + neulozit

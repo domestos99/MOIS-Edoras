@@ -30,7 +30,7 @@ public class TransactionService implements ITransactionService
     @Override
     public List<TransactionCategoryDTO> findAll()
     {
-        List<Transaction> transactions = transactions = memoryCache.findAll();
+        List<Transaction> transactions = memoryCache.findAll();
 
         if (transactions == null)
         {
@@ -43,7 +43,7 @@ public class TransactionService implements ITransactionService
         {
             TransactionCategoryDTO dto = new TransactionCategoryDTO();
             dto.setTransaction(p);
-            dto.setCategoryId(findCategoryForPayment(p));
+            dto.setCategoryId(findCategoryForTransaction(p));
             result.add(dto);
         }
         return result;
@@ -63,12 +63,12 @@ public class TransactionService implements ITransactionService
 
         TransactionCategoryDTO dto = new TransactionCategoryDTO();
         dto.setTransaction(transaction);
-        dto.setCategoryId(findCategoryForPayment(transaction));
+        dto.setCategoryId(findCategoryForTransaction(transaction));
 
         return Optional.of(dto);
     }
 
-    private String findCategoryForPayment(Transaction transaction)
+    private String findCategoryForTransaction(Transaction transaction)
     {
         return transactionCategoryService.getCategoryForPayment(transaction);
     }
