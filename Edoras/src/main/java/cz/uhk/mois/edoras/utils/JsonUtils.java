@@ -7,7 +7,6 @@ import java.io.Reader;
 
 public class JsonUtils
 {
-
     private static final Gson objectMapper = new Gson();
 
     public static <T> T fromJson(byte[] serialized, Class<T> clazz)

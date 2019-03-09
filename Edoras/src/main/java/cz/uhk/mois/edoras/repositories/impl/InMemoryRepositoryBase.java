@@ -64,7 +64,11 @@ public abstract class InMemoryRepositoryBase<T extends IDbEntity> implements IRe
     @Override
     public List<T> saveAll(List<T> entities)
     {
-        return null;
+        for (T ent : entities)
+        {
+            save(ent);
+        }
+        return entities;
     }
 
     @Override

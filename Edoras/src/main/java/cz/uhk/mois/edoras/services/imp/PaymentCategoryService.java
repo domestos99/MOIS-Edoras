@@ -25,7 +25,7 @@ public class PaymentCategoryService implements IPaymentCategoryService
     @Override
     public String getCategoryForPayment(final Payment payment)
     {
-        String id = payment.getId();
+        final String id = payment.getId();
 
         PaymentCategory category = paymentCategoryDAO.findByPaymentId(id);
 
@@ -41,9 +41,9 @@ public class PaymentCategoryService implements IPaymentCategoryService
 
 
     @Override
-    public PaymentCategory update(PaymentCategoryUpdateDTO paymentCategoryUpdateDTO)
+    public PaymentCategory update(final PaymentCategoryUpdateDTO paymentCategoryUpdateDTO)
     {
-        PaymentCategory paymentCategory = new PaymentCategory();
+        final PaymentCategory paymentCategory = new PaymentCategory();
 
         if (paymentCategoryUpdateDTO == null)
         {

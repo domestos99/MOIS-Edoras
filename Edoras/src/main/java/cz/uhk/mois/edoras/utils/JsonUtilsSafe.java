@@ -7,12 +7,10 @@ import com.google.gson.JsonParser;
 
 import java.io.Reader;
 
+import cz.uhk.mois.edoras.logger.LoggerFacade;
 
 public class JsonUtilsSafe
 {
-    public static final String TAG = JsonUtilsSafe.class.getSimpleName();
-
-
     public static String getPretty(final String json)
     {
         JsonParser parser = new JsonParser();
@@ -34,6 +32,7 @@ public class JsonUtilsSafe
         }
         catch (Exception e)
         {
+            LoggerFacade.log(e);
             return null;
         }
     }
@@ -49,6 +48,7 @@ public class JsonUtilsSafe
         }
         catch (Exception e)
         {
+            LoggerFacade.log(e);
             return null;
         }
     }
@@ -61,6 +61,7 @@ public class JsonUtilsSafe
         }
         catch (Exception e)
         {
+            LoggerFacade.log(e);
             return null;
         }
     }
@@ -73,6 +74,7 @@ public class JsonUtilsSafe
         }
         catch (Exception e)
         {
+            LoggerFacade.log(e);
             return null;
         }
     }

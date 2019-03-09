@@ -6,5 +6,4 @@ public enum ChangeType implements Serializable
 {
     ALL,
     ONE
-
 }

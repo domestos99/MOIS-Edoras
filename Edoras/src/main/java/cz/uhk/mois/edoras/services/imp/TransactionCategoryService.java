@@ -44,7 +44,7 @@ public class TransactionCategoryService implements ITransactionCategoryService
     @Override
     public TransactionCategory update(TransactionCategoryUpdateDTO transactionCategoryUpdateDTO)
     {
-        TransactionCategory paymentCategory = new TransactionCategory();
+        final TransactionCategory paymentCategory = new TransactionCategory();
 
         if (transactionCategoryUpdateDTO == null)
         {
