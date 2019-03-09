@@ -22,6 +22,7 @@ export class TransactionListItemDetailComponent {
   }
 
   @Input() data: TransactionCategoryDTO;
+  @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
   getAccountFormatted(account: TransactionPartyAccount): string {
     return FormattingHelper.getAccountFormatted(account);
@@ -42,7 +43,7 @@ export class TransactionListItemDetailComponent {
   openChangeCategoryDialog(): void {
     const dialogRef = this.dialog.open(CategoryChangeComponent, {
       width: '300px',
-      data: {}
+      data: {direction: this.data.transaction.direction}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -52,7 +53,7 @@ export class TransactionListItemDetailComponent {
         this.transactionCategoryService.update(this.data, result.newCategory, result.changeType)
           .subscribe(resp => {
             console.log(resp);
-            // TODO reload
+            this.onRequestReload.emit();
           });
       }
     });

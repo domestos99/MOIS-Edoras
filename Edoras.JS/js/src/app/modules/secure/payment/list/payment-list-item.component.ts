@@ -15,6 +15,7 @@ export class PaymentListItemComponent {
 
   @Input() data: PaymentCategoryDTO;
   @Output() onOpenDetail: EventEmitter<any> = new EventEmitter();
+  @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
 
   getAccountFormatted(account: TransactionPartyAccount): string {
@@ -29,4 +30,7 @@ export class PaymentListItemComponent {
     this.onOpenDetail.emit(null);
   }
 
+  requstReload() {
+    this.onRequestReload.emit();
+  }
 }

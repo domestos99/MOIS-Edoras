@@ -10,6 +10,7 @@ import {Category} from "@app/core/model";
 })
 export class CategoryViewComponent {
 
+  isLoading: boolean = false;
 
   @Input()
   set categoryId(val: string) {
@@ -24,9 +25,15 @@ export class CategoryViewComponent {
   }
 
   private loadCategory() {
+
     if (this._categoryId && this._categoryId != null) {
+      this.isLoading = true;
       this.categoryService.getById(this._categoryId).subscribe(resp => {
+        this.isLoading = false;
         this.category = resp;
+      }, error1 => {
+        this.isLoading = false;
+        console.log(error1);
       });
     }
   }

@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ViewChild, OnInit} from '@angular/core';
 
 import {CategoryService} from "../category.service";
 import {NavigationselperService} from "@app/core";
@@ -12,19 +12,43 @@ import {YesNoDialogComponent} from "@app/shared/components/yes-no-dialog/yes-no-
   selector: 'category-list',
   templateUrl: 'category-list.component.html'
 })
-export class CategoryListComponent {
+export class CategoryListComponent implements OnInit {
 
+  constructor(private service: CategoryService, public dialog: MatDialog) {
 
-  constructor(private service: CategoryService, private navigationselperService: NavigationselperService, public dialog: MatDialog) {
+  }
+
+  ngOnInit(): void {
     this.reload();
   }
 
+  @Input()
+  set type(val: string) {
+    this._type = val;
+  }
+
+  _type: string;
+
   data: Array<Category> = [];
 
-  reload() {
+  isLoading: boolean = false;
+
+  public reload() {
+
+    if (!this._type) {
+      this.data = [];
+      return;
+    }
+
+    this.isLoading = true;
     this.service.getAll().subscribe(resp => {
       console.log(resp);
-      this.data = resp;
+
+      this.data = resp.filter(c => c.type == this._type);
+
+      this.isLoading = false;
+    }, error1 => {
+      this.isLoading = false;
     });
   }
 
@@ -32,28 +56,6 @@ export class CategoryListComponent {
     this.openEditCategory(row);
   }
 
-  addNewCategory() {
-    this.openCreateCategory();
-  }
-
-  openCreateCategory(): void {
-    const dialogRef = this.dialog.open(CategoryCreateComponent, {
-      width: '300px',
-      data: {name: undefined, icon: undefined, type: undefined}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      if (result) {
-        console.log(result);
-        this.service.insert(result.name, result.icon, result.type)
-          .subscribe(resp => {
-            console.log(resp);
-            this.reload();
-          });
-      }
-    });
-  }
 
   openEditCategory(row: Category): void {
     const dialogRef = this.dialog.open(CategoryCreateComponent, {
@@ -91,4 +93,6 @@ export class CategoryListComponent {
     });
 
   }
+
+
 }

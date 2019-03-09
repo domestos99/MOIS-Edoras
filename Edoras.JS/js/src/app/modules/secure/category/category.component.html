@@ -1,1 +1,12 @@
-<category-list></category-list>
+<h3>Categories list</h3>
+
+<add-button mat-raised-button (onClick)="addNewCategory()"></add-button>
+
+<mat-tab-group>
+  <mat-tab label="Income">
+    <category-list #cateListIn [type]="'INCOME'"></category-list>
+  </mat-tab>
+  <mat-tab label="Expense">
+    <category-list #cateListOut [type]="'EXPENSE'"></category-list>
+  </mat-tab>
+</mat-tab-group>

@@ -1,11 +1,13 @@
 <h3>Transactions list</h3>
 
+<spinner *ngIf="isLoading"></spinner>
+
 <div *ngIf="data">
 
   <mat-accordion [multi]="true">
 
     <ng-container *ngFor="let row of data">
-      <transaction-list-item [data]="row"></transaction-list-item>
+      <transaction-list-item (onRequestReload)="requestReload()" [data]="row"></transaction-list-item>
     </ng-container>
   </mat-accordion>
 </div>

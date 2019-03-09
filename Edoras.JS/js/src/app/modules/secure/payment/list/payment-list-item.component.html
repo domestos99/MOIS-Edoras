@@ -15,6 +15,6 @@
   </mat-expansion-panel-header>
 
 
-  <payment-list-item-detail [data]="data"></payment-list-item-detail>
+  <payment-list-item-detail (onRequestReload)="requstReload()" [data]="data"></payment-list-item-detail>
 
 </mat-expansion-panel>
