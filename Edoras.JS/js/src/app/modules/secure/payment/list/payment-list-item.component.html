@@ -4,7 +4,7 @@
 
 
     <mat-grid-list cols="5" rowHeight="5:1">
-      <mat-grid-tile><detail-button (onClick)="openDetail()"></detail-button></mat-grid-tile>
+      <mat-grid-tile><detail-button data-target="#{{i}}" (onClick)="openDetail(data)"></detail-button></mat-grid-tile>
       <mat-grid-tile><strong>{{getAccountFormatted(data.payment.partyAccount)}}</strong></mat-grid-tile>
       <mat-grid-tile>{{getMoneyFormatted(data.payment.value)}}</mat-grid-tile>
       <mat-grid-tile>{{data.payment.dueDate | date }}</mat-grid-tile>
