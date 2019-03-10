@@ -1,20 +1,25 @@
-<mat-expansion-panel *ngIf="data">
+<mat-card>
 
-  <mat-expansion-panel-header>
-
-    <category-view [categoryId]="data.categoryId" ></category-view>
-
-    {{data.payment.dueDate | date }}<br>
-
-    {{getAccountFormatted(data.payment.partyAccount)}}<br>
-
-    {{data.payment.categoryId}}<br>
-
-    {{getMoneyFormatted(data.payment.value)}}
-
-  </mat-expansion-panel-header>
+  <mat-card-content>
 
 
-  <payment-list-item-detail [data]="data"></payment-list-item-detail>
+    <mat-grid-list cols="5" rowHeight="5:1">
+      <mat-grid-tile><detail-button (onClick)="openDetail()"></detail-button></mat-grid-tile>
+      <mat-grid-tile><strong>{{getAccountFormatted(data.payment.partyAccount)}}</strong></mat-grid-tile>
+      <mat-grid-tile>{{getMoneyFormatted(data.payment.value)}}</mat-grid-tile>
+      <mat-grid-tile>{{data.payment.dueDate | date }}</mat-grid-tile>
+      <mat-grid-tile><category-view [categoryId]="data.categoryId" ></category-view></mat-grid-tile>
+    </mat-grid-list>
 
-</mat-expansion-panel>
+
+
+
+
+
+
+
+
+
+  </mat-card-content>
+
+</mat-card>
