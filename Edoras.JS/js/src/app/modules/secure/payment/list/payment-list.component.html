@@ -3,11 +3,15 @@
 <!--<payment-filter (onFilterChanged)="filterChanged($event)"></payment-filter>-->
 
 <div *ngIf="data">
-
+<!--
   <mat-accordion [multi]="true">
 
     <ng-container *ngFor="let row of data">
       <payment-list-item [data]="row"></payment-list-item>
     </ng-container>
-  </mat-accordion>
+  </mat-accordion>-->
+
+  <ng-container *ngFor="let row of data">
+    <payment-list-item [data]="row"></payment-list-item>
+  </ng-container>
 </div>
