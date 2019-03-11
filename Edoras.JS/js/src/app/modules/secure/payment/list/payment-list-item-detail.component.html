@@ -1,29 +1,25 @@
 <button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
   Change category
 </button>
+<mat-card>
 
-<br>
+  <mat-card-content>
+    <mat-grid-list cols="3" rowHeight="3:1">
 
-{{getAccountFormatted(data.payment.partyAccount)}}<br>
+      <mat-grid-tile [colspan]=2 [rowspan]=1>AccountNumber: {{getAccountFormatted(data.payment.partyAccount)}}</mat-grid-tile>
+      <mat-grid-tile><b>Price:{{getMoneyFormatted(data.payment.value)}}</b></mat-grid-tile>
+      <mat-grid-tile>DueDate: {{data.payment.dueDate | date:'medium' }}</mat-grid-tile>
+      <mat-grid-tile>FirstPayment: {{data.payment.recuringPayment.firstPayment | date:'medium'}}</mat-grid-tile>
+      <mat-grid-tile>LastPayment: {{data.payment.recuringPayment.lastPayment | date:'medium'}}</mat-grid-tile>
+      <mat-grid-tile>ConstantSymbol: {{data.payment.additionalInfo.constantSymbol}}</mat-grid-tile>
+      <mat-grid-tile>SpecificSymbol: {{data.payment.additionalInfo.specificSymbol}}</mat-grid-tile>
+      <mat-grid-tile>VariableSymbol: {{data.payment.additionalInfo.variableSymbol}}</mat-grid-tile>
+      <mat-grid-tile [colspan]=3><div>PayerMessage: {{data.payment.payerMessage}} </div></mat-grid-tile>
+      <mat-grid-tile [colspan]=1.5>Interval: {{data.payment.recuringPayment.interval}}</mat-grid-tile>
+      <mat-grid-tile>CategoryId: {{data.payment.categoryId}}</mat-grid-tile>
 
-{{getMoneyFormatted(data.payment.value)}}<br>
 
-DueDate: {{data.payment.dueDate | date:'medium' }}<br>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
 
-<div *ngIf="data.payment.recuringPayment">
-
-  FirstPayment: {{data.payment.recuringPayment.firstPayment | date:'medium'}}<br>
-  Interval: {{data.payment.recuringPayment.interval}}<br>
-  LastPayment: {{data.payment.recuringPayment.lastPayment | date:'medium'}}<br>
-
-</div>
-
-PayeeMessage: {{data.payment.payeeMessage}}<br>
-PayerMessage: {{data.payment.payerMessage}}<br>
-CategoryId: {{data.payment.categoryId}}<br>
-
-<div *ngIf="data.payment.additionalInfo">
-  ConstantSymbol: {{data.payment.additionalInfo.constantSymbol}}<br>
-  SpecificSymbol: {{data.payment.additionalInfo.specificSymbol}}<br>
-  VariableSymbol: {{data.payment.additionalInfo.variableSymbol}}<br>
-</div>

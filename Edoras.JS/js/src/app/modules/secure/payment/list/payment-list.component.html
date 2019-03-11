@@ -11,7 +11,10 @@
     </ng-container>
   </mat-accordion>-->
 
+  <mat-list>
   <ng-container *ngFor="let row of data">
     <payment-list-item [data]="row"></payment-list-item>
   </ng-container>
+
+  </mat-list>
 </div>
