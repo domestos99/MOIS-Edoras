@@ -17,6 +17,7 @@ export class TransactionListItemComponent {
 
   @Input() data: TransactionCategoryDTO;
   @Output() onOpenDetail: EventEmitter<any> = new EventEmitter();
+  @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
 
   getAccountFormatted(account: TransactionPartyAccount): string {
@@ -29,6 +30,10 @@ export class TransactionListItemComponent {
 
   openDetail() {
     this.onOpenDetail.emit(null);
+  }
+
+  requstReload() {
+    this.onRequestReload.emit();
   }
 
 }

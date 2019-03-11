@@ -25,6 +25,7 @@ export class PaymentListItemDetailComponent {
   }
 
   @Input() data: PaymentCategoryDTO;
+  @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
   getAccountFormatted(account: TransactionPartyAccount): string {
     return FormattingHelper.getAccountFormatted(account);
@@ -51,7 +52,7 @@ export class PaymentListItemDetailComponent {
         this.paymentCategoryService.update(this.data, result.newCategory, result.changeType)
           .subscribe(resp => {
             console.log(resp);
-            // TODO reload
+            this.onRequestReload.emit();
           });
       }
     });

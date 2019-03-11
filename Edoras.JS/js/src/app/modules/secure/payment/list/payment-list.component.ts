@@ -13,6 +13,7 @@ import {PaymentFilterModel} from "@app/modules/secure/payment/payment-filter/pay
 })
 export class PaymentListComponent {
 
+  isLoading: boolean = false;
 
   constructor(private service: PaymentService) {
     this.reload();
@@ -23,7 +24,10 @@ export class PaymentListComponent {
   filterModel: PaymentFilterModel;
 
   reload() {
+    this.isLoading = true;
     this.service.getAll().subscribe(resp => {
+
+      this.isLoading = false;
 
       if (!this.filterModel) {
         this.data = resp;
@@ -36,12 +40,19 @@ export class PaymentListComponent {
           return true;
         });
       }
+    }, error1 => {
+      this.isLoading = false;
+      console.log(error1);
     });
   }
 
   filterChanged(filterModel: PaymentFilterModel) {
     this.filterModel = filterModel;
     console.log('filter changed');
+    this.reload();
+  }
+
+  requestReload() {
     this.reload();
   }
 }

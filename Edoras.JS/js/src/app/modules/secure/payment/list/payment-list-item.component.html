@@ -10,7 +10,7 @@
       <mat-grid-tile>{{data.payment.dueDate | date }}</mat-grid-tile>
       <mat-grid-tile><category-view [categoryId]="data.categoryId" ></category-view></mat-grid-tile>
     </mat-grid-list>
-    <payment-list-item-detail [data]="data"></payment-list-item-detail>
+    <payment-list-item-detail (onRequestReload)="requstReload()" [data]="data"></payment-list-item-detail>
 
   </mat-card-content>
 

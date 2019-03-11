@@ -13,6 +13,7 @@ import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 })
 export class TransactionListComponent {
 
+  isLoading: boolean = false;
 
   constructor(private service: TransactionService) {
     this.reload();
@@ -22,9 +23,19 @@ export class TransactionListComponent {
   panelOpenState = false;
 
   reload() {
+    this.isLoading = true;
     this.service.getAll().subscribe(resp => {
-      console.log(resp);
-      this.data = resp;
-    });
+        this.isLoading = false;
+        console.log(resp);
+        this.data = resp;
+      },
+      error1 => {
+        this.isLoading = false;
+        console.log(error1);
+      });
+  }
+
+  requestReload() {
+    this.reload();
   }
 }

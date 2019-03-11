@@ -16,6 +16,13 @@ export class CategorySelectComponent implements OnInit {
   @Input() selectedValue: string;
   @Input() disabled: boolean;
 
+  @Input()
+  set type(val: string) {
+    this._type = val;
+  }
+
+  _type: string;
+
   constructor(private service: CategoryService) {
   }
 
@@ -26,7 +33,12 @@ export class CategorySelectComponent implements OnInit {
   reload() {
     this.service.getAll().subscribe(resp => {
       console.log(resp);
-      this.categories = resp;
+      if (!this._type) {
+        this.categories = resp;
+      }
+      else {
+        this.categories = resp.filter(c => c.type == this._type);
+      }
     });
   }
 
