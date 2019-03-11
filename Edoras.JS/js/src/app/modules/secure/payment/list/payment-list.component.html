@@ -5,11 +5,18 @@
 <spinner *ngIf="isLoading"></spinner>
 
 <div *ngIf="data">
-
+<!--
   <mat-accordion [multi]="true">
 
     <ng-container *ngFor="let row of data">
       <payment-list-item (onRequestReload)="requestReload()" [data]="row"></payment-list-item>
     </ng-container>
-  </mat-accordion>
+  </mat-accordion>-->
+
+  <mat-list>
+  <ng-container *ngFor="let row of data">
+    <payment-list-item [data]="row"></payment-list-item>
+  </ng-container>
+
+  </mat-list>
 </div>

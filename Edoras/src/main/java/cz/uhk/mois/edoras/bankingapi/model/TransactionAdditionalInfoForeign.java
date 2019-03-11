@@ -21,21 +21,22 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Embedded;
+
 /**
  * foreign payments additional info (original value and exchange rate)
  */
 @ApiModel(description = "foreign payments additional info (original value and exchange rate)")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
-public class TransactionAdditionalInfoForeign
-{
+public class TransactionAdditionalInfoForeign {
     @SerializedName("originalValue")
+    @Embedded
     private TransactionAdditionalInfoForeignOriginalValue originalValue = null;
 
     @SerializedName("exchangeRate")
     private BigDecimal exchangeRate = null;
 
-    public TransactionAdditionalInfoForeign originalValue(TransactionAdditionalInfoForeignOriginalValue originalValue)
-    {
+    public TransactionAdditionalInfoForeign originalValue(TransactionAdditionalInfoForeignOriginalValue originalValue) {
         this.originalValue = originalValue;
         return this;
     }
@@ -46,18 +47,15 @@ public class TransactionAdditionalInfoForeign
      * @return originalValue
      **/
     @ApiModelProperty(value = "")
-    public TransactionAdditionalInfoForeignOriginalValue getOriginalValue()
-    {
+    public TransactionAdditionalInfoForeignOriginalValue getOriginalValue() {
         return originalValue;
     }
 
-    public void setOriginalValue(TransactionAdditionalInfoForeignOriginalValue originalValue)
-    {
+    public void setOriginalValue(TransactionAdditionalInfoForeignOriginalValue originalValue) {
         this.originalValue = originalValue;
     }
 
-    public TransactionAdditionalInfoForeign exchangeRate(BigDecimal exchangeRate)
-    {
+    public TransactionAdditionalInfoForeign exchangeRate(BigDecimal exchangeRate) {
         this.exchangeRate = exchangeRate;
         return this;
     }
@@ -68,26 +66,21 @@ public class TransactionAdditionalInfoForeign
      * @return exchangeRate
      **/
     @ApiModelProperty(value = "exchange rate valid at the time of transfer")
-    public BigDecimal getExchangeRate()
-    {
+    public BigDecimal getExchangeRate() {
         return exchangeRate;
     }
 
-    public void setExchangeRate(BigDecimal exchangeRate)
-    {
+    public void setExchangeRate(BigDecimal exchangeRate) {
         this.exchangeRate = exchangeRate;
     }
 
 
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass())
-        {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         TransactionAdditionalInfoForeign transactionAdditionalInfoForeign = (TransactionAdditionalInfoForeign) o;
@@ -96,15 +89,13 @@ public class TransactionAdditionalInfoForeign
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(originalValue, exchangeRate);
     }
 
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class TransactionAdditionalInfoForeign {\n");
 
@@ -118,10 +109,8 @@ public class TransactionAdditionalInfoForeign
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(Object o)
-    {
-        if (o == null)
-        {
+    private String toIndentedString(Object o) {
+        if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");

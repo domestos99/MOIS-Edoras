@@ -25,6 +25,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 /**
  * party account number
  */
@@ -90,8 +93,9 @@ public class PaymentRecuringPayment {
     }
   }
 
-  @SerializedName("interval")
-  private IntervalEnum interval = null;
+  @SerializedName("interval1")
+  @Enumerated(EnumType.STRING)
+  private IntervalEnum intervalEnum = null;
 
   public PaymentRecuringPayment firstPayment(String firstPayment) {
     this.firstPayment = firstPayment;
@@ -130,7 +134,7 @@ public class PaymentRecuringPayment {
   }
 
   public PaymentRecuringPayment interval(IntervalEnum interval) {
-    this.interval = interval;
+    this.intervalEnum = interval;
     return this;
   }
 
@@ -140,11 +144,11 @@ public class PaymentRecuringPayment {
   **/
   @ApiModelProperty(value = "")
   public IntervalEnum getInterval() {
-    return interval;
+    return intervalEnum;
   }
 
   public void setInterval(IntervalEnum interval) {
-    this.interval = interval;
+    this.intervalEnum = interval;
   }
 
 
@@ -159,12 +163,12 @@ public class PaymentRecuringPayment {
     PaymentRecuringPayment paymentRecuringPayment = (PaymentRecuringPayment) o;
     return Objects.equals(this.firstPayment, paymentRecuringPayment.firstPayment) &&
         Objects.equals(this.lastPayment, paymentRecuringPayment.lastPayment) &&
-        Objects.equals(this.interval, paymentRecuringPayment.interval);
+        Objects.equals(this.intervalEnum, paymentRecuringPayment.intervalEnum);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstPayment, lastPayment, interval);
+    return Objects.hash(firstPayment, lastPayment, intervalEnum);
   }
 
 
@@ -175,7 +179,7 @@ public class PaymentRecuringPayment {
     
     sb.append("    firstPayment: ").append(toIndentedString(firstPayment)).append("\n");
     sb.append("    lastPayment: ").append(toIndentedString(lastPayment)).append("\n");
-    sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
+    sb.append("    interval: ").append(toIndentedString(intervalEnum)).append("\n");
     sb.append("}");
     return sb.toString();
   }

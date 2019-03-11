@@ -28,13 +28,13 @@ import io.swagger.annotations.ApiModelProperty;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
 public class TransactionAdditionalInfoForeignOriginalValue {
   @SerializedName("amount")
-  private BigDecimal amount = null;
+  private BigDecimal transactionAdditionalInfoForeignOriginalValue_amount = null;
 
   @SerializedName("currency")
-  private String currency = null;
+  private String transactionAdditionalInfoForeignOriginalValue_currency = null;
 
   public TransactionAdditionalInfoForeignOriginalValue amount(BigDecimal amount) {
-    this.amount = amount;
+    this.transactionAdditionalInfoForeignOriginalValue_amount = amount;
     return this;
   }
 
@@ -44,15 +44,15 @@ public class TransactionAdditionalInfoForeignOriginalValue {
   **/
   @ApiModelProperty(required = true, value = "amount of money")
   public BigDecimal getAmount() {
-    return amount;
+    return transactionAdditionalInfoForeignOriginalValue_amount;
   }
 
   public void setAmount(BigDecimal amount) {
-    this.amount = amount;
+    this.transactionAdditionalInfoForeignOriginalValue_amount = amount;
   }
 
   public TransactionAdditionalInfoForeignOriginalValue currency(String currency) {
-    this.currency = currency;
+    this.transactionAdditionalInfoForeignOriginalValue_currency = currency;
     return this;
   }
 
@@ -62,11 +62,11 @@ public class TransactionAdditionalInfoForeignOriginalValue {
   **/
   @ApiModelProperty(required = true, value = "currency of money")
   public String getCurrency() {
-    return currency;
+    return transactionAdditionalInfoForeignOriginalValue_currency;
   }
 
   public void setCurrency(String currency) {
-    this.currency = currency;
+    this.transactionAdditionalInfoForeignOriginalValue_currency = currency;
   }
 
 
@@ -79,13 +79,13 @@ public class TransactionAdditionalInfoForeignOriginalValue {
       return false;
     }
     TransactionAdditionalInfoForeignOriginalValue transactionAdditionalInfoForeignOriginalValue = (TransactionAdditionalInfoForeignOriginalValue) o;
-    return Objects.equals(this.amount, transactionAdditionalInfoForeignOriginalValue.amount) &&
-        Objects.equals(this.currency, transactionAdditionalInfoForeignOriginalValue.currency);
+    return Objects.equals(this.transactionAdditionalInfoForeignOriginalValue_amount, transactionAdditionalInfoForeignOriginalValue.transactionAdditionalInfoForeignOriginalValue_amount) &&
+        Objects.equals(this.transactionAdditionalInfoForeignOriginalValue_currency, transactionAdditionalInfoForeignOriginalValue.transactionAdditionalInfoForeignOriginalValue_currency);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, currency);
+    return Objects.hash(transactionAdditionalInfoForeignOriginalValue_amount, transactionAdditionalInfoForeignOriginalValue_currency);
   }
 
 
@@ -94,8 +94,8 @@ public class TransactionAdditionalInfoForeignOriginalValue {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionAdditionalInfoForeignOriginalValue {\n");
     
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(transactionAdditionalInfoForeignOriginalValue_amount)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(transactionAdditionalInfoForeignOriginalValue_currency)).append("\n");
     sb.append("}");
     return sb.toString();
   }

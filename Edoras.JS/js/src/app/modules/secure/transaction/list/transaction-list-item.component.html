@@ -1,37 +1,27 @@
-<mat-expansion-panel *ngIf="data">
+<mat-card>
 
-  <mat-expansion-panel-header>
+  <mat-card-content>
 
-    <category-view [categoryId]="data.categoryId"></category-view>
+    <mat-grid-list cols="5" rowHeight="5:1">
 
-    {{data.transaction.dueDate | date }}<br>
+      <mat-grid-tile> <category-view [categoryId]="data.categoryId"></category-view> </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.dueDate | date }} </mat-grid-tile>
+      <mat-grid-tile> {{getAccountFormatted(data.transaction.partyAccount)}} </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.categoryId}} </mat-grid-tile>
+      <mat-grid-tile> {{getMoneyFormatted(data.transaction.value)}} </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.partyDescription}} </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.direction}} </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.transactionType}} </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.valueDate | date}}      </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.bookingDate | date}}</mat-grid-tile>
+      <mat-grid-tile>{{data.transaction.userDescription}} </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.payeeMessage}}</mat-grid-tile>
+      <mat-grid-tile>{{data.transaction.categoryId}}</mat-grid-tile>
+      <mat-grid-tile>{{data.transaction.transactionFee}} </mat-grid-tile>
+      <mat-grid-tile> {{data.transaction.transactionFeeCanceled}}</mat-grid-tile>
+    </mat-grid-list>
 
-    {{getAccountFormatted(data.transaction.partyAccount)}}<br>
-
-    {{data.transaction.categoryId}}<br>
-
-    {{getMoneyFormatted(data.transaction.value)}}<br>
-
-
-    {{data.transaction.partyDescription}}<br>
-    {{data.transaction.direction}}<br>
-
-    {{data.transaction.transactionType}}<br>
-
-    {{data.transaction.valueDate | date}}<br>
-
-    {{data.transaction.bookingDate | date}}<br>
-
-    {{data.transaction.userDescription}}<br>
-    {{data.transaction.payeeMessage}}<br>
-    {{data.transaction.categoryId}}<br>
-    {{data.transaction.transactionFee}}<br>
-    {{data.transaction.transactionFeeCanceled}}<br>
-
-  </mat-expansion-panel-header>
+  </mat-card-content>
+</mat-card>
 
 
-  <transaction-list-item-detail (onRequestReload)="requstReload()"
-                                [data]="data"></transaction-list-item-detail>
-
-</mat-expansion-panel>
