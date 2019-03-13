@@ -4,22 +4,123 @@
 <mat-card>
 
   <mat-card-content>
-    <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-list cols="6" rowHeight="5:2">
 
-      <mat-grid-tile [colspan]=2 [rowspan]=1>AccountNumber: {{getAccountFormatted(data.payment.partyAccount)}}</mat-grid-tile>
-      <mat-grid-tile><b>Price:{{getMoneyFormatted(data.payment.value)}}</b></mat-grid-tile>
-      <mat-grid-tile>DueDate: {{data.payment.dueDate | date:'medium' }}</mat-grid-tile>
-      <mat-grid-tile>FirstPayment: {{data.payment.recuringPayment.firstPayment | date:'medium'}}</mat-grid-tile>
-      <mat-grid-tile>LastPayment: {{data.payment.recuringPayment.lastPayment | date:'medium'}}</mat-grid-tile>
-      <mat-grid-tile>ConstantSymbol: {{data.payment.additionalInfo.constantSymbol}}</mat-grid-tile>
-      <mat-grid-tile>SpecificSymbol: {{data.payment.additionalInfo.specificSymbol}}</mat-grid-tile>
-      <mat-grid-tile>VariableSymbol: {{data.payment.additionalInfo.variableSymbol}}</mat-grid-tile>
-      <mat-grid-tile [colspan]=3><div>PayerMessage: {{data.payment.payerMessage}} </div></mat-grid-tile>
-      <mat-grid-tile [colspan]=1.5>Interval: {{data.payment.recuringPayment.interval}}</mat-grid-tile>
-      <mat-grid-tile>CategoryId: {{data.payment.categoryId}}</mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+      <div class="tileHead row">AccountNumber: </div>
+        <div class="tileBody row">{{getAccountFormatted(data.payment.partyAccount)}}</div></div></mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="tileHead row">
+        Price:</div>
+          <div class=" tileBody row"> {{getMoneyFormatted(data.payment.value)}}
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            DueDate:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.dueDate | date:'medium' }}
+          </div>
+        </div> </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            FirstPayment:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.recuringPayment.firstPayment | date:'medium'}}
+          </div>
+        </div> </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            LastPayment:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.recuringPayment.lastPayment | date:'medium'}}
+          </div>
+        </div>
+
+        </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            ConstantSymbol:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.additionalInfo.constantSymbol}}
+          </div>
+        </div>
+         </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            SpecificSymbol:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.additionalInfo.specificSymbol}}
+          </div>
+        </div>
+         </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            VariableSymbol:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.additionalInfo.variableSymbol}}
+          </div>
+        </div>
+         </mat-grid-tile>
+      <mat-grid-tile [colspan]="3">
+        <div class="container">
+          <div class="row tileHead tileMsg">
+            PayerMessage:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.payerMessage}}
+          </div>
+        </div>
+          </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            Interval:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.recuringPayment.interval}}
+          </div>
+        </div>
+        </mat-grid-tile>
+    <!--  <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            CategoryId:
+          </div>
+          <div class="row tileBody">
+            {{data.payment.categoryId}}
+          </div>
+        </div>
+         </mat-grid-tile>-->
 
 
     </mat-grid-list>
   </mat-card-content>
 </mat-card>
 
+<!--
+<div class="container">
+  <div class="row tileHead">
+
+  </div>
+  <div class="row tileBody">
+
+  </div>
+</div>
+-->

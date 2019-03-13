@@ -1,0 +1,18 @@
+.tileHead{
+/*  vertical-align: text-top;*/
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Arial Black";
+  color: #757575
+}
+
+.tileBody{
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.tileMsg{
+text-align: center;
+  margin-top: -20px;
+}

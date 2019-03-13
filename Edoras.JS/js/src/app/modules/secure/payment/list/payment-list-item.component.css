@@ -4,3 +4,7 @@ mat-expansion-panel-header {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.gridPrice{
+  color: #cc0032;
+}
