@@ -1,61 +1,400 @@
-<!--<category-select [(selectedValue)]="data.categoryId"-->
-                 <!--(selectionChange)="onSelectionChange($event)"></category-select>-->
-<!--<br>-->
+<mat-card>
+
+  <mat-card-content>
+
+    <mat-grid-list cols="6" rowHeight="5:2">
+
+      <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          DueDate:
+        </div>
+        <div class="row tileBody">
+          <div *ngIf="data.transaction.dueDate">
+            {{data.transaction.dueDate | date }}
+          </div>
+          <div *ngIf="!data.transaction.dueDate">
+            -
+          </div>
+        </div>
+      </div>
+      </mat-grid-tile>
+
+    <mat-grid-tile>
+        <div class="container">
+        <div class="row tileHead">
+          PartyAccount:
+        </div>
+        <div class="row tileBody">
+          <div *ngIf="data.transaction.partyAccount">
+            {{getAccountFormatted(data.transaction.partyAccount)}}
+          </div>
+          <div *ngIf="!data.transaction.partyAccount">
+            -
+          </div>
+        </div>
+      </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            TransactionID:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.categoryId">
+              {{data.transaction.categoryId}}
+            </div>
+            <div *ngIf="!data.transaction.categoryId">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            TransactionValue:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.value">
+              {{getMoneyFormatted(data.transaction.value)}}
+            </div>
+            <div *ngIf="!data.transaction.value">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            PartyDescription:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.partyDescription">
+              {{data.transaction.partyDescription}}
+            </div>
+            <div *ngIf="!data.transaction.partyDescription">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            TransactionDirection:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.direction">
+              {{data.transaction.direction}}
+            </div>
+            <div *ngIf="!data.transaction.direction">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            TransactionType:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.transactionType">
+              {{data.transaction.transactionType}}
+            </div>
+            <div *ngIf="!data.transaction.transactionType">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
 
 
-<button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
-  Change category
-</button>
-<br>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            ValueDate:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.valueDate">
+              {{data.transaction.valueDate | date}}
+            </div>
+            <div *ngIf="!data.transaction.valueDate">
+              -
+            </div>
 
-<div *ngIf="data">
-
-  {{data.transaction.dueDate | date }}<br>
-
-  {{getAccountFormatted(data.transaction.partyAccount)}}<br>
-
-  {{data.transaction.categoryId}}<br>
-
-  {{getMoneyFormatted(data.transaction.value)}}<br>
-
-
-  {{data.transaction.partyDescription}}<br>
-  {{data.transaction.direction}}<br>
-
-  {{data.transaction.transactionType}}<br>
-
-  {{data.transaction.valueDate | date}}<br>
-
-  {{data.transaction.bookingDate | date}}<br>
-
-  {{data.transaction.userDescription}}<br>
-  {{data.transaction.payeeMessage}}<br>
-  {{data.transaction.categoryId}}<br>
-  {{data.transaction.transactionFee}}<br>
-  {{data.transaction.transactionFeeCanceled}}<br>
+          </div>
+        </div>
+      </mat-grid-tile>
 
 
-  <div *ngIf="data.transaction.additionalInfoDomestic">
-    {{data.transaction.additionalInfoDomestic.constantSymbol}}<br>
-    {{data.transaction.additionalInfoDomestic.variableSymbol}}<br>
-    {{data.transaction.additionalInfoDomestic.specificSymbol}}<br>
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            BookingDate:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.bookingDate">
+              {{data.transaction.bookingDate | date}}
+            </div>
+            <div *ngIf="!data.transaction.bookingDate">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            UserDescription:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.userDescription">
+              {{data.transaction.userDescription}}
+            </div>
+            <div *ngIf="!data.transaction.userDescription">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            PayeeMessage:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.payeeMessage">
+              {{data.transaction.payeeMessage}}
+            </div>
+            <div *ngIf="!data.transaction.payeeMessage">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            TransactionFee:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.transactionFee">
+              {{data.transaction.transactionFee}}
+            </div>
+            <div *ngIf="!data.transaction.transactionFee">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            TransactionFeeCanceled:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.transactionFeeCanceled">
+              {{data.transaction.transactionFeeCanceled}}
+            </div>
+            <div *ngIf="!data.transaction.transactionFeeCanceled">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            ConstantSymbol:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoDomestic.constantSymbol">
+              {{data.transaction.additionalInfoDomestic.constantSymbol}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoDomestic.constantSymbol">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            VariableSymbol:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoDomestic.variableSymbol">
+              {{data.transaction.additionalInfoDomestic.variableSymbol}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoDomestic.variableSymbol">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            SpecificSymbol:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoDomestic.specificSymbol">
+              {{data.transaction.additionalInfoDomestic.specificSymbol}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoDomestic.specificSymbol">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            ExchangeRate:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoForeign.exchangeRate">
+              {{data.transaction.additionalInfoForeign.exchangeRate}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoForeign.exchangeRate">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            OriginalValue:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoForeign.originalValue">
+              {{getTransactionAdditionalInfoForeignOriginalValueFormatter(data.transaction.additionalInfoForeign.originalValue)}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoForeign.originalValue">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            CardNumber:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoCard.cardNumber">
+              {{data.transaction.additionalInfoCard.cardNumber}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoCard.cardNumber">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            Mmc:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoCard.mcc">
+              {{data.transaction.additionalInfoCard.mcc}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoCard.mcc">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="container">
+          <div class="row tileHead">
+            MerchantName:
+          </div>
+          <div class="row tileBody">
+            <div *ngIf="data.transaction.additionalInfoCard.merchantName">
+              {{data.transaction.additionalInfoCard.merchantName}}
+            </div>
+            <div *ngIf="!data.transaction.additionalInfoCard.merchantName">
+              -
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+
+
+
+      <!--  <mat-grid-tile>
+          <div class="container">
+            <div class="row tileHead">
+              :
+            </div>
+            <div class="row tileBody">
+            <div *ngIf="">
+
+            </div>
+            <div *ngIf="!">
+            -
+            </div>
+
+            </div>
+          </div>
+           </mat-grid-tile>-->
+
+
+    </mat-grid-list>
+
+  </mat-card-content>
+</mat-card>
+
+<!--<div class="container">
+  <div class="row tileHead">
+    CategoryId:
   </div>
-  <div *ngIf="data.transaction.additionalInfoForeign">
-    {{data.transaction.additionalInfoForeign.exchangeRate}}<br>
-    <div *ngIf="data.transaction.additionalInfoForeign.originalValue">
-
-      {{getTransactionAdditionalInfoForeignOriginalValueFormatter(data.transaction.additionalInfoForeign.originalValue)}}
-
-    </div>
-
-
+  <div class="row tileBody">
+    {{data.payment.categoryId}}
   </div>
-  <div *ngIf="data.transaction.additionalInfoCard">
-    {{data.transaction.additionalInfoCard.cardNumber}}<br>
-    {{data.transaction.additionalInfoCard.mcc}}<br>
-    {{data.transaction.additionalInfoCard.merchantName}}<br>
-  </div>
+</div>-->
 
-
-</div>
 
