@@ -174,7 +174,7 @@
         </div>
       </mat-grid-tile>
 
-      <mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="2">
         <div class="container">
           <div class="row tileHead">
             PayeeMessage:
@@ -283,10 +283,10 @@
             ExchangeRate:
           </div>
           <div class="row tileBody">
-            <div *ngIf="data.transaction.additionalInfoForeign.exchangeRate">
+            <div *ngIf="data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.exchangeRate">
               {{data.transaction.additionalInfoForeign.exchangeRate}}
             </div>
-            <div *ngIf="!data.transaction.additionalInfoForeign.exchangeRate">
+            <div *ngIf="!data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.exchangeRate">
               -
             </div>
 
@@ -300,10 +300,10 @@
             OriginalValue:
           </div>
           <div class="row tileBody">
-            <div *ngIf="data.transaction.additionalInfoForeign.originalValue">
+            <div *ngIf="data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.originalValue">
               {{getTransactionAdditionalInfoForeignOriginalValueFormatter(data.transaction.additionalInfoForeign.originalValue)}}
             </div>
-            <div *ngIf="!data.transaction.additionalInfoForeign.originalValue">
+            <div *ngIf="!data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.originalValue">
               -
             </div>
 
