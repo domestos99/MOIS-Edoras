@@ -41,7 +41,7 @@ export class CategoryListComponent implements OnInit {
     }
 
     this.isLoading = true;
-    this.service.getAll().subscribe(resp => {
+    this.service.getAll2(false).subscribe(resp => {
       console.log(resp);
 
       this.data = resp.filter(c => c.type == this._type);

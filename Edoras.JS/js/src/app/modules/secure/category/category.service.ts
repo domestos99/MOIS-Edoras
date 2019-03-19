@@ -3,22 +3,51 @@ import {Observable} from "rxjs";
 import {ServiceBase} from "@app/core/base/servicebase";
 import {HttpHelper} from "@app/core/services/httpHelper";
 import {Category} from "@app/core/model";
-
+import {HttpClient} from "@angular/common/http";
+import {find, map} from "rxjs/operators";
+import 'rxjs/add/operator/map'
+import 'rxjs/Rx';
+import {Cacheable} from "@app/core/services";
 
 @Injectable()
 export class CategoryService extends ServiceBase {
-
 
   getApiCall(): String {
     return "categories";
   }
 
-  public getAll(): Observable<Array<Category>> {
+  loadCategories(): Observable<Array<Category>> {
     return this.http.get<Array<Category>>(this.getBaseUrl() + this.getApiCall());
   }
 
+  list: Cacheable<Array<Category>> = new Cacheable<Array<Category>>();
+
+  constructor(http: HttpClient) {
+    super(http);
+
+    this.list.getHandler = () => {
+      return this.loadCategories();
+    };
+    this.list.refresh();
+  }
+
+  public getAll2(useCache: boolean): Observable<Array<Category>> {
+    if (useCache) {
+      return this.list.getData();
+    }
+    else {
+      return this.loadCategories();
+    }
+  }
+
+  public getAll(): Observable<Array<Category>> {
+    return this.getAll2(true);
+  }
+
   public getById(id: string): Observable<Category> {
-    return this.http.get<Category>(this.getBaseUrl() + "category/" + id);
+    // return this.http.get<Category>(this.getBaseUrl() + "category/" + id);
+    return this.list.getData()
+      .map(cats => cats.find(cat => cat.id == id));
   }
 
 
@@ -31,6 +60,11 @@ export class CategoryService extends ServiceBase {
 
     let options = HttpHelper.getHttpOptions();
     return this.http.post<any>(this.getBaseUrl() + "category", JSON.stringify(cate), options)
+      .pipe((x) => {
+          this.list.refresh();
+          return x;
+        }
+      );
   }
 
   update(id: string, name: string, icon: string, type: string): Observable<any> {
@@ -42,6 +76,11 @@ export class CategoryService extends ServiceBase {
 
     let options = HttpHelper.getHttpOptions();
     return this.http.put<any>(this.getBaseUrl() + "category", JSON.stringify(cate), options)
+      .pipe((x) => {
+          this.list.refresh();
+          return x;
+        }
+      );
   }
 
   delete(id: string): Observable<any> {
