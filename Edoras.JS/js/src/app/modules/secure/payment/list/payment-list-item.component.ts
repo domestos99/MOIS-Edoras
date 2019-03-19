@@ -3,6 +3,10 @@ import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccou
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {PaymentValue} from "@app/core/api/model/paymentValue";
 import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
+import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
+import {MatDialog} from "@angular/material";
+import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
+import {PaymentListItemDetailComponent} from "@app/modules/secure/payment/list/payment-list-item-detail.component";
 
 
 @Component({
@@ -13,8 +17,10 @@ import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 export class PaymentListItemComponent {
 
 
+  constructor(public dialog: MatDialog) {
+  }
+
   @Input() data: PaymentCategoryDTO;
-  @Output() onOpenDetail: EventEmitter<any> = new EventEmitter();
   @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
 
@@ -27,7 +33,25 @@ export class PaymentListItemComponent {
   }
 
   openDetail() {
-    this.onOpenDetail.emit(null);
+    this.openPaymentDetailModal();
+  }
+
+  openPaymentDetailModal(): void {
+    const dialogRef = this.dialog.open(PaymentListItemDetailComponent, {
+      maxWidth: '50vw',
+      maxHeight: '75vh',
+      width: '50%',
+      height: '75%',
+      data: this.data,
+      panelClass: 'full-screen-modal',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+        this.requstReload();
+      }
+    });
   }
 
   requstReload() {

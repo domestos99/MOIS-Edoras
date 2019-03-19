@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Payment} from "@app/core/api/model/payment";
+import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
 import {PaymentValue} from "@app/core/api/model/paymentValue";
@@ -7,7 +6,7 @@ import {TransactionCategoryDTO} from "@app/core/model";
 import {TransactionCategoryService} from "@app/core/services/transactionCategory.service";
 import {TransactionAdditionalInfoForeignOriginalValue} from "@app/core/api/model/transactionAdditionalInfoForeignOriginalValue";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
-import {MatDialog} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
 
 
 @Component({
@@ -17,11 +16,12 @@ import {MatDialog} from "@angular/material";
 })
 export class TransactionListItemDetailComponent {
 
-  constructor(private transactionCategoryService: TransactionCategoryService, public dialog: MatDialog) {
-
+  constructor(private transactionCategoryService: TransactionCategoryService,
+              public dialog: MatDialog,
+              public dialogRef: MatDialogRef<TransactionListItemDetailComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: TransactionCategoryDTO) {
   }
 
-  @Input() data: TransactionCategoryDTO;
   @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
   getAccountFormatted(account: TransactionPartyAccount): string {

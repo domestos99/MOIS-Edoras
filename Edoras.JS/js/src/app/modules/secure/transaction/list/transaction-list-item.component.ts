@@ -5,6 +5,9 @@ import {PaymentValue} from "@app/core/api/model/paymentValue";
 import {Transaction} from "@app/core/api/model/transaction";
 import {TransactionValue} from "@app/core/api/model/transactionValue";
 import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
+import {PaymentListItemDetailComponent} from "@app/modules/secure/payment/list/payment-list-item-detail.component";
+import {MatDialog} from "@angular/material";
+import {TransactionListItemDetailComponent} from "@app/modules/secure/transaction/list/transaction-list-item-detail.component";
 
 
 @Component({
@@ -14,9 +17,11 @@ import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 })
 export class TransactionListItemComponent {
 
+  constructor(public dialog: MatDialog) {
+  }
+
 
   @Input() data: TransactionCategoryDTO;
-  @Output() onOpenDetail: EventEmitter<any> = new EventEmitter();
   @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
 
@@ -29,8 +34,30 @@ export class TransactionListItemComponent {
   }
 
   openDetail() {
-    this.onOpenDetail.emit(null);
+    this.openTransactionDetailModal();
   }
+
+
+  openTransactionDetailModal(): void {
+    const dialogRef = this.dialog.open(TransactionListItemDetailComponent, {
+      maxWidth: '50vw',
+      maxHeight: '75vh',
+      width: '50%',
+      height: '75%',
+      data: this.data,
+      panelClass: 'full-screen-modal',
+    });
+
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+        this.requstReload();
+      }
+    });
+  }
+
 
   requstReload() {
     this.onRequestReload.emit();

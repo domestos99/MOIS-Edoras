@@ -1,3 +1,7 @@
-.gridPrice{
+.gridPrice {
   color: #cc0032;
+}
+
+.full-screen-modal .mat-dialog-container {
+  max-width: none;
 }

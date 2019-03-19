@@ -9,7 +9,6 @@
       <mat-grid-tile>{{data.transaction.dueDate | date }}</mat-grid-tile>
       <mat-grid-tile><category-view [categoryId]="data.categoryId" ></category-view></mat-grid-tile>
     </mat-grid-list>
-    <transaction-list-item-detail (onRequestReload)="requstReload()" [data]="data"></transaction-list-item-detail>
 
   </mat-card-content>
 </mat-card>

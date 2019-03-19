@@ -98,7 +98,9 @@ import {CategoryChangeComponent} from "@app/modules/secure/category/category-cha
   entryComponents:
     [
       CategoryCreateComponent,
-      CategoryChangeComponent
+      CategoryChangeComponent,
+      PaymentListItemDetailComponent,
+      TransactionListItemDetailComponent,
 
     ],
   providers: [

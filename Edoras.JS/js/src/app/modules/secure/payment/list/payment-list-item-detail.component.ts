@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
 import {Payment} from "@app/core/api/model/payment";
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
@@ -7,10 +7,11 @@ import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 import {PaymentService} from "@app/modules/secure/payment/payment.service";
 import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
 import {NavigationselperService} from "@app/core";
-import {MatDialog} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
 import {Category} from "@app/core/model";
 import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
+import {CategoryChangeModel} from "@app/modules/secure/category/category-change/category-change.model";
 
 
 @Component({
@@ -20,11 +21,13 @@ import {CategoryChangeComponent} from "@app/modules/secure/category/category-cha
 })
 export class PaymentListItemDetailComponent {
 
-  constructor(private paymentCategoryService: PaymentCategoryService, public dialog: MatDialog) {
+  constructor(private paymentCategoryService: PaymentCategoryService,
+              public dialog: MatDialog,
+              public dialogRef: MatDialogRef<PaymentListItemDetailComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: PaymentCategoryDTO) {
 
   }
 
-  @Input() data: PaymentCategoryDTO;
   @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
 
   getAccountFormatted(account: TransactionPartyAccount): string {

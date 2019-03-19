@@ -1,103 +1,110 @@
-<button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
-  Change category
-</button>
-<mat-card>
+<div mat-dialog-content class="height100">
 
-  <mat-card-content>
-    <mat-grid-list cols="6" rowHeight="5:2">
+  <button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
+    Change category
+  </button>
 
-      <mat-grid-tile>
-        <div class="container">
-      <div class="tileHead row">AccountNumber: </div>
-        <div class="tileBody row">{{getAccountFormatted(data.payment.partyAccount)}}</div></div></mat-grid-tile>
+  <category-view [categoryId]="data.categoryId" ></category-view>
 
-      <mat-grid-tile>
-        <div class="container">
-          <div class="tileHead row">
-        Price:</div>
-          <div class=" tileBody row"> {{getMoneyFormatted(data.payment.value)}}
-          </div>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            DueDate:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.dueDate | date:'medium' }}
-          </div>
-        </div> </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            FirstPayment:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.recuringPayment.firstPayment | date:'medium'}}
-          </div>
-        </div> </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            LastPayment:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.recuringPayment.lastPayment | date:'medium'}}
-          </div>
-        </div>
+  <mat-grid-list cols="6" rowHeight="5:2">
 
-        </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            ConstantSymbol:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.additionalInfo.constantSymbol}}
-          </div>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="tileHead row">AccountNumber:</div>
+        <div class="tileBody row">{{getAccountFormatted(data.payment.partyAccount)}}</div>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="container">
+        <div class="tileHead row">
+          Price:
         </div>
-         </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            SpecificSymbol:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.additionalInfo.specificSymbol}}
-          </div>
+        <div class=" tileBody row"> {{getMoneyFormatted(data.payment.value)}}
         </div>
-         </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            VariableSymbol:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.additionalInfo.variableSymbol}}
-          </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          DueDate:
         </div>
-         </mat-grid-tile>
-      <mat-grid-tile [colspan]="3">
-        <div class="container">
-          <div class="row tileHead tileMsg">
-            PayerMessage:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.payerMessage}}
-          </div>
+        <div class="row tileBody">
+          {{data.payment.dueDate | date:'medium' }}
         </div>
-          </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            Interval:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.recuringPayment.interval}}
-          </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          FirstPayment:
         </div>
-        </mat-grid-tile>
+        <div class="row tileBody">
+          {{data.payment.recuringPayment.firstPayment | date:'medium'}}
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          LastPayment:
+        </div>
+        <div class="row tileBody">
+          {{data.payment.recuringPayment.lastPayment | date:'medium'}}
+        </div>
+      </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          ConstantSymbol:
+        </div>
+        <div class="row tileBody">
+          {{data.payment.additionalInfo.constantSymbol}}
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          SpecificSymbol:
+        </div>
+        <div class="row tileBody">
+          {{data.payment.additionalInfo.specificSymbol}}
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          VariableSymbol:
+        </div>
+        <div class="row tileBody">
+          {{data.payment.additionalInfo.variableSymbol}}
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+      <div class="container">
+        <div class="row tileHead tileMsg">
+          PayerMessage:
+        </div>
+        <div class="row tileBody">
+          {{data.payment.payerMessage}}
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <div class="row tileHead">
+          Interval:
+        </div>
+        <div class="row tileBody">
+          {{data.payment.recuringPayment.interval}}
+        </div>
+      </div>
+    </mat-grid-tile>
     <!--  <mat-grid-tile>
         <div class="container">
           <div class="row tileHead">
@@ -110,17 +117,12 @@
          </mat-grid-tile>-->
 
 
-    </mat-grid-list>
-  </mat-card-content>
-</mat-card>
+  </mat-grid-list>
 
-<!--
-<div class="container">
-  <div class="row tileHead">
 
-  </div>
-  <div class="row tileBody">
 
-  </div>
 </div>
--->
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+</div>
