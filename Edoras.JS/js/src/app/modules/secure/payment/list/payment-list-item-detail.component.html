@@ -1,5 +1,17 @@
 <div mat-dialog-content class="height100">
 
+  <mat-grid-list cols="7" rowHeight="5:2">
+
+  <mat-grid-tile>
+    <category-view [categoryId]="data.categoryId" ></category-view>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
+      Change category
+    </button>
+  </mat-grid-tile>
+  </mat-grid-list>
 
 
   <mat-grid-list cols="3" rowHeight="5:1">
@@ -107,6 +119,8 @@
 
 
 
+
+
     <!--  <mat-grid-tile>
         <div class="container">
           <div class="row tileHead">
@@ -125,11 +139,7 @@
 
 </div>
 
-<!--<button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
-  Change category
-</button>
 
-<category-view [categoryId]="data.categoryId" ></category-view>-->
 
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
