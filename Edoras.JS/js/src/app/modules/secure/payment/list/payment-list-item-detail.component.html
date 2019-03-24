@@ -1,12 +1,8 @@
 <div mat-dialog-content class="height100">
 
-  <button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
-    Change category
-  </button>
 
-  <category-view [categoryId]="data.categoryId" ></category-view>
 
-  <mat-grid-list cols="6" rowHeight="5:2">
+  <mat-grid-list cols="3" rowHeight="5:1">
 
     <mat-grid-tile>
       <div class="container">
@@ -85,16 +81,7 @@
         </div>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3">
-      <div class="container">
-        <div class="row tileHead tileMsg">
-          PayerMessage:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.payerMessage}}
-        </div>
-      </div>
-    </mat-grid-tile>
+
     <mat-grid-tile>
       <div class="container">
         <div class="row tileHead">
@@ -105,6 +92,21 @@
         </div>
       </div>
     </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="3">
+      <div class="container">
+        <div class="row tileHead tileMsg payerHead">
+          PayerMessage:
+        </div>
+        <div class="row tileBody">
+          {{data.payment.payerMessage}}
+        </div>
+      </div>
+    </mat-grid-tile>
+
+
+
+
     <!--  <mat-grid-tile>
         <div class="container">
           <div class="row tileHead">
@@ -122,6 +124,12 @@
 
 
 </div>
+
+<!--<button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
+  Change category
+</button>
+
+<category-view [categoryId]="data.categoryId" ></category-view>-->
 
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>

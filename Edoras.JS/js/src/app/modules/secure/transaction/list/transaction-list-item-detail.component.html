@@ -7,7 +7,7 @@
 
   <category-view [categoryId]="data.categoryId"></category-view>
 
-  <mat-grid-list cols="6" rowHeight="5:2">
+  <mat-grid-list cols="3" rowHeight="5:1">
 
     <mat-grid-tile>
       <div class="container">
@@ -179,7 +179,7 @@
       </div>
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="3" [rowspan]="2">
+    <mat-grid-tile [colspan]="2">
       <div class="container">
         <div class="row tileHead">
           PayeeMessage:
@@ -236,10 +236,10 @@
           ConstantSymbol:
         </div>
         <div class="row tileBody">
-          <div *ngIf="data.transaction.additionalInfoDomestic.constantSymbol">
+          <div *ngIf="(data.transaction.additionalInfoDomestic.constantSymbol && data.transaction.additionalInfoDomestic)">
             {{data.transaction.additionalInfoDomestic.constantSymbol}}
           </div>
-          <div *ngIf="!data.transaction.additionalInfoDomestic.constantSymbol">
+          <div *ngIf="!(data.transaction.additionalInfoDomestic.constantSymbol && data.transaction.additionalInfoDomestic)">
             -
           </div>
 
@@ -253,10 +253,10 @@
           VariableSymbol:
         </div>
         <div class="row tileBody">
-          <div *ngIf="data.transaction.additionalInfoDomestic.variableSymbol">
+          <div *ngIf="(data.transaction.additionalInfoDomestic.variableSymbol && data.transaction.additionalInfoDomestic)">
             {{data.transaction.additionalInfoDomestic.variableSymbol}}
           </div>
-          <div *ngIf="!data.transaction.additionalInfoDomestic.variableSymbol">
+          <div *ngIf="!(data.transaction.additionalInfoDomestic.variableSymbol && data.transaction.additionalInfoDomestic)">
             -
           </div>
 
@@ -270,10 +270,10 @@
           SpecificSymbol:
         </div>
         <div class="row tileBody">
-          <div *ngIf="data.transaction.additionalInfoDomestic.specificSymbol">
+          <div *ngIf="(data.transaction.additionalInfoDomestic.specificSymbol && data.transaction.additionalInfoDomestic)">
             {{data.transaction.additionalInfoDomestic.specificSymbol}}
           </div>
-          <div *ngIf="!data.transaction.additionalInfoDomestic.specificSymbol">
+          <div *ngIf="!(data.transaction.additionalInfoDomestic.specificSymbol && data.transaction.additionalInfoDomestic)">
             -
           </div>
 
@@ -289,11 +289,11 @@
         </div>
         <div class="row tileBody">
           <div
-            *ngIf="data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.exchangeRate">
+            *ngIf="(data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.exchangeRate)">
             {{data.transaction.additionalInfoForeign.exchangeRate}}
           </div>
           <div
-            *ngIf="!data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.exchangeRate">
+            *ngIf="!(data.transaction. additionalInfoForeign && data.transaction.additionalInfoForeign.exchangeRate)">
             -
           </div>
 
@@ -326,10 +326,10 @@
           CardNumber:
         </div>
         <div class="row tileBody">
-          <div *ngIf="data.transaction.additionalInfoCard.cardNumber">
+          <div *ngIf="(data.transaction.additionalInfoCard.cardNumber && data.transaction.additionalInfoCard)">
             {{data.transaction.additionalInfoCard.cardNumber}}
           </div>
-          <div *ngIf="!data.transaction.additionalInfoCard.cardNumber">
+          <div *ngIf="!(data.transaction.additionalInfoCard.cardNumber && data.transaction.additionalInfoCard)">
             -
           </div>
 
@@ -344,10 +344,10 @@
           Mmc:
         </div>
         <div class="row tileBody">
-          <div *ngIf="data.transaction.additionalInfoCard.mcc">
+          <div *ngIf="(data.transaction.additionalInfoCard.mcc && data.transaction.additionalInfoCard)">
             {{data.transaction.additionalInfoCard.mcc}}
           </div>
-          <div *ngIf="!data.transaction.additionalInfoCard.mcc">
+          <div *ngIf="!(data.transaction.additionalInfoCard.mcc && data.transaction.additionalInfoCard)">
             -
           </div>
 
@@ -361,10 +361,10 @@
           MerchantName:
         </div>
         <div class="row tileBody">
-          <div *ngIf="data.transaction.additionalInfoCard.merchantName">
+          <div *ngIf="(data.transaction.additionalInfoCard.merchantName && data.transaction.additionalInfoCard)">
             {{data.transaction.additionalInfoCard.merchantName}}
           </div>
-          <div *ngIf="!data.transaction.additionalInfoCard.merchantName">
+          <div *ngIf="!(data.transaction.additionalInfoCard.merchantName && data.transaction.additionalInfoCard)">
             -
           </div>
 
