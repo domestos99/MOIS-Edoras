@@ -23,12 +23,14 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import cz.uhk.mois.edoras.domain.Category;
 import cz.uhk.mois.edoras.domain.IDbEntity;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -37,6 +39,19 @@ import javax.persistence.Id;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
 @Entity
 public class Payment implements IDbEntity {
+
+
+    @ManyToOne
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @SerializedName("value")
     @Embedded
     private PaymentValue value = null;
@@ -58,8 +73,6 @@ public class Payment implements IDbEntity {
     @SerializedName("payerMessage")
     private String payerMessage = null;
 
-    @SerializedName("categoryId")
-    private BigDecimal categoryId = null;
 
     @SerializedName("additionalInfo")
     @Embedded
@@ -303,27 +316,12 @@ public class Payment implements IDbEntity {
         this.payerMessage = payerMessage;
     }
 
-    public Payment categoryId(BigDecimal categoryId)
-    {
-        this.categoryId = categoryId;
-        return this;
-    }
 
     /**
      * id of category for payment order. More info about category can be retrieved using /openapi/banking/categories resource.
      *
      * @return categoryId
      **/
-    @ApiModelProperty(value = "id of category for payment order. More info about category can be retrieved using /openapi/banking/categories resource.")
-    public BigDecimal getCategoryId()
-    {
-        return categoryId;
-    }
-
-    public void setCategoryId(BigDecimal categoryId)
-    {
-        this.categoryId = categoryId;
-    }
 
     public Payment additionalInfo(PaymentAdditionalInfo additionalInfo)
     {
@@ -454,7 +452,6 @@ public class Payment implements IDbEntity {
                 Objects.equals(this.recuringPayment, payment.recuringPayment) &&
                 Objects.equals(this.payeeMessage, payment.payeeMessage) &&
                 Objects.equals(this.payerMessage, payment.payerMessage) &&
-                Objects.equals(this.categoryId, payment.categoryId) &&
                 Objects.equals(this.additionalInfo, payment.additionalInfo) &&
                 Objects.equals(this.id, payment.id) &&
                 Objects.equals(this.accountId, payment.accountId) &&
@@ -465,7 +462,7 @@ public class Payment implements IDbEntity {
     @Override
     public int hashCode()
     {
-        return Objects.hash(value, partyAccount, dueDate, recuringPayment, payeeMessage, payerMessage, categoryId, additionalInfo, id, accountId, editableByUser, realizationStatus);
+        return Objects.hash(value, partyAccount, dueDate, recuringPayment, payeeMessage, payerMessage, additionalInfo, id, accountId, editableByUser, realizationStatus);
     }
 
 
@@ -481,7 +478,6 @@ public class Payment implements IDbEntity {
         sb.append("    recuringPayment: ").append(toIndentedString(recuringPayment)).append("\n");
         sb.append("    payeeMessage: ").append(toIndentedString(payeeMessage)).append("\n");
         sb.append("    payerMessage: ").append(toIndentedString(payerMessage)).append("\n");
-        sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
         sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");

@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import cz.uhk.mois.edoras.domain.PaymentCategory;
-import cz.uhk.mois.edoras.services.imp.PaymentCategoryService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryUpdateDTO;
 
 @RestController
 public class PaymentCategoryController
 {
-    private final PaymentCategoryService paymentCategoryService;
+ //   private final PaymentCategoryService paymentCategoryService;
 
-    @Autowired
+   /* @Autowired
     public PaymentCategoryController(PaymentCategoryService paymentCategoryService)
     {
-        this.paymentCategoryService = paymentCategoryService;
+        //this.paymentCategoryService = paymentCategoryService;
     }
-
+*/
     @PutMapping("/api/paymentcategory")
     public ResponseEntity<PaymentCategory> updateCategory(@RequestBody PaymentCategoryUpdateDTO paymentCategoryUpdateDTO)
-    {
-        PaymentCategory cat = paymentCategoryService.update(paymentCategoryUpdateDTO);
+    {/*
+        //PaymentCategory cat = paymentCategoryService.update(paymentCategoryUpdateDTO);
         if (cat == null)
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        return new ResponseEntity(cat, HttpStatus.CREATED);
+        return new ResponseEntity(cat, HttpStatus.CREATED);*/
+        return new ResponseEntity(null, HttpStatus.CREATED);
     }
 
 }
