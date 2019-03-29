@@ -21,6 +21,6 @@ export class TransactionCategoryService extends ServiceBase {
   update(transactionDto: TransactionCategoryDTO, newCategory: string, changeType: string): Observable<any> {
     let dto = new TransactionCategoryUpdateDTO(newCategory, transactionDto.transaction.id, transactionDto.transaction.partyAccount, changeType);
     let options = HttpHelper.getHttpOptions();
-    return this.http.put<any>(this.getBaseUrl() + "paymentcategory", JSON.stringify(dto), options);
+    return this.http.put<any>(this.getBaseUrl() + "transactioncategory", JSON.stringify(dto), options);
   }
 }
