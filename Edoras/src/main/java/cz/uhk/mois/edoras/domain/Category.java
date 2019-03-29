@@ -1,12 +1,19 @@
 package cz.uhk.mois.edoras.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import cz.uhk.mois.edoras.bankingapi.model.Payment;
+import cz.uhk.mois.edoras.bankingapi.model.Transaction;
 
 @Entity
 public class Category implements Serializable
@@ -31,6 +38,14 @@ public class Category implements Serializable
         this.icon = icon;
         this.type = type;
     }
+
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore
+    private List<Payment> payments;
+
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore
+    private List<Transaction> transactions;
 
     public String getId()
     {
@@ -72,6 +87,26 @@ public class Category implements Serializable
         this.type = type;
     }
 
+    public List<Payment> getPayments()
+    {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments)
+    {
+        this.payments = payments;
+    }
+
+    public List<Transaction> getTransactions()
+    {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions)
+    {
+        this.transactions = transactions;
+    }
+
     @Override
     public String toString()
     {
@@ -82,5 +117,4 @@ public class Category implements Serializable
                 ", type='" + type + '\'' +
                 '}';
     }
-
 }
