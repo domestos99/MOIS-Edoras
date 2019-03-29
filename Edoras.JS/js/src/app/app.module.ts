@@ -40,9 +40,12 @@ import {PaymentFilterComponent} from "@app/modules/secure/payment/payment-filter
 import {CategoryViewComponent} from "@app/modules/secure/category/category-view/category-view.component";
 import {TransactionListItemDetailComponent} from "@app/modules/secure/transaction/list/transaction-list-item-detail.component";
 import {TransactionCategoryService} from "@app/core/services/transactionCategory.service";
-import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
 import {AdminComponent} from "@app/modules/secure/admin/admin.component";
 import {AdminService} from "@app/modules/secure/admin/admin.service";
+import {OverviewComponent} from "@app/modules/secure/overview/overview.component";
+import {OverviewService} from "@app/modules/secure/overview/overview.service";
+import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
+import {TransactionOverviewComponent} from "@app/modules/secure/overview/transaction-overview/transaction-overview.component";
 
 
 @NgModule({
@@ -72,6 +75,8 @@ import {AdminService} from "@app/modules/secure/admin/admin.service";
     PageNotFoundComponent,
     CategoryChangeComponent,
     AdminComponent,
+    OverviewComponent,
+    TransactionOverviewComponent,
 
 
   ],
@@ -117,6 +122,7 @@ import {AdminService} from "@app/modules/secure/admin/admin.service";
     PaymentCategoryService,
     TransactionCategoryService,
     AdminService,
+    OverviewService,
 
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

@@ -1,0 +1,22 @@
+<h3>Payment overview</h3>
+
+
+<div *ngFor="let row of data">
+
+  Category:<br>
+  {{row.category.name}}
+  <br>
+  Transactions: <br>
+  <div *ngFor="let tr of row.transactions">
+    {{tr.id}}
+  </div>
+  <br>
+  Total: <br>
+  {{row.suma}} Kč
+
+  <br>
+  <br>
+
+
+</div>
+

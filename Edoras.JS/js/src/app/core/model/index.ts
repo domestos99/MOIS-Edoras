@@ -3,5 +3,6 @@ export * from './paymentCategoryDTO';
 export * from './paymentCategoryUpdateDTO';
 export * from './transactionCategoryDTO';
 export * from './transactionCategoryUpdateDTO';
+export * from './transactionOverviewDTO';
 
 
