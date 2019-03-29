@@ -14,6 +14,7 @@ import { TransactionAdditionalInfoDomestic } from './transactionAdditionalInfoDo
 import { TransactionAdditionalInfoForeign } from './transactionAdditionalInfoForeign';
 import { TransactionPartyAccount } from './transactionPartyAccount';
 import { TransactionValue } from './transactionValue';
+import {Category} from "@app/core/model";
 
 
 export interface Transaction { 
@@ -21,6 +22,8 @@ export interface Transaction {
      * internal transaction identified
      */
     id: string;
+
+    category: Category;
     /**
      * account to that transaction belongs (to which it is accounted)
      */

@@ -23,23 +23,27 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import cz.uhk.mois.edoras.domain.IDbEntity;
-import io.swagger.annotations.ApiModelProperty;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import cz.uhk.mois.edoras.domain.Category;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Transaction
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
 @Entity
-public class Transaction implements IDbEntity
+public class Transaction
 {
     @SerializedName("_id")
     @Id
     private String id = null;
+
+    @ManyToOne
+    private Category category;
 
     @SerializedName("accountId")
     private BigDecimal accountId = null;
@@ -225,9 +229,6 @@ public class Transaction implements IDbEntity
 
     @SerializedName("payeeMessage")
     private String payeeMessage = null;
-
-    @SerializedName("categoryId")
-    private BigDecimal categoryId = null;
 
     @SerializedName("transactionFee")
     private BigDecimal transactionFee = null;
@@ -511,28 +512,6 @@ public class Transaction implements IDbEntity
         this.payeeMessage = payeeMessage;
     }
 
-    public Transaction categoryId(BigDecimal categoryId)
-    {
-        this.categoryId = categoryId;
-        return this;
-    }
-
-    /**
-     * id of category for transaction. More info about category can be retrieved using /openapi/banking/categories resource.
-     *
-     * @return categoryId
-     **/
-    @ApiModelProperty(value = "id of category for transaction. More info about category can be retrieved using /openapi/banking/categories resource.")
-    public BigDecimal getCategoryId()
-    {
-        return categoryId;
-    }
-
-    public void setCategoryId(BigDecimal categoryId)
-    {
-        this.categoryId = categoryId;
-    }
-
     public Transaction transactionFee(BigDecimal transactionFee)
     {
         this.transactionFee = transactionFee;
@@ -627,6 +606,21 @@ public class Transaction implements IDbEntity
         return this;
     }
 
+    public Category getCategory()
+    {
+        return category;
+    }
+
+    public void setCategory(Category category)
+    {
+        this.category = category;
+    }
+
+    public Boolean getTransactionFeeCanceled()
+    {
+        return transactionFeeCanceled;
+    }
+
     /**
      * Get additionalInfoCard
      *
@@ -668,7 +662,6 @@ public class Transaction implements IDbEntity
                 Objects.equals(this.userDescription, transaction.userDescription) &&
                 Objects.equals(this.payerMessage, transaction.payerMessage) &&
                 Objects.equals(this.payeeMessage, transaction.payeeMessage) &&
-                Objects.equals(this.categoryId, transaction.categoryId) &&
                 Objects.equals(this.transactionFee, transaction.transactionFee) &&
                 Objects.equals(this.transactionFeeCanceled, transaction.transactionFeeCanceled) &&
                 Objects.equals(this.additionalInfoDomestic, transaction.additionalInfoDomestic) &&
@@ -679,7 +672,9 @@ public class Transaction implements IDbEntity
     @Override
     public int hashCode()
     {
-        return Objects.hash(id, accountId, value, partyAccount, partyDescription, direction, transactionType, valueDate, bookingDate, userDescription, payerMessage, payeeMessage, categoryId, transactionFee, transactionFeeCanceled, additionalInfoDomestic, additionalInfoForeign, additionalInfoCard);
+        return Objects.hash(id, accountId, value, partyAccount, partyDescription, direction, transactionType,
+                valueDate, bookingDate, userDescription, payerMessage, payeeMessage, transactionFee, transactionFeeCanceled,
+                additionalInfoDomestic, additionalInfoForeign, additionalInfoCard);
     }
 
 
@@ -701,7 +696,6 @@ public class Transaction implements IDbEntity
         sb.append("    userDescription: ").append(toIndentedString(userDescription)).append("\n");
         sb.append("    payerMessage: ").append(toIndentedString(payerMessage)).append("\n");
         sb.append("    payeeMessage: ").append(toIndentedString(payeeMessage)).append("\n");
-        sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
         sb.append("    transactionFee: ").append(toIndentedString(transactionFee)).append("\n");
         sb.append("    transactionFeeCanceled: ").append(toIndentedString(transactionFeeCanceled)).append("\n");
         sb.append("    additionalInfoDomestic: ").append(toIndentedString(additionalInfoDomestic)).append("\n");

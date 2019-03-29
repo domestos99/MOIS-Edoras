@@ -1,15 +1,12 @@
 package cz.uhk.mois.edoras.domain;
 
-import cz.uhk.mois.edoras.bankingapi.model.Payment;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Category implements Serializable
@@ -23,8 +20,17 @@ public class Category implements Serializable
     private String icon;
     private String type;
 
-    @OneToMany(mappedBy = "category")
-    private List<Payment> payments;
+    public Category()
+    {
+    }
+
+    public Category(String id, String name, String icon, String type)
+    {
+        this.id = id;
+        this.name = name;
+        this.icon = icon;
+        this.type = type;
+    }
 
     public String getId()
     {
@@ -77,11 +83,4 @@ public class Category implements Serializable
                 '}';
     }
 
-    public List<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
-    }
 }

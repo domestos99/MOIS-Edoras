@@ -7,7 +7,6 @@ import cz.uhk.mois.edoras.bankingapi.model.Payment;
 public class PaymentCategoryDTO implements Serializable
 {
     private Payment payment;
-    private String categoryId;
 
     public Payment getPayment()
     {
@@ -19,13 +18,4 @@ public class PaymentCategoryDTO implements Serializable
         this.payment = payment;
     }
 
-    public String getCategoryId()
-    {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId)
-    {
-        this.categoryId = categoryId;
-    }
 }

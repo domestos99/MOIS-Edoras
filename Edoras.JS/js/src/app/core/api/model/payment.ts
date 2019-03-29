@@ -13,12 +13,15 @@ import {PaymentAdditionalInfo} from './paymentAdditionalInfo';
 import {PaymentRecuringPayment} from './paymentRecuringPayment';
 import {PaymentValue} from './paymentValue';
 import {TransactionPartyAccount} from './transactionPartyAccount';
+import {Category} from "@app/core/model";
 
 
 export interface Payment {
 
   value: PaymentValue;
   partyAccount: TransactionPartyAccount;
+
+  category: Category;
   /**
    * payment order due date
    */

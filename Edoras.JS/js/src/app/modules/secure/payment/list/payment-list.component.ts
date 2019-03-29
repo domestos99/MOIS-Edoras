@@ -26,24 +26,36 @@ export class PaymentListComponent {
   reload() {
     this.isLoading = true;
     this.service.getAll().subscribe(resp => {
-
-      this.isLoading = false;
-
-      if (!this.filterModel) {
+        this.isLoading = false;
+        console.log(resp);
         this.data = resp;
-      }
-      else {
-        this.data = resp.filter(it => {
-          if (this.filterModel.categoryId) {
-            return it.categoryId == this.filterModel.categoryId;
-          }
-          return true;
-        });
-      }
-    }, error1 => {
-      this.isLoading = false;
-      console.log(error1);
-    });
+      },
+      error1 => {
+        this.isLoading = false;
+        console.log(error1);
+      });
+    // this.isLoading = true;
+    // this.service.getAll().subscribe(resp => {
+    //
+    //   this.isLoading = false;
+    //
+    //   console.log(resp);
+    //
+    //   if (!this.filterModel) {
+    //     this.data = resp;
+    //   }
+    //   else {
+    //     this.data = resp.filter(it => {
+    //       if (this.filterModel.categoryId) {
+    //         return it.categoryId == this.filterModel.categoryId;
+    //       }
+    //       return true;
+    //     });
+    //   }
+    // }, error1 => {
+    //   this.isLoading = false;
+    //   console.log(error1);
+    // });
   }
 
   filterChanged(filterModel: PaymentFilterModel) {

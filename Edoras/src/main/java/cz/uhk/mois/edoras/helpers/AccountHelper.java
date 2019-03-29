@@ -1,4 +1,4 @@
-package cz.uhk.mois.edoras.helpers.imp;
+package cz.uhk.mois.edoras.helpers;
 
 import cz.uhk.mois.edoras.bankingapi.model.TransactionPartyAccount;
 import cz.uhk.mois.edoras.utils.StringUtil;

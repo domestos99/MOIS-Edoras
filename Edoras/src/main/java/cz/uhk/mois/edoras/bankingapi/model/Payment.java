@@ -23,14 +23,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import cz.uhk.mois.edoras.domain.Category;
-import cz.uhk.mois.edoras.domain.IDbEntity;
-import io.swagger.annotations.ApiModelProperty;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import cz.uhk.mois.edoras.domain.Category;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -38,7 +37,7 @@ import javax.persistence.ManyToOne;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-20T15:21:33.179Z")
 @Entity
-public class Payment implements IDbEntity {
+public class Payment {
 
 
     @ManyToOne

@@ -2,13 +2,19 @@
 
   <mat-card-content>
 
-
     <mat-grid-list cols="5" rowHeight="5:1">
-      <mat-grid-tile><detail-button (onClick)="openDetail()"></detail-button></mat-grid-tile>
-      <mat-grid-tile><strong>{{getAccountFormatted(data.payment.partyAccount)}}</strong></mat-grid-tile>
-      <mat-grid-tile><div class="gridPrice"> {{getMoneyFormatted(data.payment.value)}} </div> </mat-grid-tile>
+      <mat-grid-tile>
+        <detail-button (onClick)="openDetail()"></detail-button>
+      </mat-grid-tile>
+      <mat-grid-tile><strong>{{getAccountFormatted(data.payment.partyAccount)}}</strong>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="gridPrice"> {{getMoneyFormatted(data.payment.value)}} </div>
+      </mat-grid-tile>
       <mat-grid-tile>{{data.payment.dueDate | date }}</mat-grid-tile>
-      <mat-grid-tile><category-view [categoryId]="data.categoryId" ></category-view></mat-grid-tile>
+      <mat-grid-tile>
+        <category-view [category]="data.payment.category"></category-view>
+      </mat-grid-tile>
     </mat-grid-list>
 
   </mat-card-content>

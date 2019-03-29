@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import cz.uhk.mois.edoras.dao.CategoryDAO;
 import cz.uhk.mois.edoras.domain.Category;
-import cz.uhk.mois.edoras.repositories.DAO.CategoryDAO;
 import cz.uhk.mois.edoras.services.ICategoryService;
 import cz.uhk.mois.edoras.utils.ListUtils;
 import cz.uhk.mois.edoras.utils.StringUtil;

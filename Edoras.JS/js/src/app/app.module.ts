@@ -41,6 +41,8 @@ import {CategoryViewComponent} from "@app/modules/secure/category/category-view/
 import {TransactionListItemDetailComponent} from "@app/modules/secure/transaction/list/transaction-list-item-detail.component";
 import {TransactionCategoryService} from "@app/core/services/transactionCategory.service";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
+import {AdminComponent} from "@app/modules/secure/admin/admin.component";
+import {AdminService} from "@app/modules/secure/admin/admin.service";
 
 
 @NgModule({
@@ -69,6 +71,7 @@ import {CategoryChangeComponent} from "@app/modules/secure/category/category-cha
     SecureComponent,
     PageNotFoundComponent,
     CategoryChangeComponent,
+    AdminComponent,
 
 
   ],
@@ -113,6 +116,7 @@ import {CategoryChangeComponent} from "@app/modules/secure/category/category-cha
     CategoryService,
     PaymentCategoryService,
     TransactionCategoryService,
+    AdminService,
 
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

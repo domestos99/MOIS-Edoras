@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import cz.uhk.mois.edoras.bankingapi.BankingApiFacade;
 import cz.uhk.mois.edoras.bankingapi.model.Transaction;
-import cz.uhk.mois.edoras.repositories.DAO.TransactionDAO;
+import cz.uhk.mois.edoras.dao.TransactionDAO;
 import cz.uhk.mois.edoras.services.ITransactionService;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryDTO;
 
@@ -18,13 +16,11 @@ import cz.uhk.mois.edoras.web.dto.TransactionCategoryDTO;
 public class TransactionService implements ITransactionService
 {
     private final TransactionDAO transactionDAO;
-    private final TransactionCategoryService transactionCategoryService;
 
     @Autowired
-    public TransactionService(TransactionDAO transactionDAO, TransactionCategoryService transactionCategoryService)
+    public TransactionService(TransactionDAO transactionDAO)
     {
         this.transactionDAO = transactionDAO;
-        this.transactionCategoryService = transactionCategoryService;
     }
 
     @Override
@@ -38,7 +34,6 @@ public class TransactionService implements ITransactionService
         {
             TransactionCategoryDTO dto = new TransactionCategoryDTO();
             dto.setTransaction(p);
-            dto.setCategoryId(findCategoryForTransaction(p));
             result.add(dto);
         }
         return result;
@@ -54,13 +49,8 @@ public class TransactionService implements ITransactionService
 
         TransactionCategoryDTO dto = new TransactionCategoryDTO();
         dto.setTransaction(transaction.get());
-        dto.setCategoryId(findCategoryForTransaction(transaction.get()));
 
         return Optional.of(dto);
     }
 
-    private String findCategoryForTransaction(Transaction transaction)
-    {
-        return transactionCategoryService.getCategoryForPayment(transaction);
-    }
 }

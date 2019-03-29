@@ -5,8 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-import java.io.Reader;
-
 import cz.uhk.mois.edoras.logger.LoggerFacade;
 
 public class JsonUtilsSafe
@@ -20,23 +18,6 @@ public class JsonUtilsSafe
         return gson.toJson(el); // done
     }
 
-
-    public static <T> T fromJson(byte[] serialized, Class<T> clazz)
-    {
-        try
-        {
-            if (ByteUtil.isEmptyOrNull(serialized))
-                return null;
-
-            return fromJson(new String(serialized), clazz);
-        }
-        catch (Exception e)
-        {
-            LoggerFacade.log(e);
-            return null;
-        }
-    }
-
     public static <T> T fromJson(String serialized, Class<T> clazz)
     {
         try
@@ -44,19 +25,6 @@ public class JsonUtilsSafe
             if (StringUtil.isEmptyOrNull(serialized))
                 return null;
 
-            return JsonUtils.fromJson(serialized, clazz);
-        }
-        catch (Exception e)
-        {
-            LoggerFacade.log(e);
-            return null;
-        }
-    }
-
-    public static <T> T fromJson(Reader serialized, Class<T> clazz)
-    {
-        try
-        {
             return JsonUtils.fromJson(serialized, clazz);
         }
         catch (Exception e)

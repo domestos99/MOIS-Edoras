@@ -35,7 +35,6 @@ public class PaymentController
     @GetMapping("/api/payment/{id}")
     public ResponseEntity<PaymentCategoryDTO> getPaymentById(@PathVariable("id") String id)
     {
-
         Optional<PaymentCategoryDTO> payments = paymentService.getById(id);
 
         if (payments.isPresent())

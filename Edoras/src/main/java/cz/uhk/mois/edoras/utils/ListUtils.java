@@ -21,4 +21,9 @@ public class ListUtils
     {
         return Arrays.asList(data);
     }
+
+    public static <T> Iterable<T> toIterable(T[] data)
+    {
+        return Arrays.asList(data);
+    }
 }

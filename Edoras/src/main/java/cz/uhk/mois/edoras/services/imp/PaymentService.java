@@ -1,12 +1,14 @@
 package cz.uhk.mois.edoras.services.imp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import cz.uhk.mois.edoras.bankingapi.model.Payment;
-import cz.uhk.mois.edoras.repositories.DAO.PaymentDAO;
+import cz.uhk.mois.edoras.dao.PaymentDAO;
 import cz.uhk.mois.edoras.services.IPaymentService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryDTO;
 
@@ -29,7 +31,6 @@ public class PaymentService implements IPaymentService {
         for (Payment p : payments) {
             PaymentCategoryDTO dto = new PaymentCategoryDTO();
             dto.setPayment(p);
-            dto.setCategoryId(p.getCategory().getId());
             result.add(dto);
         }
         return result;
@@ -44,8 +45,6 @@ public class PaymentService implements IPaymentService {
 
         PaymentCategoryDTO dto = new PaymentCategoryDTO();
         dto.setPayment(payment.get());
-
-        dto.setCategoryId(payment.get().getCategory().getId());
 
         return Optional.of(dto);
     }

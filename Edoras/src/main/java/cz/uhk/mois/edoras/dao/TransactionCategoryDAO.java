@@ -1,4 +1,4 @@
-package cz.uhk.mois.edoras.repositories.DAO;
+package cz.uhk.mois.edoras.dao;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -22,11 +22,11 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Objects;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * party account number
@@ -93,7 +93,7 @@ public class PaymentRecuringPayment {
     }
   }
 
-  @SerializedName("interval1")
+  @SerializedName("interval")
   @Enumerated(EnumType.STRING)
   private IntervalEnum intervalEnum = null;
 
