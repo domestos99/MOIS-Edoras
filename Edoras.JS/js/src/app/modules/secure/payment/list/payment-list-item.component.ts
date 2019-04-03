@@ -38,10 +38,10 @@ export class PaymentListItemComponent {
 
   openPaymentDetailModal(): void {
     const dialogRef = this.dialog.open(PaymentListItemDetailComponent, {
-      maxWidth: '80vw',
-      maxHeight: '80vh',
-      width: '80%',
-      height: '80%',
+      maxWidth: '50vw',
+      maxHeight: '40vh',
+      width: '50%',
+      height: '40%',
       data: this.data,
       panelClass: 'full-screen-modal',
     });

@@ -2,11 +2,11 @@
 
 <add-button mat-raised-button (onClick)="addNewCategory()"></add-button>
 
-<mat-tab-group>
-  <mat-tab label="Income">
+<div class="row">
+  <div class="col-sm-6">
     <category-list #cateListIn [type]="'INCOME'"></category-list>
-  </mat-tab>
-  <mat-tab label="Expense">
+  </div>
+  <div class="col-sm-6">
     <category-list #cateListOut [type]="'EXPENSE'"></category-list>
-  </mat-tab>
-</mat-tab-group>
+  </div>
+</div>

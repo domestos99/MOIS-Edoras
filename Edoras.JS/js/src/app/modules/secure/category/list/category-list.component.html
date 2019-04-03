@@ -1,12 +1,13 @@
 <spinner *ngIf="isLoading"></spinner>
 
+<h4>{{_type}}</h4>
+
 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
   <thead>
   <tr>
     <td></td>
     <td>Icon</td>
     <td>Name</td>
-    <td>Type</td>
     <td></td>
   </tr>
   </thead>
@@ -14,16 +15,15 @@
 
   <tr *ngFor="let row of data">
 
-    <td width="150px">
+    <td width="100px">
       <edit-button (onClick)="editCategory(row)"></edit-button>
     </td>
-    <td>
+    <td width="50px">
       <mat-icon>{{row.icon}}</mat-icon>
     </td>
     <td>{{row.name}}</td>
-    <td>{{row.type}}</td>
 
-    <td width="150px">
+    <td width="50px">
       <delete-button (onClick)="onDelete(row)"></delete-button>
     </td>
 
