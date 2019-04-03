@@ -11,6 +11,7 @@ import cz.uhk.mois.edoras.bankingapi.model.Transaction;
 import cz.uhk.mois.edoras.dao.TransactionDAO;
 import cz.uhk.mois.edoras.services.ITransactionService;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryDTO;
+import cz.uhk.mois.edoras.web.dto.TransactionFilterModel;
 
 @Service
 public class TransactionService implements ITransactionService
@@ -24,8 +25,12 @@ public class TransactionService implements ITransactionService
     }
 
     @Override
-    public List<TransactionCategoryDTO> findAll()
+    public List<TransactionCategoryDTO> findAll(TransactionFilterModel filterModel)
     {
+        // TODO user filterModel
+        // valueDate
+        // category
+
         List<Transaction> transactions = transactionDAO.findAll();
 
         List<TransactionCategoryDTO> result = new ArrayList<>();

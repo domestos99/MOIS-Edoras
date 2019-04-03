@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import cz.uhk.mois.edoras.services.IPaymentService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryDTO;
+import cz.uhk.mois.edoras.web.dto.PaymentFilterModel;
 
 @RestController
 public class PaymentController
@@ -25,10 +26,11 @@ public class PaymentController
         this.paymentService = paymentService;
     }
 
+    // localhost:4500/api/payments?dtFrom=03-04-2018&dtTo=04-04-2018&cateId=test
     @GetMapping("/api/payments")
-    public ResponseEntity<List<PaymentCategoryDTO>> getAll()
+    public ResponseEntity<List<PaymentCategoryDTO>> getAll(PaymentFilterModel filterModel)
     {
-        List<PaymentCategoryDTO> payments = paymentService.findAll();
+        List<PaymentCategoryDTO> payments = paymentService.findAll(filterModel);
         return new ResponseEntity(payments, HttpStatus.OK);
     }
 

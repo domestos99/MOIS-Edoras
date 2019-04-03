@@ -11,6 +11,7 @@ import cz.uhk.mois.edoras.bankingapi.model.Payment;
 import cz.uhk.mois.edoras.dao.PaymentDAO;
 import cz.uhk.mois.edoras.services.IPaymentService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryDTO;
+import cz.uhk.mois.edoras.web.dto.PaymentFilterModel;
 
 @Service
 public class PaymentService implements IPaymentService {
@@ -23,7 +24,12 @@ public class PaymentService implements IPaymentService {
     }
 
     @Override
-    public List<PaymentCategoryDTO> findAll() {
+    public List<PaymentCategoryDTO> findAll(final PaymentFilterModel filterModel) {
+
+        // TODO user filterModel
+        // dueDate
+        // category
+
         List<Payment> payments = paymentDAO.findAll();
 
         List<PaymentCategoryDTO> result = new ArrayList<>();

@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import cz.uhk.mois.edoras.services.ITransactionService;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryDTO;
+import cz.uhk.mois.edoras.web.dto.TransactionFilterModel;
 
 @RestController
 public class TransactionController
@@ -25,10 +26,12 @@ public class TransactionController
         this.transactionService = transactionService;
     }
 
+    // localhost:4500/api/transactions?dtFrom=03-04-2018&dtTo=04-04-2018&cateId=test
+
     @GetMapping("/api/transactions")
-    public ResponseEntity<List<TransactionCategoryDTO>> getAll()
+    public ResponseEntity<List<TransactionCategoryDTO>> getAll(TransactionFilterModel filterModel)
     {
-        List<TransactionCategoryDTO> transactions = transactionService.findAll();
+        List<TransactionCategoryDTO> transactions = transactionService.findAll(filterModel);
         return new ResponseEntity(transactions, HttpStatus.OK);
     }
 
