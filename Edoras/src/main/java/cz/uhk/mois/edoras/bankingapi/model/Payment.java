@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Embedded;
@@ -60,7 +61,7 @@ public class Payment {
     private TransactionPartyAccount partyAccount = null;
 
     @SerializedName("dueDate")
-    private String dueDate = null;
+    private Date dueDate = null;
 
     @SerializedName("recuringPayment")
     @Embedded
@@ -227,7 +228,7 @@ public class Payment {
         this.partyAccount = partyAccount;
     }
 
-    public Payment dueDate(String dueDate)
+    public Payment dueDate(Date dueDate)
     {
         this.dueDate = dueDate;
         return this;
@@ -239,12 +240,12 @@ public class Payment {
      * @return dueDate
      **/
     @ApiModelProperty(required = true, value = "payment order due date")
-    public String getDueDate()
+    public Date getDueDate()
     {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate)
+    public void setDueDate(Date dueDate)
     {
         this.dueDate = dueDate;
     }

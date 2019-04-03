@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Embedded;
@@ -216,10 +217,10 @@ public class Transaction
     private TransactionTypeEnum transactionType = null;
 
     @SerializedName("valueDate")
-    private String valueDate = null;
+    private Date valueDate = null;
 
     @SerializedName("bookingDate")
-    private String bookingDate = null;
+    private Date bookingDate = null;
 
     @SerializedName("userDescription")
     private String userDescription = null;
@@ -402,7 +403,7 @@ public class Transaction
         this.transactionType = transactionType;
     }
 
-    public Transaction valueDate(String valueDate)
+    public Transaction valueDate(Date valueDate)
     {
         this.valueDate = valueDate;
         return this;
@@ -414,17 +415,17 @@ public class Transaction
      * @return valueDate
      **/
     @ApiModelProperty(required = true, value = "transaction value date, e.g. the day transaction \"happened\"")
-    public String getValueDate()
+    public Date getValueDate()
     {
         return valueDate;
     }
 
-    public void setValueDate(String valueDate)
+    public void setValueDate(Date valueDate)
     {
         this.valueDate = valueDate;
     }
 
-    public Transaction bookingDate(String bookingDate)
+    public Transaction bookingDate(Date bookingDate)
     {
         this.bookingDate = bookingDate;
         return this;
@@ -436,12 +437,12 @@ public class Transaction
      * @return bookingDate
      **/
     @ApiModelProperty(required = true, value = "transaction booking date, e.g. the day transaction was bookkeeped")
-    public String getBookingDate()
+    public Date getBookingDate()
     {
         return bookingDate;
     }
 
-    public void setBookingDate(String bookingDate)
+    public void setBookingDate(Date bookingDate)
     {
         this.bookingDate = bookingDate;
     }
