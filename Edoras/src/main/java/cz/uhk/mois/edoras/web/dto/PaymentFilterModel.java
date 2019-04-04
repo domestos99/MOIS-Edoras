@@ -7,7 +7,9 @@ import java.util.Date;
 
 public class PaymentFilterModel implements Serializable
 {
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dtFrom;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dtTo;
     private String cateId;
 

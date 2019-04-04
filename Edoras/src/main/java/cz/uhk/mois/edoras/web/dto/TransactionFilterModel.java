@@ -1,11 +1,15 @@
 package cz.uhk.mois.edoras.web.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class TransactionFilterModel implements Serializable
 {
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dtFrom;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dtTo;
     private String cateId;
 
