@@ -8,6 +8,8 @@ import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 export class EditButtonComponent {
 
 
+  @Input() text: string;
+  @Input() showIcon: boolean = true;
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   onButtonClick() {

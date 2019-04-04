@@ -6,20 +6,9 @@
       <mat-grid-tile><detail-button (onClick)="openDetail()"></detail-button></mat-grid-tile>
       <mat-grid-tile><strong>{{getAccountFormatted(data.transaction.partyAccount)}}</strong></mat-grid-tile>
       <mat-grid-tile><div class="gridPrice"> {{getMoneyFormatted(data.transaction.value)}} </div> </mat-grid-tile>
-      <mat-grid-tile>{{data.transaction.dueDate | date }}</mat-grid-tile>
+      <mat-grid-tile>{{data.transaction.valueDate | date }}</mat-grid-tile>
       <mat-grid-tile><category-view [category]="data.transaction.category" ></category-view></mat-grid-tile>
     </mat-grid-list>
 
   </mat-card-content>
 </mat-card>
-
-<!--<div class="container">
-  <div class="row tileHead">
-    CategoryId:
-  </div>
-  <div class="row tileBody">
-    {{data.payment.categoryId}}
-  </div>
-</div>-->
-
-

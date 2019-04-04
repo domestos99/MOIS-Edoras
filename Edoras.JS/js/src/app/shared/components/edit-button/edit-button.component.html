@@ -1,3 +1,5 @@
 <button mat-stroked-button color="primary" (click)="onButtonClick()">
-  <mat-icon aria-label="Edit">edit</mat-icon>
+
+  <mat-icon *ngIf="showIcon" aria-label="Edit">edit</mat-icon>
+  <ng-container>{{text}}</ng-container>
 </button>
