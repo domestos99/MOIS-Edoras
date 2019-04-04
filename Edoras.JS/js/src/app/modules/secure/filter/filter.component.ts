@@ -5,7 +5,8 @@ import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'filter',
-  templateUrl: 'filter.component.html'
+  templateUrl: 'filter.component.html',
+  styleUrls: ['./filter.component.css']
 })
 export class FilterComponent {
 

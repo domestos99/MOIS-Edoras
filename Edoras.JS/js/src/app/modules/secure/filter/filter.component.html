@@ -1,22 +1,27 @@
 <div>
-  <category-select (selectionChange)="selectionChange($event)"></category-select>
+  <div class="paddingRight">
+    <category-select (selectionChange)="selectionChange($event)"></category-select>
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="dtPickerFrom" placeholder="Date From"
-           [formControl]="serializedDateFrom"
-           (dateInput)="onDtFromChangeFrom($event)" (dateChange)="onDtFromChangeFrom($event)">
-    <mat-datepicker-toggle matSuffix [for]="dtPickerFrom"></mat-datepicker-toggle>
-    <mat-datepicker #dtPickerFrom></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput [matDatepicker]="dtPickerTo" placeholder="Date To"
-           [formControl]="serializedDateTo"
-           (dateInput)="onDtFromChangeTo($event)" (dateChange)="onDtFromChangeTo($event)">
-    <mat-datepicker-toggle matSuffix [for]="dtPickerTo"></mat-datepicker-toggle>
-    <mat-datepicker #dtPickerTo></mat-datepicker>
-  </mat-form-field>
-
-  <ok-button (onClick)="onFilterSubmit()"></ok-button>
-
+  </div>
+  <div class="paddingRight">
+    <mat-form-field>
+      <input matInput [matDatepicker]="dtPickerFrom" placeholder="Date From"
+             [formControl]="serializedDateFrom"
+             (dateInput)="onDtFromChangeFrom($event)" (dateChange)="onDtFromChangeFrom($event)">
+      <mat-datepicker-toggle matSuffix [for]="dtPickerFrom"></mat-datepicker-toggle>
+      <mat-datepicker #dtPickerFrom></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="paddingRight">
+    <mat-form-field>
+      <input matInput [matDatepicker]="dtPickerTo" placeholder="Date To"
+             [formControl]="serializedDateTo"
+             (dateInput)="onDtFromChangeTo($event)" (dateChange)="onDtFromChangeTo($event)">
+      <mat-datepicker-toggle matSuffix [for]="dtPickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #dtPickerTo></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="paddingRight">
+    <ok-button (onClick)="onFilterSubmit()"></ok-button>
+  </div>
 </div>
