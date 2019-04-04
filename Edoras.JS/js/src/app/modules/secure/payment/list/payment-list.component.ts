@@ -67,4 +67,8 @@ export class PaymentListComponent {
   requestReload() {
     this.reload();
   }
+
+  onFilterChanged(event) {
+    console.log(event);
+  }
 }

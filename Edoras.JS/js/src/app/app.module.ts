@@ -46,6 +46,7 @@ import {OverviewComponent} from "@app/modules/secure/overview/overview.component
 import {OverviewService} from "@app/modules/secure/overview/overview.service";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
 import {TransactionOverviewComponent} from "@app/modules/secure/overview/transaction-overview/transaction-overview.component";
+import {FilterComponent} from "@app/modules/secure/filter/filter.component";
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import {TransactionOverviewComponent} from "@app/modules/secure/overview/transac
     AdminComponent,
     OverviewComponent,
     TransactionOverviewComponent,
+    FilterComponent,
 
 
   ],

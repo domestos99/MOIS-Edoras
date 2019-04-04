@@ -4,6 +4,8 @@
 
 <spinner *ngIf="isLoading"></spinner>
 
+<filter (filterChanged)="onFilterChanged($event)" ></filter>
+
 <div *ngIf="data">
 <!--
   <mat-accordion [multi]="true">
