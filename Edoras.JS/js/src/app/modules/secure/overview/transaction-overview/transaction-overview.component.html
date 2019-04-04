@@ -1,22 +1,19 @@
 <h3>Transaction overview</h3>
+<br>
+<br>
 
-
-<div *ngFor="let row of data">
-
-  Category:<br>
-  {{row.category.name}}
-  <br>
-  Transactions: <br>
-  <div *ngFor="let tr of row.transactions">
-    {{tr.id}}
+<div class="row">
+  <div class="col-sm-6">
+    <my-chart [title]="'Income'" [chartData]="chartData" [argumentField]="'name'"
+              [valueField]="'suma'"></my-chart>
   </div>
-  <br>
-  Total: <br>
-  {{row.suma}} Kč
-
-  <br>
-  <br>
-
-
+  <div class="col-sm-6">
+    <my-chart [title]="'Expense'" [chartData]="chartData2" [argumentField]="'name'"
+              [valueField]="'suma'"></my-chart>
+  </div>
 </div>
+
+
+
+
 

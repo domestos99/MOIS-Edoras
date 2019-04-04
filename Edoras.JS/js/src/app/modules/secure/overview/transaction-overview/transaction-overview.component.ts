@@ -17,12 +17,17 @@ export class TransactionOverviewComponent {
 
   data: Array<TransactionOverviewDTO>;
 
+  chartData: Array<ChartData>;
+  chartData2: Array<ChartData>;
+
+
   reload() {
     this.isLoading = true;
     this.service.getTransactionOverview().subscribe(resp => {
         this.isLoading = false;
         console.log(resp);
         this.data = resp;
+        this.udpateChartData();
       },
       error1 => {
         this.isLoading = false;
@@ -30,5 +35,26 @@ export class TransactionOverviewComponent {
       });
   }
 
+  private udpateChartData() {
 
+    this.chartData = this.data.map(x => {
+      if (x.category && x.category.type == 'INCOME')
+        return new ChartData(x.category.name, x.suma);
+      else return null;
+    });
+
+    this.chartData2 = this.data.map(x => {
+      if (x.category && x.category.type == 'EXPENSE')
+        return new ChartData(x.category.name, x.suma);
+      else return null;
+    });
+
+  }
+}
+
+
+export class ChartData {
+
+  constructor(public name: string, public suma: number) {
+  }
 }

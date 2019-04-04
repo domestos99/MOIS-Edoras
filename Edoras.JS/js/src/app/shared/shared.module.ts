@@ -71,9 +71,10 @@ import {AddButtonComponent} from "@app/shared/components/add-button/add-button.c
 import {AlertComponent} from "@app/shared/components/alert-component/alert.component";
 import {EditButtonComponent} from "@app/shared/components/edit-button/edit-button.component";
 import {YesNoDialogComponent} from "@app/shared/components/yes-no-dialog/yes-no-dialog.component";
-import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 import {SpinnerComponent} from "@app/shared/components/spinner/spinner.component";
 import {OkButtonComponent} from "@app/shared/components/ok-button/ok-button.component";
+import {MyChartComponent} from "@app/shared/components/my-chart/my-chart.component";
+import {DevExpressModule} from "@app/shared/devexpress.module";
 
 @NgModule({
   imports: [
@@ -82,6 +83,7 @@ import {OkButtonComponent} from "@app/shared/components/ok-button/ok-button.comp
     ReactiveFormsModule,
     RouterModule,
     MaterialModule,
+    DevExpressModule,
 
     NgbModule.forRoot(),
     FontAwesomeModule
@@ -96,6 +98,7 @@ import {OkButtonComponent} from "@app/shared/components/ok-button/ok-button.comp
     SpinnerComponent,
     AddButtonComponent,
     OkButtonComponent,
+    MyChartComponent,
 
   ],
   entryComponents:
@@ -124,6 +127,7 @@ import {OkButtonComponent} from "@app/shared/components/ok-button/ok-button.comp
     YesNoDialogComponent,
     SpinnerComponent,
     OkButtonComponent,
+    MyChartComponent,
 
 
   ]

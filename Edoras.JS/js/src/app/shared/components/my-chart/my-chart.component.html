@@ -1,0 +1,31 @@
+<dx-pie-chart
+  id="pie"
+  [title]="title"
+  palette="bright"
+  [dataSource]="chartData"
+  (onPointClick)="pointClickHandler($event)"
+  (onLegendClick)="legendClickHandler($event)"
+>
+  <dxi-series
+    [argumentField]="argumentField"
+    [valueField]="valueField">
+    <dxo-label [visible]="true"
+    [customizeText]="customizeLabel"
+    >
+      <dxo-connector
+        [visible]="true"
+        [width]="1"></dxo-connector>
+
+    </dxo-label>
+  </dxi-series>
+
+
+  <dxo-size [width]="500"></dxo-size>
+
+  <dxo-legend
+    horizontalAlignment="center"
+    verticalAlignment="bottom"></dxo-legend>
+
+  <dxo-export [enabled]="true"></dxo-export>
+
+</dx-pie-chart>
