@@ -1,11 +1,11 @@
 <spinner [diameterSize]="'small'" *ngIf="isLoading"></spinner>
 
-<div class="categoryView" [class.pointer]="isEditable()" *ngIf="category">
-  <mat-icon>{{category.icon}}</mat-icon>
+<div class="categoryView" [class.pointer]="isEditable()" *ngIf="acategory">
+  <mat-icon>{{acategory.icon}}</mat-icon>
   <br>
-  {{category.name}}
+  {{acategory.name}}
 </div>
-<div class="categoryView" [class.pointer]="isEditable()" *ngIf="!category">
+<div class="categoryView" [class.pointer]="isEditable()" *ngIf="!acategory">
 
   <div *ngIf="isEditable()">
     <edit-button [text]="'Change category'" [showIcon]="false"></edit-button>

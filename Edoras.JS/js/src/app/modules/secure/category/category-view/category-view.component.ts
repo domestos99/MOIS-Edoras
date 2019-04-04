@@ -20,7 +20,13 @@ export class CategoryViewComponent {
 
   isLoading: boolean = false;
 
-  @Input() category: Category;
+  acategory : Category;
+
+  @Input()
+  set category(value : Category) {
+    this.acategory = value;
+  }
+
   @Input() editable: boolean;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter();
