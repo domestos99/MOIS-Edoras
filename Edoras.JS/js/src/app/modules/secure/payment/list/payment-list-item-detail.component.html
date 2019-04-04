@@ -2,15 +2,12 @@
 
   <mat-grid-list cols="7" rowHeight="5:2">
 
-  <mat-grid-tile>
-    <category-view [category]="data.payment.category" ></category-view>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <category-view [category]="data.payment.category" [editable]="true"
+                     (onClick)="onCategoryChangeClick()"></category-view>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <button mat-stroked-button color="primary" (click)="onCategoryChangeClick()">
-      Change category
-    </button>
-  </mat-grid-tile>
+
   </mat-grid-list>
 
 
@@ -117,10 +114,6 @@
     </mat-grid-tile>
 
 
-
-
-
-
     <!--  <mat-grid-tile>
         <div class="container">
           <div class="row tileHead">
@@ -136,9 +129,7 @@
   </mat-grid-list>
 
 
-
 </div>
-
 
 
 <div mat-dialog-actions>

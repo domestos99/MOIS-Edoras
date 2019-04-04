@@ -17,17 +17,20 @@ export class FilterComponent {
   serializedDateTo;
 
   constructor() {
-    this.serializedDateFrom = new FormControl((new Date()).toISOString());
-    this.serializedDateTo = new FormControl((new Date()).toISOString());
+
+    let dtFrom = new Date();
+    dtFrom.setDate(dtFrom.getDate() - 30);
+    let dtTo = new Date();
+
+    this.serializedDateFrom = new FormControl((dtFrom).toISOString());
+    this.serializedDateTo = new FormControl((dtTo).toISOString());
+
+    this.filterObj.dtFrom = dtFrom;
+    this.filterObj.dtTo = dtTo;
   }
 
   selectionChange(event: string) {
     this.filterObj.cateId = event;
-    this.onFilterChanged();
-  }
-
-  private onFilterChanged() {
-    this.filterChanged.emit(this.filterObj);
   }
 
   onDtFromChangeFrom(event) {
@@ -36,5 +39,13 @@ export class FilterComponent {
 
   onDtFromChangeTo(event) {
     this.filterObj.dtTo = event.value;
+  }
+
+  private onFilterChanged() {
+    this.filterChanged.emit(this.filterObj);
+  }
+
+  onFilterSubmit() {
+    this.onFilterChanged();
   }
 }

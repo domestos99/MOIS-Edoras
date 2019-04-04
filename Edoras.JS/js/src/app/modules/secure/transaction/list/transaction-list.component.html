@@ -2,12 +2,24 @@
 
 <spinner *ngIf="isLoading"></spinner>
 
+
+<filter (filterChanged)="onFilterChanged($event)"></filter>
+
 <div *ngIf="data">
 
-  <mat-accordion [multi]="true">
+  <div *ngIf="data.length != 0">
 
-    <ng-container *ngFor="let row of data">
-      <transaction-list-item (onRequestReload)="requestReload()" [data]="row"></transaction-list-item>
-    </ng-container>
-  </mat-accordion>
+    <mat-accordion [multi]="true">
+
+      <ng-container *ngFor="let row of data">
+        <transaction-list-item (onRequestReload)="requestReload()"
+                               [data]="row"></transaction-list-item>
+      </ng-container>
+    </mat-accordion>
+
+  </div>
+  <div *ngIf="data.length == 0">
+    No Data
+  </div>
+  
 </div>

@@ -1,10 +1,8 @@
 import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 
 import {PaymentService} from "../payment.service";
-import {NavigationselperService} from "@app/core";
-import {Payment} from "@app/core/api/model/payment";
 import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
-import {PaymentFilterModel} from "@app/modules/secure/payment/payment-filter/paymentFilter.model";
+import {Filtermodel} from "@app/modules/secure/filter/filtermodel";
 
 
 @Component({
@@ -20,12 +18,11 @@ export class PaymentListComponent {
   }
 
   data: Array<PaymentCategoryDTO> = [];
-  panelOpenState = false;
-  filterModel: PaymentFilterModel;
+  filterModel: Filtermodel;
 
   reload() {
     this.isLoading = true;
-    this.service.getAll().subscribe(resp => {
+    this.service.getAll2(this.filterModel).subscribe(resp => {
         this.isLoading = false;
         console.log(resp);
         this.data = resp;
@@ -58,17 +55,13 @@ export class PaymentListComponent {
     // });
   }
 
-  filterChanged(filterModel: PaymentFilterModel) {
-    this.filterModel = filterModel;
-    console.log('filter changed');
-    this.reload();
-  }
-
   requestReload() {
     this.reload();
   }
 
-  onFilterChanged(event) {
-    console.log(event);
+  onFilterChanged(filterModel: Filtermodel) {
+    console.log('onFilterChanged: ', filterModel);
+    this.filterModel = filterModel;
+    this.reload();
   }
 }

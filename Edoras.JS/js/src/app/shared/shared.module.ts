@@ -73,6 +73,7 @@ import {EditButtonComponent} from "@app/shared/components/edit-button/edit-butto
 import {YesNoDialogComponent} from "@app/shared/components/yes-no-dialog/yes-no-dialog.component";
 import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 import {SpinnerComponent} from "@app/shared/components/spinner/spinner.component";
+import {OkButtonComponent} from "@app/shared/components/ok-button/ok-button.component";
 
 @NgModule({
   imports: [
@@ -93,7 +94,9 @@ import {SpinnerComponent} from "@app/shared/components/spinner/spinner.component
     EditButtonComponent,
     YesNoDialogComponent,
     SpinnerComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    OkButtonComponent,
+
   ],
   entryComponents:
     [
@@ -120,6 +123,7 @@ import {SpinnerComponent} from "@app/shared/components/spinner/spinner.component
     AlertComponent,
     YesNoDialogComponent,
     SpinnerComponent,
+    OkButtonComponent,
 
 
   ]

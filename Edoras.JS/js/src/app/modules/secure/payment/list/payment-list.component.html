@@ -4,21 +4,23 @@
 
 <spinner *ngIf="isLoading"></spinner>
 
-<filter (filterChanged)="onFilterChanged($event)" ></filter>
+<filter (filterChanged)="onFilterChanged($event)"></filter>
 
 <div *ngIf="data">
-<!--
-  <mat-accordion [multi]="true">
 
-    <ng-container *ngFor="let row of data">
-      <payment-list-item (onRequestReload)="requestReload()" [data]="row"></payment-list-item>
-    </ng-container>
-  </mat-accordion>-->
+  <div *ngIf="data.length != 0">
 
-  <mat-list>
-  <ng-container *ngFor="let row of data">
-    <payment-list-item [data]="row"></payment-list-item>
-  </ng-container>
+    <mat-list>
+      <ng-container *ngFor="let row of data">
+        <payment-list-item [data]="row"></payment-list-item>
+      </ng-container>
+    </mat-list>
 
-  </mat-list>
+  </div>
+  <div *ngIf="data.length == 0">
+    No Data
+  </div>
+
+
 </div>
+

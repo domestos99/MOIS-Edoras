@@ -36,7 +36,6 @@ import {CategoryService} from "@app/modules/secure/category/category.service";
 import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
 import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 import {PaymentListItemDetailComponent} from "@app/modules/secure/payment/list/payment-list-item-detail.component";
-import {PaymentFilterComponent} from "@app/modules/secure/payment/payment-filter/payment-filter.component";
 import {CategoryViewComponent} from "@app/modules/secure/category/category-view/category-view.component";
 import {TransactionListItemDetailComponent} from "@app/modules/secure/transaction/list/transaction-list-item-detail.component";
 import {TransactionCategoryService} from "@app/core/services/transactionCategory.service";
@@ -60,7 +59,6 @@ import {FilterComponent} from "@app/modules/secure/filter/filter.component";
     PaymentListComponent,
     PaymentListItemComponent,
     PaymentListItemDetailComponent,
-    PaymentFilterComponent,
     CategorySelectComponent,
     CategoryComponent,
     CategoryListComponent,

@@ -5,6 +5,7 @@ import {Payment} from "@app/core/api/model/payment";
 import {Transaction} from "@app/core/api/model/transaction";
 import {TransactionService} from "@app/modules/secure/transaction/transaction.service";
 import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
+import {Filtermodel} from "@app/modules/secure/filter/filtermodel";
 
 
 @Component({
@@ -14,17 +15,17 @@ import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 export class TransactionListComponent {
 
   isLoading: boolean = false;
+  filterModel: Filtermodel;
 
   constructor(private service: TransactionService) {
     this.reload();
   }
 
   data: Array<TransactionCategoryDTO> = [];
-  panelOpenState = false;
 
   reload() {
     this.isLoading = true;
-    this.service.getAll().subscribe(resp => {
+    this.service.getAll2(this.filterModel).subscribe(resp => {
         this.isLoading = false;
         console.log(resp);
         this.data = resp;
@@ -36,6 +37,12 @@ export class TransactionListComponent {
   }
 
   requestReload() {
+    this.reload();
+  }
+
+  onFilterChanged(filterModel: Filtermodel) {
+    console.log('onFilterChanged: ', filterModel);
+    this.filterModel = filterModel;
     this.reload();
   }
 }
