@@ -33,6 +33,13 @@
       </a>
       <ul class="dropdown-menu dropdown-user">
 
+        <li>
+          <a [routerLink]="['/admin']" role="button">
+            <i class="fa fa-male fa-fw"></i>
+            Admin
+          </a>
+        </li>
+
         <li class="divider"></li>
         <li>
           <a [routerLink]="['/login']" role="button">
@@ -76,14 +83,6 @@
             Overview
           </a>
         </li>
-
-        <li>
-          <a [routerLink]="['/admin']" role="button">
-            <i class="fa fa-dashboard fa-fw"></i>
-            Admin
-          </a>
-        </li>
-
 
       </ul>
     </div>
