@@ -63,4 +63,11 @@ export class TransactionListItemComponent {
     this.onRequestReload.emit();
   }
 
+  isPriceRed() {
+    return this.data.transaction.value.amount < 0;
+  }
+
+  isPriceGreen() {
+    return this.data.transaction.value.amount >= 0;
+  }
 }

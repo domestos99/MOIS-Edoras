@@ -7,7 +7,8 @@ import {Filtermodel} from "@app/modules/secure/filter/filtermodel";
 
 @Component({
   selector: 'payment-list',
-  templateUrl: 'payment-list.component.html'
+  templateUrl: 'payment-list.component.html',
+  styleUrls: ['./payment-list.component.css']
 })
 export class PaymentListComponent {
 

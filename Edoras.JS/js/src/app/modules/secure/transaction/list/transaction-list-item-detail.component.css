@@ -1,4 +1,4 @@
-.tileHead{
+.tileHead {
   /*  vertical-align: text-top;*/
   font-size: 12px;
   font-weight: 400;
@@ -6,13 +6,13 @@
   color: #757575
 }
 
-.tileBody{
+.tileBody {
   padding-top: 10px;
   font-size: 12px;
   font-weight: 400;
 }
 
-.tileMsg{
+.tileMsg {
   text-align: center;
   margin-top: -20px;
 }
@@ -21,6 +21,35 @@
   max-width: none;
 }
 
-.height100 {
-  height: 100%;
+/*.height100 {*/
+/*height: 100%;*/
+/*}*/
+
+.payerHead{
+  text-align: left;
+}
+
+dl {
+  clear: left;
+}
+
+dt {
+  width: 120px;
+  float: left;
+  clear: left;
+  display: block;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+dd {
+  font-weight: bold;
+  float: left;
+  width: 270px;
+  margin-bottom: 10px;
+}
+
+.border {
+  border-top: 1px solid #dadada;
+  padding-top: 10px;
 }

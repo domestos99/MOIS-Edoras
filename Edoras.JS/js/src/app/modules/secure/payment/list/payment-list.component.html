@@ -1,7 +1,5 @@
 <h3>Payments list</h3>
 
-<!--<payment-filter (onFilterChanged)="filterChanged($event)"></payment-filter>-->
-
 <spinner *ngIf="isLoading"></spinner>
 
 <filter (filterChanged)="onFilterChanged($event)"></filter>
@@ -20,7 +18,6 @@
   <div *ngIf="data.length == 0">
     No Data
   </div>
-
 
 </div>
 

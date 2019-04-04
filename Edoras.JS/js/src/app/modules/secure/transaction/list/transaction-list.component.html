@@ -9,17 +9,17 @@
 
   <div *ngIf="data.length != 0">
 
-    <mat-accordion [multi]="true">
+    <mat-list>
 
       <ng-container *ngFor="let row of data">
         <transaction-list-item (onRequestReload)="requestReload()"
                                [data]="row"></transaction-list-item>
       </ng-container>
-    </mat-accordion>
+    </mat-list>
 
   </div>
   <div *ngIf="data.length == 0">
     No Data
   </div>
-  
+
 </div>

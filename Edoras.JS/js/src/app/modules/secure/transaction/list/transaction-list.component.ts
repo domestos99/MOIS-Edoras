@@ -10,7 +10,8 @@ import {Filtermodel} from "@app/modules/secure/filter/filtermodel";
 
 @Component({
   selector: 'transaction-list',
-  templateUrl: 'transaction-list.component.html'
+  templateUrl: 'transaction-list.component.html',
+  styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent {
 

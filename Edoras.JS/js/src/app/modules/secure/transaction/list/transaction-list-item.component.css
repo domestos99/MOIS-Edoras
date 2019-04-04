@@ -1,7 +1,16 @@
-.gridPrice {
+.priceRed{
   color: #cc0032;
+}
+
+.priceGreen{
+  color: limegreen;
 }
 
 .full-screen-modal .mat-dialog-container {
   max-width: none;
+}
+
+.mat-list-item {
+  padding-top: 10px;
+  height: auto;
 }

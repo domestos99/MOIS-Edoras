@@ -39,9 +39,9 @@ export class PaymentListItemComponent {
   openPaymentDetailModal(): void {
     const dialogRef = this.dialog.open(PaymentListItemDetailComponent, {
       maxWidth: '50vw',
-      maxHeight: '40vh',
+      maxHeight: '60vh',
       width: '50%',
-      height: '40%',
+      height: '60%',
       data: this.data,
       panelClass: 'full-screen-modal',
     });
@@ -56,5 +56,13 @@ export class PaymentListItemComponent {
 
   requstReload() {
     this.onRequestReload.emit();
+  }
+
+  isPriceRed() {
+    return this.data.payment.value.amount < 0;
+  }
+
+  isPriceGreen() {
+    return this.data.payment.value.amount >= 0;
   }
 }

@@ -1,136 +1,54 @@
 <div mat-dialog-content class="height100">
 
-  <mat-grid-list cols="7" rowHeight="5:2">
 
-    <mat-grid-tile>
+  <div class="row">
+    <div class="col-sm-12">
       <category-view [category]="data.payment.category" [editable]="true"
                      (onClick)="onCategoryChangeClick()"></category-view>
-    </mat-grid-tile>
+    </div>
+  </div>
 
+  <dl class="border">
+    <dt>Account Number:</dt>
+    <dd>{{getAccountFormatted(data.payment.partyAccount)}}</dd>
 
-  </mat-grid-list>
+    <dt>Price:</dt>
+    <dd>{{getMoneyFormatted(data.payment.value)}}</dd>
 
+    <dt>Due Date:</dt>
+    <dd>{{data.payment.dueDate | date:'medium' }}</dd>
+  </dl>
 
-  <mat-grid-list cols="3" rowHeight="5:1">
+  <dl class="border">
 
-    <mat-grid-tile>
-      <div class="container">
-        <div class="tileHead row">AccountNumber:</div>
-        <div class="tileBody row">{{getAccountFormatted(data.payment.partyAccount)}}</div>
-      </div>
-    </mat-grid-tile>
+    <dt>First Payment:</dt>
+    <dd>{{data.payment.recuringPayment.firstPayment | date:'medium'}}</dd>
 
-    <mat-grid-tile>
-      <div class="container">
-        <div class="tileHead row">
-          Price:
-        </div>
-        <div class=" tileBody row"> {{getMoneyFormatted(data.payment.value)}}
-        </div>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <div class="row tileHead">
-          DueDate:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.dueDate | date:'medium' }}
-        </div>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <div class="row tileHead">
-          FirstPayment:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.recuringPayment.firstPayment | date:'medium'}}
-        </div>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <div class="row tileHead">
-          LastPayment:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.recuringPayment.lastPayment | date:'medium'}}
-        </div>
-      </div>
+    <dt>Last Payment:</dt>
+    <dd>{{data.payment.recuringPayment.lastPayment | date:'medium'}}</dd>
 
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <div class="row tileHead">
-          ConstantSymbol:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.additionalInfo.constantSymbol}}
-        </div>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <div class="row tileHead">
-          SpecificSymbol:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.additionalInfo.specificSymbol}}
-        </div>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <div class="row tileHead">
-          VariableSymbol:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.additionalInfo.variableSymbol}}
-        </div>
-      </div>
-    </mat-grid-tile>
+    <dt>Interval:</dt>
+    <dd>{{data.payment.recuringPayment.interval}}</dd>
 
-    <mat-grid-tile>
-      <div class="container">
-        <div class="row tileHead">
-          Interval:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.recuringPayment.interval}}
-        </div>
-      </div>
-    </mat-grid-tile>
+  </dl>
+  <dl class="border">
 
-    <mat-grid-tile [colspan]="3">
-      <div class="container">
-        <div class="row tileHead tileMsg payerHead">
-          PayerMessage:
-        </div>
-        <div class="row tileBody">
-          {{data.payment.payerMessage}}
-        </div>
-      </div>
-    </mat-grid-tile>
+    <dt>Constant Symbol:</dt>
+    <dd>{{data.payment.additionalInfo.constantSymbol}}</dd>
 
+    <dt>Specific Symbol:</dt>
+    <dd>{{data.payment.additionalInfo.specificSymbol}}</dd>
 
-    <!--  <mat-grid-tile>
-        <div class="container">
-          <div class="row tileHead">
-            CategoryId:
-          </div>
-          <div class="row tileBody">
-            {{data.payment.categoryId}}
-          </div>
-        </div>
-         </mat-grid-tile>-->
+    <dt>Variable Symbol:</dt>
+    <dd>{{data.payment.additionalInfo.variableSymbol}}</dd>
+  </dl>
 
-
-  </mat-grid-list>
-
+  <dl class="border">
+    <dt>Payer Message:</dt>
+    <dd>{{data.payment.payerMessage}}</dd>
+  </dl>
 
 </div>
-
 
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>

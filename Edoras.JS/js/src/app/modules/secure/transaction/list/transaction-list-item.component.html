@@ -1,14 +1,23 @@
-<mat-card>
+<mat-list-item>
 
-  <mat-card-content>
+  <div class="col-sm-2">
 
-    <mat-grid-list cols="5" rowHeight="5:1">
-      <mat-grid-tile><detail-button (onClick)="openDetail()"></detail-button></mat-grid-tile>
-      <mat-grid-tile><strong>{{getAccountFormatted(data.transaction.partyAccount)}}</strong></mat-grid-tile>
-      <mat-grid-tile><div class="gridPrice"> {{getMoneyFormatted(data.transaction.value)}} </div> </mat-grid-tile>
-      <mat-grid-tile>{{data.transaction.valueDate | date }}</mat-grid-tile>
-      <mat-grid-tile><category-view [category]="data.transaction.category" ></category-view></mat-grid-tile>
-    </mat-grid-list>
+    <detail-button (onClick)="openDetail()"></detail-button>
+  </div>
 
-  </mat-card-content>
-</mat-card>
+  <div class="col-sm-4">
+    <strong>{{getAccountFormatted(data.transaction.partyAccount)}}</strong>
+  </div>
+
+  <div class="col-sm-2">
+    <div [class.priceRed]="isPriceRed()" [class.priceGreen]="isPriceGreen()" class="gridPrice"> {{getMoneyFormatted(data.transaction.value)}} </div>
+  </div>
+
+  <div class="col-sm-2">
+    {{data.transaction.valueDate | date }}
+  </div>
+  <div class="col-sm-2">
+    <category-view [category]="data.transaction.category"></category-view>
+  </div>
+
+</mat-list-item>

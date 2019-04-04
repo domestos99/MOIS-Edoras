@@ -1,7 +1,18 @@
-.gridPrice{
+.priceRed{
   color: #cc0032;
+  text-align: center;
+}
+
+.priceGreen{
+  color: limegreen;
+  text-align: center;
 }
 
 .full-screen-modal .mat-dialog-container {
   max-width: none;
+}
+
+.mat-list-item {
+  padding-top: 10px;
+  height: auto;
 }
