@@ -46,11 +46,15 @@ export class PaymentListItemComponent {
       panelClass: 'full-screen-modal',
     });
 
+    dialogRef.componentInstance.onRequestReload.subscribe(() =>{
+      this.requstReload();
+    });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log(result);
-        this.requstReload();
       }
+      this.requstReload();
     });
   }
 

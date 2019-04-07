@@ -10,7 +10,7 @@
 
     <mat-list>
       <ng-container *ngFor="let row of data">
-        <payment-list-item [data]="row"></payment-list-item>
+        <payment-list-item (onRequestReload)="requestReload()" [data]="row"></payment-list-item>
       </ng-container>
     </mat-list>
 

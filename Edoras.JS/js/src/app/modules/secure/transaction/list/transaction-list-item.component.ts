@@ -1,11 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TransactionPartyAccount} from "@app/core/api/model/transactionPartyAccount";
 import {FormattingHelper} from "@app/core/helpers/formatting-helper";
-import {PaymentValue} from "@app/core/api/model/paymentValue";
-import {Transaction} from "@app/core/api/model/transaction";
 import {TransactionValue} from "@app/core/api/model/transactionValue";
 import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
-import {PaymentListItemDetailComponent} from "@app/modules/secure/payment/list/payment-list-item-detail.component";
 import {MatDialog} from "@angular/material";
 import {TransactionListItemDetailComponent} from "@app/modules/secure/transaction/list/transaction-list-item-detail.component";
 
@@ -20,10 +17,8 @@ export class TransactionListItemComponent {
   constructor(public dialog: MatDialog) {
   }
 
-
   @Input() data: TransactionCategoryDTO;
   @Output() onRequestReload: EventEmitter<any> = new EventEmitter();
-
 
   getAccountFormatted(account: TransactionPartyAccount): string {
     return FormattingHelper.getAccountFormatted(account);
@@ -37,7 +32,6 @@ export class TransactionListItemComponent {
     this.openTransactionDetailModal();
   }
 
-
   openTransactionDetailModal(): void {
     const dialogRef = this.dialog.open(TransactionListItemDetailComponent, {
       maxWidth: '80vw',
@@ -48,16 +42,17 @@ export class TransactionListItemComponent {
       panelClass: 'full-screen-modal',
     });
 
-
+    dialogRef.componentInstance.onRequestReload.subscribe(() =>{
+      this.requstReload();
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log(result);
-        this.requstReload();
       }
+      this.requstReload();
     });
   }
-
 
   requstReload() {
     this.onRequestReload.emit();
