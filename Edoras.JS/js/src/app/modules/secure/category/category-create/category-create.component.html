@@ -1,35 +1,63 @@
 <h1 mat-dialog-title>Create category</h1>
 <div mat-dialog-content>
-  <p>Category name</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.name" required>
-  </mat-form-field>
-  <p>Category icon</p>
 
-  <mat-form-field>
-    <mat-select placeholder="Icon" [(value)]="data.icon" required>
 
-      <mat-select-trigger>
-        <mat-icon>{{data.icon}}</mat-icon>
-      </mat-select-trigger>
+  <form [formGroup]="inputForm" >
+    <fieldset>
 
-      <mat-option *ngFor="let ic of iconsList" [value]="ic.name">
-        <mat-icon>{{ic.name}}</mat-icon>
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field>
+        <label for="catename" [ngClass]="{ 'is-invalid': submitted && f.catename.errors }" >Category name</label>
 
-  <mat-form-field>
-    <mat-select placeholder="Type" [(value)]="data.type" required>
-      <mat-option *ngFor="let type of types" [value]="type.name">
-        {{type.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+        <input matInput formControlName="catename" [(ngModel)]="data.name" required>
+
+        <div *ngIf="submitted && f.catename.errors" class="invalid-feedback">
+          <div *ngIf="f.catename.errors.required"></div>
+        </div>
+
+      </mat-form-field>
+      <mat-form-field>
+
+        <mat-select placeholder="Icon" formControlName="cateicon" [(value)]="data.icon"
+                    [ngClass]="{ 'is-invalid': submitted && f.cateicon.errors }" required>
+
+          <mat-select-trigger>
+            <mat-icon>{{data.icon}}</mat-icon>
+          </mat-select-trigger>
+
+          <mat-option *ngFor="let ic of iconsList" [value]="ic.name">
+            <mat-icon>{{ic.name}}</mat-icon>
+          </mat-option>
+        </mat-select>
+
+
+        <div *ngIf="submitted && f.cateicon.errors" class="invalid-feedback">
+          <div *ngIf="f.cateicon.errors.required"></div>
+        </div>
+
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <mat-select placeholder="Type" formControlName="catetype" [(value)]="data.type"
+                    [ngClass]="{ 'is-invalid': submitted && f.catetype.errors }"
+                    required>
+          <mat-option *ngFor="let type of types" [value]="type.name">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+
+        <div *ngIf="submitted && f.catetype.errors" class="invalid-feedback">
+          <div *ngIf="f.catetype.errors.required"></div>
+        </div>
+
+      </mat-form-field>
+
+    </fieldset>
+  </form>
 
 
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onOkClick()" cdkFocusInitial>Ok</button>
 </div>
