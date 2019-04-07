@@ -61,7 +61,7 @@ export class CategoryService extends ServiceBase {
     let options = HttpHelper.getHttpOptions();
     return this.http.post<any>(this.getBaseUrl() + "category", JSON.stringify(cate), options)
       .pipe((x) => {
-          this.list.refresh();
+          this.list.resetCache();
           return x;
         }
       );
@@ -77,7 +77,7 @@ export class CategoryService extends ServiceBase {
     let options = HttpHelper.getHttpOptions();
     return this.http.put<any>(this.getBaseUrl() + "category", JSON.stringify(cate), options)
       .pipe((x) => {
-          this.list.refresh();
+          this.list.resetCache();
           return x;
         }
       );
