@@ -1,9 +1,8 @@
 <h3>Transactions list</h3>
 
-<spinner *ngIf="isLoading"></spinner>
-
-
 <filter (filterChanged)="onFilterChanged($event)"></filter>
+
+<spinner *ngIf="isLoading"></spinner>
 
 <div *ngIf="data">
 

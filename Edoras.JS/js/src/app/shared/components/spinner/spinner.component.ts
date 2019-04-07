@@ -16,9 +16,8 @@ export class SpinnerComponent {
         return;
       }
     }
-
     this.diameter = 100;
   }
 
-  diameter: number;
+  diameter: number = 100;
 }
