@@ -50,6 +50,7 @@ export class PaymentListItemDetailComponent {
           .subscribe(resp => {
             console.log(resp);
             this.onRequestReload.emit();
+            this.dialogRef.close();
           });
       }
     });
