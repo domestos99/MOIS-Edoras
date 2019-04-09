@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import cz.uhk.mois.edoras.domain.PaymentCategory;
-import cz.uhk.mois.edoras.services.imp.PaymentCategoryService;
+import cz.uhk.mois.edoras.services.IPaymentCategoryService;
 import cz.uhk.mois.edoras.web.dto.PaymentCategoryUpdateDTO;
 
 @RestController
 public class PaymentCategoryController
 {
-    private final PaymentCategoryService paymentCategoryService;
+    private final IPaymentCategoryService paymentCategoryService;
 
     @Autowired
-    public PaymentCategoryController(PaymentCategoryService paymentCategoryService)
+    public PaymentCategoryController(IPaymentCategoryService paymentCategoryService)
     {
         this.paymentCategoryService = paymentCategoryService;
     }

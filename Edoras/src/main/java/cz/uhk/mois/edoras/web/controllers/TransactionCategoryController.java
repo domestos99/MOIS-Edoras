@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import cz.uhk.mois.edoras.domain.TransactionCategory;
-import cz.uhk.mois.edoras.services.imp.TransactionCategoryService;
+import cz.uhk.mois.edoras.services.ITransactionCategoryService;
 import cz.uhk.mois.edoras.web.dto.TransactionCategoryUpdateDTO;
 
 @RestController
 public class TransactionCategoryController
 {
-    private final TransactionCategoryService transactionCategoryService;
+    private final ITransactionCategoryService transactionCategoryService;
 
     @Autowired
-    public TransactionCategoryController(TransactionCategoryService transactionCategoryService)
+    public TransactionCategoryController(ITransactionCategoryService transactionCategoryService)
     {
         this.transactionCategoryService = transactionCategoryService;
     }
