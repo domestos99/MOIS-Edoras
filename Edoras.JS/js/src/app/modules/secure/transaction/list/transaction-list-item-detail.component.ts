@@ -7,6 +7,7 @@ import {TransactionCategoryService} from "@app/core/services/transactionCategory
 import {TransactionAdditionalInfoForeignOriginalValue} from "@app/core/api/model/transactionAdditionalInfoForeignOriginalValue";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -49,10 +50,10 @@ export class TransactionListItemDetailComponent {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
-        console.log(result);
+        Logger.logDebug(result);
         this.transactionCategoryService.update(this.data, result.newCategory, result.changeType)
           .subscribe(resp => {
-            console.log(resp);
+            Logger.logData(resp);
             this.onRequestReload.emit();
             this.dialogRef.close();
           });

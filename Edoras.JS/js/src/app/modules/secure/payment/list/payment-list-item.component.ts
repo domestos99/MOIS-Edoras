@@ -7,6 +7,7 @@ import {PaymentCategoryService} from "@app/core/services/paymentCategory.service
 import {MatDialog} from "@angular/material";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
 import {PaymentListItemDetailComponent} from "@app/modules/secure/payment/list/payment-list-item-detail.component";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -52,7 +53,7 @@ export class PaymentListItemComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
+        Logger.logDebug(result);
       }
       this.requstReload();
     });
@@ -60,13 +61,5 @@ export class PaymentListItemComponent {
 
   requstReload() {
     this.onRequestReload.emit();
-  }
-
-  isPriceRed() {
-    return this.data.payment.value.amount < 0;
-  }
-
-  isPriceGreen() {
-    return this.data.payment.value.amount >= 0;
   }
 }

@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material";
 import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 import {Category} from "@app/core/model";
 import {YesNoDialogComponent} from "@app/shared/components/yes-no-dialog/yes-no-dialog.component";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -42,7 +43,7 @@ export class CategoryListComponent implements OnInit {
 
     this.isLoading = true;
     this.service.getAll2(false).subscribe(resp => {
-      console.log(resp);
+      Logger.logData(resp);
 
       this.data = resp.filter(c => c.type == this._type);
 
@@ -66,10 +67,10 @@ export class CategoryListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
-        console.log(result);
+        Logger.logDebug(result);
         this.service.update(row.id, result.name, result.icon, result.type)
           .subscribe(resp => {
-            console.log(resp);
+            Logger.logData(resp);
             this.reload();
           });
       }
@@ -83,7 +84,7 @@ export class CategoryListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      Logger.logDebug(result);
       if (result) {
         this.service.delete(row.id)
           .subscribe(resp => {

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {OverviewService} from "@app/modules/secure/overview/overview.service";
 import {TransactionOverviewDTO} from "@app/core/model";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -25,13 +26,13 @@ export class TransactionOverviewComponent {
     this.isLoading = true;
     this.service.getTransactionOverview().subscribe(resp => {
         this.isLoading = false;
-        console.log(resp);
+        Logger.logData(resp);
         this.data = resp;
         this.udpateChartData();
       },
       error1 => {
         this.isLoading = false;
-        console.log(error1);
+        Logger.logError(error1);
       });
   }
 

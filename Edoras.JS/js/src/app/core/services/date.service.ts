@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {Logger} from "@app/core/logs";
 
 @Injectable()
 export class DateService {
@@ -10,7 +11,7 @@ export class DateService {
     if (dt)
       return dt.toISOString();
     else {
-      console.log('no dt');
+      Logger.logDebug('no dt');
       return '';
     }
     // return this.getCurrentDateInApiFormat(dt);

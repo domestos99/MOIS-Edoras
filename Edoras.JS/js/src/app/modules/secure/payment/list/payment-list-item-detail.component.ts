@@ -6,6 +6,7 @@ import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 import {PaymentCategoryService} from "@app/core/services/paymentCategory.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -45,10 +46,10 @@ export class PaymentListItemDetailComponent {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
-        console.log(result);
+        Logger.logDebug(result);
         this.paymentCategoryService.update(this.data, result.newCategory, result.changeType)
           .subscribe(resp => {
-            console.log(resp);
+            Logger.logData(resp);
             this.onRequestReload.emit();
             this.dialogRef.close();
           });

@@ -2,6 +2,7 @@ import {Component, Input, Output, EventEmitter, ViewChild, OnInit} from '@angula
 import {MatSelectChange} from "@angular/material";
 import {CategoryService} from "@app/modules/secure/category/category.service";
 import {Category} from "@app/core/model";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -32,7 +33,7 @@ export class CategorySelectComponent implements OnInit {
 
   reload() {
     this.service.getAll().subscribe(resp => {
-      console.log(resp);
+      Logger.logData(resp);
       if (!this._type) {
         this.categories = resp;
       }
@@ -43,8 +44,7 @@ export class CategorySelectComponent implements OnInit {
   }
 
   onselectionChange(change: MatSelectChange) {
-    console.log('change');
-    console.log(change.value);
+    Logger.logDebug('change', change.value);
     this.selectionChange.emit(change.value);
   }
 

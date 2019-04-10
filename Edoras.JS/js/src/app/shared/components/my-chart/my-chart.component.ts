@@ -1,4 +1,5 @@
 import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -32,8 +33,7 @@ export class MyChartComponent {
   }
 
   customizeLabel(arg) {
-    console.log(arg);
-
+    Logger.logDebug(arg);
     return arg.valueText + " (" + arg.percentText + ")";
   }
 

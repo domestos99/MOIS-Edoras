@@ -5,6 +5,7 @@ import {TransactionValue} from "@app/core/api/model/transactionValue";
 import {TransactionCategoryDTO} from "@app/core/model/transactionCategoryDTO";
 import {MatDialog} from "@angular/material";
 import {TransactionListItemDetailComponent} from "@app/modules/secure/transaction/list/transaction-list-item-detail.component";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -48,7 +49,7 @@ export class TransactionListItemComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
+        Logger.logDebug(result);
       }
       this.requstReload();
     });

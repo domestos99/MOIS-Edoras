@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {CategoryCreateComponent} from "@app/modules/secure/category/category-create/category-create.component";
 import {CategoryService} from "@app/modules/secure/category/category.service";
 import {MatDialog} from "@angular/material";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -32,10 +33,10 @@ export class CategoryComponent {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
-        console.log(result);
+        Logger.logDebug(result);
         this.service.insert(result.name, result.icon, result.type)
           .subscribe(resp => {
-            console.log(resp);
+            Logger.logData(resp);
              this.reloadChilds();
           });
       }

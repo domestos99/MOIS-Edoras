@@ -8,6 +8,7 @@ import {find, map} from "rxjs/operators";
 import 'rxjs/add/operator/map'
 import 'rxjs/Rx';
 import {Cacheable} from "@app/core/services";
+import {Logger} from "@app/core/logs";
 
 @Injectable()
 export class CategoryService extends ServiceBase {
@@ -55,8 +56,7 @@ export class CategoryService extends ServiceBase {
     let cate: Category;
     cate = new Category(undefined, name, icon, type);
 
-    console.log("posting");
-    console.log(JSON.stringify(cate));
+    Logger.logDebug("posting", JSON.stringify(cate));
 
     let options = HttpHelper.getHttpOptions();
     return this.http.post<any>(this.getBaseUrl() + "category", JSON.stringify(cate), options)
@@ -71,8 +71,7 @@ export class CategoryService extends ServiceBase {
     let cate: Category;
     cate = new Category(id, name, icon, type);
 
-    console.log("puting");
-    console.log(JSON.stringify(cate));
+    Logger.logDebug("putting", JSON.stringify(cate));
 
     let options = HttpHelper.getHttpOptions();
     return this.http.put<any>(this.getBaseUrl() + "category", JSON.stringify(cate), options)

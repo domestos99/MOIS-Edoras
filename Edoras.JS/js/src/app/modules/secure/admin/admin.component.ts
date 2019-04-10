@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AdminService} from "@app/modules/secure/admin/admin.service";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AdminComponent {
         alert(resp);
       }, error1 => {
         alert('error - see console for more info or try it again later');
-        console.log(error1);
+        Logger.logError(error1);
       });
 
   }

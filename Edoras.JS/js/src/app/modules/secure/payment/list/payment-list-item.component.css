@@ -1,13 +1,3 @@
-.priceRed{
-  color: #cc0032;
-  text-align: center;
-}
-
-.priceGreen{
-  color: limegreen;
-  text-align: center;
-}
-
 .full-screen-modal .mat-dialog-container {
   max-width: none;
 }

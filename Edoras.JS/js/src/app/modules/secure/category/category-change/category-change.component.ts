@@ -9,7 +9,8 @@ import {Transaction} from "@app/core/api/model/transaction";
 
 @Component({
   selector: 'category-change',
-  templateUrl: 'category-change.component.html'
+  templateUrl: 'category-change.component.html',
+  styleUrls: ['./category-change.component.css']
 })
 export class CategoryChangeComponent {
 
@@ -17,6 +18,8 @@ export class CategoryChangeComponent {
     public dialogRef: MatDialogRef<CategoryChangeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CategoryChangeModel) {
   }
+
+  submitted = false;
 
   getCategoryType(): string {
     if (!this.data.direction)
@@ -54,4 +57,16 @@ export class CategoryChangeComponent {
   }
 
 
+  onOkClick() {
+
+    if (this.isDataValid()) {
+      this.dialogRef.close(this.data);
+    } else {
+      this.submitted = true;
+    }
+  }
+
+  private isDataValid() {
+    return (this.data && this.data.newCategory && this.data.changeType);
+  }
 }

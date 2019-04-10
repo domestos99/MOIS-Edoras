@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {CategoryService} from "@app/modules/secure/category/category.service";
 import {Category} from "@app/core/model";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -32,7 +33,7 @@ export class CategoryViewComponent {
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   @HostListener("click") onCompClick() {
-    console.log('on category-view click');
+    Logger.logDebug('on category-view click');
     this.onClick.emit(null);
   }
 

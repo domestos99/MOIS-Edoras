@@ -3,6 +3,7 @@ import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import {PaymentService} from "../payment.service";
 import {PaymentCategoryDTO} from "@app/core/model/paymentCategoryDTO";
 import {Filtermodel} from "@app/modules/secure/filter/filtermodel";
+import {Logger} from "@app/core/logs";
 
 
 @Component({
@@ -25,12 +26,12 @@ export class PaymentListComponent {
     this.isLoading = true;
     this.service.getAll2(this.filterModel).subscribe(resp => {
         this.isLoading = false;
-        console.log(resp);
+        Logger.logData(resp);
         this.data = resp;
       },
       error1 => {
         this.isLoading = false;
-        console.log(error1);
+        Logger.logError(error1);
       });
   }
 
@@ -39,7 +40,7 @@ export class PaymentListComponent {
   }
 
   onFilterChanged(filterModel: Filtermodel) {
-    console.log('onFilterChanged: ', filterModel);
+    Logger.logDebug('onFilterChanged: ', filterModel);
     this.filterModel = filterModel;
     this.reload();
   }
