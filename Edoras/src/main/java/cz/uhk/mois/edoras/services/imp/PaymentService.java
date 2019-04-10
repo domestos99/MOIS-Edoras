@@ -4,6 +4,7 @@ import cz.uhk.mois.edoras.dao.CategoryDAO;
 import cz.uhk.mois.edoras.domain.Category;
 import cz.uhk.mois.edoras.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -42,9 +43,9 @@ public class PaymentService implements IPaymentService {
 
 
         if (StringUtil.isEmptyOrNull(filterModel.getCateId()) && filterModel.getDtFrom() == null && filterModel.getDtTo() == null) {
-            payments = paymentDAO.findAll();
+            payments = paymentDAO.findAll(new Sort(Sort.Direction.DESC, "category.name"));
         } else if (filterModel.getDtFrom() != null && filterModel.getDtTo() != null && StringUtil.isEmptyOrNull(filterModel.getCateId())) {
-            payments = paymentDAO.findByDueDateBetween(filterModel.getDtFrom(), filterModel.getDtTo());
+            payments = paymentDAO.findByDueDateBetweenOrderByCategoryDesc(filterModel.getDtFrom(), filterModel.getDtTo());
         } else if (filterModel.getDtTo() == null && filterModel.getDtFrom() == null && !StringUtil.isEmptyOrNull(filterModel.getCateId())) {
 
             Optional<Category> category = categoryDAO.findById(filterModel.getCateId());
@@ -56,7 +57,7 @@ public class PaymentService implements IPaymentService {
 
             Optional<Category> category = categoryDAO.findById(filterModel.getCateId());
             if (category.isPresent()) {
-                payments = paymentDAO.findByDueDateBetweenAndCategory(filterModel.getDtFrom(), filterModel.getDtTo(), category.get());
+                payments = paymentDAO.findByDueDateBetweenAndCategoryOrderByCategoryDesc(filterModel.getDtFrom(), filterModel.getDtTo(), category.get());
             }
         }
 
