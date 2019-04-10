@@ -36,28 +36,23 @@ public class PaymentService implements IPaymentService {
     public List<PaymentCategoryDTO> findAll(final PaymentFilterModel filterModel) {
         List<Payment> payments = new ArrayList<>();
 
-        if (filterModel.getDtTo() == null || filterModel.getDtFrom() == null) {
-            filterModel.setDtFrom(null);
-            filterModel.setDtTo(null);
-        }
-
 
         if (StringUtil.isEmptyOrNull(filterModel.getCateId()) && filterModel.getDtFrom() == null && filterModel.getDtTo() == null) {
-            payments = paymentDAO.findAll(new Sort(Sort.Direction.DESC, "category.name"));
+            payments = paymentDAO.findAll(new Sort(Sort.Direction.DESC, "dueDate"));
         } else if (filterModel.getDtFrom() != null && filterModel.getDtTo() != null && StringUtil.isEmptyOrNull(filterModel.getCateId())) {
-            payments = paymentDAO.findByDueDateBetweenOrderByCategoryDesc(filterModel.getDtFrom(), filterModel.getDtTo());
+            payments = paymentDAO.findByDueDateBetweenOrderByDueDateDesc(filterModel.getDtFrom(), filterModel.getDtTo());
         } else if (filterModel.getDtTo() == null && filterModel.getDtFrom() == null && !StringUtil.isEmptyOrNull(filterModel.getCateId())) {
 
             Optional<Category> category = categoryDAO.findById(filterModel.getCateId());
             if (category.isPresent()) {
-                payments = paymentDAO.findByCategory(category.get());
+                payments = paymentDAO.findByCategoryOrderByDueDateDesc(category.get());
             }
 
         } else if (filterModel.getCateId() != null && filterModel.getDtFrom() != null && filterModel.getDtTo() != null) {
 
             Optional<Category> category = categoryDAO.findById(filterModel.getCateId());
             if (category.isPresent()) {
-                payments = paymentDAO.findByDueDateBetweenAndCategoryOrderByCategoryDesc(filterModel.getDtFrom(), filterModel.getDtTo(), category.get());
+                payments = paymentDAO.findByDueDateBetweenAndCategoryOrderByDueDateDesc(filterModel.getDtFrom(), filterModel.getDtTo(), category.get());
             }
         }
 

@@ -10,9 +10,9 @@ import java.util.List;
 public interface PaymentDAO extends JpaRepository<Payment, String>
 {
 
-    List<Payment> findByDueDateBetweenOrderByCategoryDesc(Date from, Date to);
+    List<Payment> findByDueDateBetweenOrderByDueDateDesc(Date from, Date to);
 
-    List<Payment> findByCategory(Category category);
+    List<Payment> findByCategoryOrderByDueDateDesc(Category category);
 
-    List<Payment> findByDueDateBetweenAndCategoryOrderByCategoryDesc(Date from, Date to, Category category);
+    List<Payment> findByDueDateBetweenAndCategoryOrderByDueDateDesc(Date from, Date to, Category category);
 }
