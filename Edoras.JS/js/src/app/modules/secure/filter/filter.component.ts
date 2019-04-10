@@ -43,7 +43,9 @@ export class FilterComponent {
   }
 
   private onFilterChanged() {
-    this.filterChanged.emit(this.filterObj);
+    if (this.filterObj.dtFrom && this.filterObj.dtTo) {
+      this.filterChanged.emit(this.filterObj);
+    }
   }
 
   onFilterSubmit() {

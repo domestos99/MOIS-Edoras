@@ -7,7 +7,7 @@
     <mat-form-field>
       <input matInput [matDatepicker]="dtPickerFrom" placeholder="Date From"
              [formControl]="serializedDateFrom"
-             (dateInput)="onDtFromChangeFrom($event)" (dateChange)="onDtFromChangeFrom($event)">
+             (dateInput)="onDtFromChangeFrom($event)" (dateChange)="onDtFromChangeFrom($event)" required>
       <mat-datepicker-toggle matSuffix [for]="dtPickerFrom"></mat-datepicker-toggle>
       <mat-datepicker #dtPickerFrom></mat-datepicker>
     </mat-form-field>
@@ -16,7 +16,7 @@
     <mat-form-field>
       <input matInput [matDatepicker]="dtPickerTo" placeholder="Date To"
              [formControl]="serializedDateTo"
-             (dateInput)="onDtFromChangeTo($event)" (dateChange)="onDtFromChangeTo($event)">
+             (dateInput)="onDtFromChangeTo($event)" (dateChange)="onDtFromChangeTo($event)" required>
       <mat-datepicker-toggle matSuffix [for]="dtPickerTo"></mat-datepicker-toggle>
       <mat-datepicker #dtPickerTo></mat-datepicker>
     </mat-form-field>
