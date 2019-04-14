@@ -2,14 +2,20 @@ package cz.uhk.mois.edoras.web.dto;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
+
 
 public class PaymentFilterModel implements Serializable
 {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dtFrom;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dtTo;
     private String cateId;
 
