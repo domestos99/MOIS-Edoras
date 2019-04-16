@@ -54,7 +54,7 @@ public class PaymentCategoryService implements IPaymentCategoryService
                 paymentCategory.setId(pc.getId());
             }
         }
-        else
+        else if (paymentCategoryUpdateDTO.getChangeType() == ChangeType.ALL)
         {
             // for ALL
             paymentCategory.setPaymentAccount(AccountHelper.getAccountId(paymentCategoryUpdateDTO.getTransactionPartyAccount()));
@@ -77,6 +77,10 @@ public class PaymentCategoryService implements IPaymentCategoryService
             {
                 paymentCategory.setId(pc.getId());
             }
+        }
+        else
+        {
+            throw new RuntimeException("Invalid ChangeType");
         }
 
         PaymentCategory pc = paymentCategoryDAO.save(paymentCategory);

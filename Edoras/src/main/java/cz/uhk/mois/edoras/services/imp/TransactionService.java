@@ -30,10 +30,6 @@ public class TransactionService implements ITransactionService {
 
     @Override
     public List<TransactionCategoryDTO> findAll(TransactionFilterModel filterModel) {
-        // TODO user filterModel
-        // valueDate
-        // category
-
         List<Transaction> transactions = new ArrayList<>();
 
 

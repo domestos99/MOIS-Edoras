@@ -54,7 +54,7 @@ public class TransactionCategoryService implements ITransactionCategoryService
                 transactionCategory.setId(pc.getId());
             }
         }
-        else
+        else if (transactionCategoryUpdateDTO.getChangeType() == ChangeType.ALL)
         {
             // for ALL
             transactionCategory.setTransactionAccount(AccountHelper.getAccountId(transactionCategoryUpdateDTO.getTransactionPartyAccount()));
@@ -77,6 +77,10 @@ public class TransactionCategoryService implements ITransactionCategoryService
             {
                 transactionCategory.setId(pc.getId());
             }
+        }
+        else
+        {
+            throw new RuntimeException("Invalid ChangeType");
         }
 
         TransactionCategory pc = transactionCategoryDAO.save(transactionCategory);
