@@ -1,8 +1,35 @@
 package cz.uhk.mois.edoras.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class AppConfig
 {
-    public static final String BankingApiUrl = "https://mois-banking.herokuapp.com/v1/";
-    public static final String AccountID = "9877";
-    public static final int ApiConnectTimeout = 5000;
+    public static String AccountID;
+
+    @Value("${appconfig.accountid}")
+    public void setAccountID(String value)
+    {
+        AccountID = value;
+    }
+
+    public static String BankingApiUrl;
+
+    @Value("${appconfig.bankingapiurl}")
+    public void setBankingApiUrl(String value)
+    {
+        BankingApiUrl = value;
+    }
+
+    public static int ApiConnectTimeout;
+
+    @Value("${appconfig.apiconnectiontimeout}")
+    public void setApiConnectTimeout(int value)
+    {
+        ApiConnectTimeout = value;
+    }
+
+
+
 }
