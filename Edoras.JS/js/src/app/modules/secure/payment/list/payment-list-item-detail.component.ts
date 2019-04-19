@@ -7,6 +7,7 @@ import {PaymentCategoryService} from "@app/core/services/paymentCategory.service
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
 import {CategoryChangeComponent} from "@app/modules/secure/category/category-change/category-change.component";
 import {Logger} from "@app/core/logs";
+import {Transaction} from "@app/core/api/model/transaction";
 
 
 @Component({
@@ -40,7 +41,7 @@ export class PaymentListItemDetailComponent {
   openChangeCategoryDialog(): void {
     const dialogRef = this.dialog.open(CategoryChangeComponent, {
       width: '300px',
-      data: {}
+      data: {direction: Transaction.DirectionEnum.OUTGOING}
     });
 
     dialogRef.afterClosed().subscribe(result => {
