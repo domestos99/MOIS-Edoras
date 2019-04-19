@@ -7,12 +7,15 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import cz.uhk.mois.edoras.bankingapi.model.Transaction;
+
 @Entity
 @Table(uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"transactionId", "transactionAccount"})
+        @UniqueConstraint(columnNames = {"transactionId"})
 })
 public class TransactionCategory implements Serializable
 {
@@ -21,9 +24,12 @@ public class TransactionCategory implements Serializable
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
-    private String categoryId;
+
+    @ManyToOne
+    private Category category;
     private String transactionId;
     private String transactionAccount;
+    private Transaction.DirectionEnum direction;
 
     public String getId()
     {
@@ -35,14 +41,14 @@ public class TransactionCategory implements Serializable
         this.id = id;
     }
 
-    public String getCategoryId()
+    public Category getCategory()
     {
-        return categoryId;
+        return category;
     }
 
-    public void setCategoryId(String categoryId)
+    public void setCategory(Category category)
     {
-        this.categoryId = categoryId;
+        this.category = category;
     }
 
     public String getTransactionAccount()
@@ -63,5 +69,15 @@ public class TransactionCategory implements Serializable
     public void setTransactionId(String transactionId)
     {
         this.transactionId = transactionId;
+    }
+
+    public Transaction.DirectionEnum getDirection()
+    {
+        return direction;
+    }
+
+    public void setDirection(Transaction.DirectionEnum direction)
+    {
+        this.direction = direction;
     }
 }

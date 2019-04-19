@@ -1,12 +1,14 @@
 package cz.uhk.mois.edoras.services.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 import cz.uhk.mois.edoras.bankingapi.model.Transaction;
+import cz.uhk.mois.edoras.constants.Constants;
 import cz.uhk.mois.edoras.dao.CategoryDAO;
 import cz.uhk.mois.edoras.dao.TransactionCategoryDAO;
 import cz.uhk.mois.edoras.dao.TransactionDAO;
@@ -42,7 +44,10 @@ public class TransactionCategoryService implements ITransactionCategoryService
             return null;
         }
 
-        transactionCategory.setCategoryId(transactionCategoryUpdateDTO.getCategoryId());
+        Optional<Category> c = categoryDAO.findById(transactionCategoryUpdateDTO.getCategoryId());
+        transactionCategory.setCategory(c.orElse(null));
+        Transaction.DirectionEnum direction = Constants.INCOME.equals(c.get().getType()) ? Transaction.DirectionEnum.INCOMING : Transaction.DirectionEnum.OUTGOING;
+        transactionCategory.setDirection(direction);
 
         if (transactionCategoryUpdateDTO.getChangeType() == ChangeType.ONE)
         {
@@ -70,12 +75,16 @@ public class TransactionCategoryService implements ITransactionCategoryService
             if (pc == null)
             {
                 // Try find by account
-                pc = transactionCategoryDAO.findByTransactionAccount(AccountHelper.getAccountId(transactionCategoryUpdateDTO.getTransactionPartyAccount()));
+                pc = transactionCategoryDAO.findByTransactionAccountAndDirection(AccountHelper.getAccountId(transactionCategoryUpdateDTO.getTransactionPartyAccount()),
+                        direction);
             }
 
             if (pc != null)
             {
-                transactionCategory.setId(pc.getId());
+                boolean typeOk = checkCateTransType(c.orElse(null), pc.getCategory());
+
+                if (typeOk)
+                    transactionCategory.setId(pc.getId());
             }
         }
         else
@@ -86,6 +95,14 @@ public class TransactionCategoryService implements ITransactionCategoryService
         TransactionCategory pc = transactionCategoryDAO.save(transactionCategory);
         updateTransactionCategory(transactionDAO.findAll());
         return pc;
+    }
+
+    private boolean checkCateTransType(Category c1, Category c2)
+    {
+        if (c1 == null || c2 == null)
+            return false;
+
+        return c1.getType().equals(c2.getType());
     }
 
     public List<Transaction> updateTransactionCategory(List<Transaction> transactionList)
@@ -107,12 +124,22 @@ public class TransactionCategoryService implements ITransactionCategoryService
         if (category == null)
         {
             String account = AccountHelper.getAccountId(transaction.getPartyAccount());
-            category = transactionCategoryDAO.findByTransactionAccount(account);
+            category = transactionCategoryDAO.findByTransactionAccountAndDirection(account, transaction.getDirection());
         }
         if (category == null)
             return null;
 
-        return getCategoryById(category.getCategoryId());
+        Category cat = category.getCategory();
+
+        if (cat == null)
+            return null;
+
+        if (transaction.getDirection() == Transaction.DirectionEnum.INCOMING && !Constants.INCOME.equals(cat.getType()))
+            return null;
+        if (transaction.getDirection() == Transaction.DirectionEnum.OUTGOING && !Constants.EXPENSE.equals(cat.getType()))
+            return null;
+
+        return cat;
     }
 
     private Category getCategoryById(String cateId)
